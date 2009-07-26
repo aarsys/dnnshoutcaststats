@@ -1,0 +1,53 @@
+<dotnetnuke version="3.0" type="Module">
+  <folders>
+    <folder>
+      <name>DNN_ShoutcastStats</name>
+      <friendlyname>DNN_ShoutcastStats</friendlyname>
+      <foldername>DNN_ShoutcastStats</foldername>
+      <modulename>DNN_ShoutcastStats</modulename>
+      <description>A DNN_ShoutcastStats module</description>
+      <version>01.00.00</version>
+      <businesscontrollerclass>Aarsys.Modules.DNN_ShoutcastStats.DNN_ShoutcastStatsController</businesscontrollerclass>
+      <resourcefile>resources.zip</resourcefile>
+      <modules>
+        <module>
+          <friendlyname>DNN_ShoutcastStats</friendlyname>
+          <cachetime>0</cachetime>
+          <controls>
+            <control>
+              <src>DesktopModules/DNN_ShoutcastStats/ViewDNN_ShoutcastStats.ascx</src>
+              <type>View</type>
+              <helpurl></helpurl>
+            </control>
+            <control>
+              <key>Settings</key>
+              <title>DNN_ShoutcastStats Settings</title>
+              <src>DesktopModules/DNN_ShoutcastStats/Settings.ascx</src>
+              <type>Edit</type>
+              <helpurl></helpurl>
+            </control>
+          </controls>
+        </module>
+      </modules>
+      <files>
+        <file>
+	     <name>DNN_ShoutcastStats.dll</name>
+	</file>
+        <file>
+          <path>App_LocalResources</path>
+          <name>ViewDNN_ShoutcastStats.ascx.resx</name>
+        </file>
+        <file>
+          <path>App_LocalResources</path>
+          <name>Settings.ascx.resx</name>
+        </file>
+        <file>
+          <name>01.00.00.SqlDataProvider</name>
+        </file>
+        <file>
+          <name>Uninstall.SqlDataProvider</name>
+        </file>
+      </files>
+    </folder>
+  </folders>
+</dotnetnuke>
