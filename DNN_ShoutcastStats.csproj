@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{603535B6-8696-4B22-B91D-D1173C29F892}</ProjectGuid>
+    <ProjectGuid>{2C0DA330-51C5-448A-A89C-EDF0A9545B7F}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -41,6 +41,9 @@
       <HintPath>..\..\..\bin\dotnetnuke.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="DotNetNuke.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="DotNetNuke.WebControls, Version=2.2.2.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="DotNetNuke.WebUtility, Version=4.2.0.185, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.ApplicationBlocks.Data, Version=2.0.0.0, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\bin\Microsoft.ApplicationBlocks.Data.dll</HintPath>
@@ -72,12 +75,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\Songs.cs" />
-    <Compile Include="Components\Listener.cs" />
-    <Compile Include="Components\ShoutcastServer.cs" />
     <Compile Include="Components\DataProvider.cs" />
     <Compile Include="Components\DNN_ShoutcastStatsController.cs" />
     <Compile Include="Components\DNN_ShoutcastStatsInfo.cs" />
+    <Compile Include="Components\DNN_ShoutcastStatsListeners.cs" />
+    <Compile Include="Components\DNN_ShoutcastStatsServer.cs" />
+    <Compile Include="Components\DNN_ShoutcastStatsSongs.cs" />
     <Compile Include="Components\SqlDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.ascx.cs">
@@ -133,9 +136,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>62596</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/DNN5/DesktopModules/DNN_ShoutcastStats</IISUrl>
-          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://localhost/dnn5</IISAppRootUrl>
+          <IISUrl>http://dev5/DesktopModules/DNN_ShoutcastStats</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -1,7 +1,6 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ReferencePath>
-    </ReferencePath>
+    <ReferencePath>C:\Develope\develope5\bin\;C:\Develope\develope5\controls\</ReferencePath>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
