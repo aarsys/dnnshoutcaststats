@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Aarsys")]
 [assembly: AssemblyProduct("DNN_ShoutcastStats")]
-[assembly: AssemblyCopyright("(c) Aarsys M.Schlomann 2009")]
+[assembly: AssemblyCopyright("(c) Aarsys M.Schlomann 2010")]
 [assembly: AssemblyTrademark("")]
 [assembly: GuidAttribute("c4f391f9-db6b-4e53-83e5-e9ff8817fe65")]
 
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("4.0.0.0")]
+[assembly: AssemblyFileVersion("4.0.0.0")]

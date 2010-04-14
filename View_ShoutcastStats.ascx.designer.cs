@@ -11,60 +11,78 @@
 namespace Aarsys.ShoutcastStats {
     
     
-    public partial class Settings {
+    public partial class View_ShoutcastStats {
         
         /// <summary>
-        /// lblSC_IP-Steuerelement
+        /// lbl_Status-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::DotNetNuke.UI.UserControls.LabelControl lblSC_IP;
+        protected global::System.Web.UI.WebControls.Label lbl_Status;
         
         /// <summary>
-        /// txtSC_IP-Steuerelement
+        /// lbl_Station-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSC_IP;
+        protected global::System.Web.UI.WebControls.Label lbl_Station;
         
         /// <summary>
-        /// lblSC_Port-Steuerelement
+        /// lbl_CurrentListeners-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::DotNetNuke.UI.UserControls.LabelControl lblSC_Port;
+        protected global::System.Web.UI.WebControls.Label lbl_CurrentListeners;
         
         /// <summary>
-        /// txtSC_Port-Steuerelement
+        /// lbl_MaxListeners-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSC_Port;
+        protected global::System.Web.UI.WebControls.Label lbl_MaxListeners;
         
         /// <summary>
-        /// lblSC_Password-Steuerelement
+        /// lbl_SongTitle-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::DotNetNuke.UI.UserControls.LabelControl lblSC_Password;
+        protected global::System.Web.UI.WebControls.Label lbl_SongTitle;
         
         /// <summary>
-        /// txtSC_Password-Steuerelement
+        /// lbl_ScsSong-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSC_Password;
+        protected global::System.Web.UI.WebControls.Label lbl_ScsSong;
+        
+        /// <summary>
+        /// lbl_AIM-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_AIM;
+        
+        /// <summary>
+        /// lbl_Bitrate-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_Bitrate;
     }
 }

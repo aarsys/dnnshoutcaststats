@@ -117,34 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblTemplate.Text" xml:space="preserve">
-    <value>Template</value>
-  </data>
-  <data name="lblTemplate.Help" xml:space="preserve">
-    <value>Allows you to provide a custom template for displaying the items. Use parameters for dynamic substitution ( ie. [CONTENT] [CREATEDDATE] [CREATEDBYUSER] [CREATEDBYUSERNAME] )</value>
-  </data>
-  <data name="ControlTitle_settings.Text" xml:space="preserve">
-    <value>Aarsys Shoutcast Stats Settings</value>
+  <data name="AddContent.Action" xml:space="preserve">
+    <value>Add Content</value>
   </data>
   <data name="ModuleHelp.Text" xml:space="preserve">
-    <value>About Aarsys Shoutcast Stats Settings</value>
+    <value>&lt;P&gt;A DNN_ShoutcastStats module</value>
   </data>
-  <data name="lblSC_IP.Help" xml:space="preserve">
-    <value>Add your IP or domain to your Shoutcast server.</value>
+  <data name="DefaultContent.Text" xml:space="preserve">
+    <value>Here is some sample content</value>
   </data>
-  <data name="lblSC_IP.Text" xml:space="preserve">
-    <value>IP or Domain</value>
+  <data name="Bitrate.Text" xml:space="preserve">
+    <value>Bitrate</value>
   </data>
-  <data name="lblSC_Password.Help" xml:space="preserve">
-    <value>Add the admin Password for your Shoutcast server.</value>
+  <data name="Current Listeners.Text" xml:space="preserve">
+    <value>Aktuelle Hörer</value>
   </data>
-  <data name="lblSC_Password.Text" xml:space="preserve">
-    <value>Password</value>
+  <data name="Max Listeners.Text" xml:space="preserve">
+    <value>Max. Hörer</value>
   </data>
-  <data name="lblSC_Port.Help" xml:space="preserve">
-    <value>Add the port your Shoutcast server uses.</value>
+  <data name="Song Title.Text" xml:space="preserve">
+    <value>Aktueller Titel</value>
   </data>
-  <data name="lblSC_Port.Text" xml:space="preserve">
-    <value>Port</value>
+  <data name="Your DJ.Text" xml:space="preserve">
+    <value>DJ Name</value>
   </data>
 </root>
