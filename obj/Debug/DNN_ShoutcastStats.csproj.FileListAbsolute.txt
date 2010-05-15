@@ -1,6 +1,0 @@
-D:\Webserver_Pagers\DNN5\Website\bin\Aarsys.Modules.DNN_ShoutcastStats.xml
-D:\Webserver_Pagers\DNN5\Website\bin\Aarsys.Modules.DNN_ShoutcastStats.dll
-D:\Webserver_Pagers\DNN5\Website\bin\Aarsys.Modules.DNN_ShoutcastStats.pdb
-D:\Webserver_Pagers\DNN5\Website\DesktopModules\DNN_ShoutcastStats\obj\Debug\ResolveAssemblyReference.cache
-D:\Webserver_Pagers\DNN5\Website\DesktopModules\DNN_ShoutcastStats\obj\Debug\Aarsys.Modules.DNN_ShoutcastStats.dll
-D:\Webserver_Pagers\DNN5\Website\DesktopModules\DNN_ShoutcastStats\obj\Debug\Aarsys.Modules.DNN_ShoutcastStats.pdb
