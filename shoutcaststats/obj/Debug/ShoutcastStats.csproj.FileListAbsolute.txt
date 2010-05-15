@@ -1,0 +1,9 @@
+C:\Develope\develope5\bin\Aarsys.ShoutcastStats.dll
+C:\Develope\develope5\bin\Aarsys.ShoutcastStats.pdb
+C:\Develope\develope5\DesktopModules\Aarsys\ShoutcastStats\obj\Debug\ResolveAssemblyReference.cache
+C:\Develope\develope5\DesktopModules\Aarsys\ShoutcastStats\obj\Debug\Aarsys.ShoutcastStats.dll
+C:\Develope\develope5\DesktopModules\Aarsys\ShoutcastStats\obj\Debug\Aarsys.ShoutcastStats.pdb
+C:\Develope\develope5\DesktopModules\Aarsys\dnnshoutcaststats\obj\Debug\ResolveAssemblyReference.cache
+C:\Develope\develope5\DesktopModules\Aarsys\dnnshoutcaststats\obj\Debug\Aarsys.ShoutcastStats.dll
+C:\Develope\develope5\DesktopModules\Aarsys\dnnshoutcaststats\obj\Debug\Aarsys.ShoutcastStats.pdb
+C:\Develope\develope5\bin\Aarsys.ShoutcastStats.XML

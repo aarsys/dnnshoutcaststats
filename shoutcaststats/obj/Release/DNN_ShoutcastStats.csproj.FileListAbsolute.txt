@@ -1,0 +1,10 @@
+D:\Webserver_Pagers\DNN5\Website\DesktopModules\DNN_ShoutcastStats\obj\Release\ResolveAssemblyReference.cache
+D:\Webserver_Pagers\DNN5\Website\bin\Aarsys.Modules.DNN_ShoutcastStats.dll
+D:\Webserver_Pagers\DNN5\Website\bin\Aarsys.Modules.DNN_ShoutcastStats.pdb
+D:\Webserver_Pagers\DNN5\Website\DesktopModules\DNN_ShoutcastStats\obj\Release\Aarsys.Modules.DNN_ShoutcastStats.dll
+D:\Webserver_Pagers\DNN5\Website\DesktopModules\DNN_ShoutcastStats\obj\Release\Aarsys.Modules.DNN_ShoutcastStats.pdb
+C:\Develope\develope5\DesktopModules\ShoutcastStats\obj\Release\ResolveAssemblyReference.cache
+C:\Develope\develope5\DesktopModules\ShoutcastStats\obj\Release\Aarsys.Modules.DNN_ShoutcastStats.dll
+C:\Develope\develope5\DesktopModules\ShoutcastStats\obj\Release\Aarsys.Modules.DNN_ShoutcastStats.pdb
+C:\Develope\develope5\bin\Aarsys.Modules.DNN_ShoutcastStats.dll
+C:\Develope\develope5\bin\Aarsys.Modules.DNN_ShoutcastStats.pdb

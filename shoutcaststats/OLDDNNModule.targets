@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <!-- PLEASE NOTE THAT CHANGES TO THIS FILE WILL NOT TAKE AFFECT UNTIL YOU UNLOAD AND RELOAD YOUR PROJECT! -->
+	<PropertyGroup>
+		<CompanyName>Aarsys</CompanyName>
+		<ModuleName>ShoutcastStats</ModuleName>
+		<DotNetNukeDir></DotNetNukeDir>
+		<DeployPDB>1</DeployPDB>
+
+		<RootDir>$(MSBuildProjectDirectory)\..</RootDir>
+		<DeployDir>$(RootDir)\deploy</DeployDir>
+        <InstallDir>$(MSBuildProjectDirectory)\installation</InstallDir>
+        <MSBuildDir>$(RootDir)\lib\msbuild</MSBuildDir>
+        <BackupDotNetNukeDir>$(DotNetNukeDir)</BackupDotNetNukeDir>
+	</PropertyGroup>
+
+    <Import Project="$(MSBuildDir)\MSBuild.Community.Tasks.Targets" />
+
+    <ItemGroup>
+		<deployTargetFile Include="$(MSBuildProjectDirectory)\DNNModule.targets" />
+		<AssemblyInfoFiles Include="$(MSBuildProjectDirectory)\Properties\AssemblyInfo.cs" />
+		<dnnFile Include="$(MSBuildProjectDirectory)\*.dnn" />
+	</ItemGroup>
+
+    <Target Name="BeforeBuild">
+        <CallTarget Targets="SetVersionInfo" />
+    </Target>
+    <Target Name="AfterBuild">
+        <CallTarget Targets="DeployFiles" />
+    </Target>
+
+
+    <Target Name="SetVersionInfo">
+		<!-- Obtain Version information from version.txt -->
+		<Version BuildType="Automatic" RevisionType="None" VersionFile="version.txt" StartDate="4/1/2009">
+			<Output TaskParameter="Major" PropertyName="Major" />
+			<Output TaskParameter="Minor" PropertyName="Minor" />
+			<Output TaskParameter="Build" PropertyName="Build" />
+			<Output TaskParameter="Revision" PropertyName="Revision" />
+		</Version>
+
+        <!-- Write new version to assemblyinfo.cs -->
+        <FileUpdate Files="@(AssemblyInfoFiles)" Encoding="ASCII" Regex="AssemblyVersion\(&quot;.*&quot;\)" ReplacementText="AssemblyVersion(&quot;$(Major).$(Minor).$(Build).$(Revision)&quot;)" />
+        <FileUpdate Files="@(AssemblyInfoFiles)" Encoding="ASCII" Regex="AssemblyFileVersion\(&quot;.*&quot;\)" ReplacementText="AssemblyFileVersion(&quot;$(Major).$(Minor).$(Build).$(Revision)&quot;)" />
+
+        <!-- DNN requires single digits to be prefixed with a zero -->
+		<CreateProperty Value="0$(Major)" Condition="$(Major) &lt;= 9" >
+			<Output TaskParameter="Value" PropertyName="Major" />
+		</CreateProperty>
+		<CreateProperty Value="0$(Minor)" Condition="$(Minor) &lt;= 9" >
+			<Output TaskParameter="Value" PropertyName="Minor" />
+		</CreateProperty>
+		<CreateProperty Value="0$(Build)" Condition="$(Build) &lt;= 9" >
+			<Output TaskParameter="Value" PropertyName="Build" />
+		</CreateProperty>
+		<CreateProperty Value="0$(Revision)" Condition="$(Revision) &lt;= 9" >
+			<Output TaskParameter="Value" PropertyName="Revision" />
+		</CreateProperty>
+
+		<!-- Write new version to dnn file -->
+		<FileUpdate Files="@(dnnFile)" Regex="&lt;version&gt;.*&lt;/version&gt;" ReplacementText="&lt;version&gt;$(Major).$(Minor).$(Build)&lt;/version&gt;" />
+        <FileUpdate Files="@(dnnFile)" Regex="&quot;Module&quot; version=&quot;.*&quot;" ReplacementText="&quot;Module&quot; version=&quot;$(Major).$(Minor).$(Build)&quot;" />
+
+    </Target>
+
+	<Target Name="DeployFiles">
+		<MakeDir Directories="$(DeployDir)" />
+		<CallTarget Targets="ZipFiles" />
+		<CallTarget Targets="CopyFilesToDotNetNuke" Condition="'$(DotNetNukeDir)'!=''" />
+	</Target>
+
+	<Target Name="ZipFiles">
+		<!-- Obtain reference to installation files -->
+        <CreateItem Include="$(TargetDir)$(CompanyName).$(ModuleName).dll;
+							$(MSBuildProjectDirectory)\App_LocalResources\*.resx;
+							$(MSBuildProjectDirectory)\*.ascx;
+							$(MSBuildProjectDirectory)\*.css;
+							$(MSBuildProjectDirectory)\*.dnn;
+							$(MSBuildProjectDirectory)\*.txt;
+							$(MSBuildProjectDirectory)\*.gif;
+							$(MSBuildProjectDirectory)\images\*.jpg;
+							
+							
+            <Output TaskParameter="Include" ItemName="InstallZipFiles" />
+        </CreateItem>
+        <!-- Zip installation files -->
+        <Zip Files="@(InstallZipFiles)" WorkingDirectory="$(MSBuildProjectDirectory)\" ZipFileName="$(DeployDir)\$(CompanyName).$(ModuleName).install.v$(Major).$(Minor).$(Build).$(Revision).zip" />
+
+        <!-- Create exclude file list -->
+		<CreateItem Include="$(RootDir)\$(ModuleName)\**\.svn\**;
+		                    $(RootDir)\$(ModuleName)\**\obj\**;
+		                    $(RootDir)\$(ModuleName)\**\bin\**;
+		                    $(RootDir)\$(ModuleName)\**\*.user;
+		                    $(RootDir)\$(ModuleName)\**\*.suo;
+		                    $(RootDir)\$(ModuleName)\**\*.zip;
+		                    $(RootDir)\$(ModuleName)\**\installation\**;
+		                    $(RootDir)\lib\**\*.xsd;$(RootDir)\lib\**\*.xml;
+		                    ">
+			<Output TaskParameter="Include" ItemName="DefaultExclude" />
+		</CreateItem>
+
+		<!-- Obtain reference to source files -->
+		<CreateItem Include="$(RootDir)\$(ModuleName)\**\*.*;
+		                    $(RootDir)\lib\**\*.*;
+		                    $(RootDir)\$(ModuleName)\*.sln" Exclude="@(DefaultExclude)">
+			<Output TaskParameter="Include" ItemName="SourceZipFiles"/>
+		</CreateItem>
+
+		<!-- Reset DNN Dir for distribution code -->
+		<FileUpdate Files="@(deployTargetFile)" Regex="&lt;DotNetNukeDir&gt;.*&lt;/DotNetNukeDir&gt;" ReplacementText="&lt;DotNetNukeDir&gt;&lt;/DotNetNukeDir&gt;"  />
+		<Zip Files="@(SourceZipFiles)" WorkingDirectory="$(MSBuildProjectDirectory)" ZipFileName="$(DeployDir)\$(CompanyName).$(ModuleName).source.v$(Major).$(Minor).$(Build).$(Revision).zip"  />
+		<!-- Reset DNN Dir to its original value -->
+		<FileUpdate Files="@(deployTargetFile)" Regex="&lt;DotNetNukeDir&gt;.*&lt;/DotNetNukeDir&gt;" ReplacementText="&lt;DotNetNukeDir&gt;$(DotNetNukeDir)&lt;/DotNetNukeDir&gt;" />
+
+        <!-- Change hardcoded path for msbuild (needed for initial setup) to relative one -->
+        <FileUpdate Files="@(deployTargetFile)" Regex="&lt;MSBuildDir&gt;.*&lt;/MSBuildDir&gt;" ReplacementText="&lt;MSBuildDir&gt;%24(RootDir)\lib\msbuild&lt;/MSBuildDir&gt;" />
+    </Target>
+	<Target Name="CopyFilesToDotNetNuke">
+		<!-- Obtain reference to installation files -->
+		<CreateItem Include="$(DeployDir)\$(CompanyName).$(ModuleName).install.v$(Major).$(Minor).$(Build).$(Revision).zip">
+			<Output TaskParameter="Include" ItemName="InstallZip" />
+		</CreateItem>
+		<!-- Copy Files to DotNetNuke Installation -->
+		<Copy SourceFiles="@(InstallZip)" DestinationFolder="$(DotNetNukeDir)\Install\Module\" SkipUnchangedFiles="false" ContinueOnError="true" />
+		<CallTarget Targets="DeployPDB" Condition="$(DeployPDB) == 1 and '$(Configuration)'=='Debug'" />
+	</Target>
+	<Target Name="DeployPDB">
+		<CreateItem Include="$(TargetDir)\$(CompanyName).$(ModuleName).pdb;$(TargetDir)\$(CompanyName).$(ModuleName).dll">
+			<Output TaskParameter="Include" ItemName="PDBFile" />
+		</CreateItem>
+		<Copy SourceFiles="@(PDBFile)" DestinationFolder="\bin\" SkipUnchangedFiles="false" ContinueOnError="true" />
+	</Target>
+
+</Project>
