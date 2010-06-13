@@ -40,3 +40,11 @@
     padding-left: 5px;
 }
 
+/*Start your Player */
+.scs_PlayerText
+{
+ font-size:small;
+ font-style: italic;
+ color:Maroon;
+ text-align:center;
+}

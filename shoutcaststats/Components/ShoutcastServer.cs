@@ -28,6 +28,8 @@ using System.Data;
 using System.Xml.Linq;
 using System.Web;
 using System.Collections.Generic;
+using DotNetNuke;
+using DotNetNuke.Services.Localization;
 
 
 namespace Aarsys.ShoutcastStats.Components
@@ -35,7 +37,7 @@ namespace Aarsys.ShoutcastStats.Components
     /// <summary>
     /// Creates an instance of a shoutcast server and gives access to all the properties of the xml file
     /// </summary>
-    public class ShoutcastServer : IDisposable
+    public class ShoutcastServer : DotNetNuke.Entities.Modules.PortalModuleBase, IDisposable
     {
         XDocument ShoutcastXml;
         WebData webdata;
@@ -46,6 +48,15 @@ namespace Aarsys.ShoutcastStats.Components
         /// <param name="ServerUrl">The Streaming Url of the server 
         /// Example : http://localhost:8000/admin.cgi?mode=viewxml&#x26;pass=adminpass </param>
         /// Should be gennerated with the Modulesettings as SC_IP, SC_Port, SC_Password
+
+
+        protected string SharedResourceFile
+        {
+            get
+            {
+                return base.ControlPath + Localization.LocalResourceDirectory + "/" + Localization.LocalSharedResourceFile;
+            }
+        }
 
         public ShoutcastServer(string ServerUrl)
         {
@@ -58,8 +69,7 @@ namespace Aarsys.ShoutcastStats.Components
             }
             catch
             {
-                throw new ServerDownException("Connection with Server failed. No Response received. " +
-                "Please check if server is online, stream url is correct and/or Internet connection is available.");
+                throw new ServerDownException (DotNetNuke.Services.Localization.Localization.GetString("ConnectionFailed", this.SharedResourceFile));
             }
         }
         private TextReader Get_XMLFile()
@@ -442,6 +452,7 @@ namespace Aarsys.ShoutcastStats.Components
           System.Runtime.Serialization.SerializationInfo info,
           System.Runtime.Serialization.StreamingContext context)
             : base(info, context) { }
+
     }
 
 }

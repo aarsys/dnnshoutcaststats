@@ -1,16 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="false" Inherits="Aarsys.ShoutcastStats.Settings" Codebehind="Settings.ascx.cs" %>
 <%@ Register TagPrefix="dnn" TagName="Label" Src="~/controls/LabelControl.ascx" %>
-<style type="text/css">
-    .style1
-    {
-        width: 150;
-        height: 25px;
-    }
-    .style2
-    {
-        height: 25px;
-    }
-</style>
 <table cellspacing="0" cellpadding="2" border="0" summary="ShoutcastStats Settings Design Table" width="700">
 <colgroup><col width="150" /><col width="70%" /></colgroup>
     <tr>

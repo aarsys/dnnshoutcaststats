@@ -35,7 +35,7 @@ using DotNetNuke.Entities.Modules.Actions;
 using Aarsys.ShoutcastStats;
 
 
-namespace ShoutcastStats
+namespace Aarsys.ShoutcastStats
 {
     /// ----------------------------------------------------------------------------- 
     /// <summary> 

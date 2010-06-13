@@ -147,4 +147,25 @@
   <data name="Chat with your DJ.Text" xml:space="preserve">
     <value>Chat with your DJ</value>
   </data>
+  <data name="StartPlayer.Text" xml:space="preserve">
+    <value>Start your Player</value>
+  </data>
+  <data name="StartPlayer.ToolTip" xml:space="preserve">
+    <value>Start your player by clicking on one of the following images</value>
+  </data>
+  <data name="Peak Listeners.Text" xml:space="preserve">
+    <value>Listeners Peak</value>
+  </data>
+  <data name="StartITunesPlayer.ToolTip" xml:space="preserve">
+    <value>Click to start your ITune player!</value>
+  </data>
+  <data name="StartMediaPlayer.ToolTip" xml:space="preserve">
+    <value>Click to start your MediaPlayer!</value>
+  </data>
+  <data name="StartRealPlayer.TootTip" xml:space="preserve">
+    <value>Click to start your RealPlayer!</value>
+  </data>
+  <data name="StartWinampPlayer.TootTip" xml:space="preserve">
+    <value>Click to start your Winamp player!</value>
+  </data>
 </root>

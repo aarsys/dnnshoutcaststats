@@ -4,7 +4,7 @@
 	<PropertyGroup>
 		<CompanyName>Aarsys</CompanyName>
 		<ModuleName>ShoutcastStats</ModuleName>
-		<DotNetNukeDir>C:\Develope\develope5</DotNetNukeDir>
+		<DotNetNukeDir></DotNetNukeDir>
 		<DeployPDB>1</DeployPDB>
 
 		<RootDir>$(MSBuildProjectDirectory)\..</RootDir>
@@ -80,6 +80,7 @@
 							$(MSBuildProjectDirectory)\*.txt;
 							$(MSBuildProjectDirectory)\*.gif;
 							$(MSBuildProjectDirectory)\images\*.jpg;
+                            $(MSBuildProjectDirectory)\images\*.gif;
 							$(MSBuildProjectDirectory)\*.js; 
 							$(MSBuildProjectDirectory)\*.xap;"> 
             <Output TaskParameter="Include" ItemName="InstallZipFiles" />
@@ -109,7 +110,7 @@
 
         <!-- Reset DNN Dir for distribution code -->
         <FileUpdate Files="@(deployTargetFile)" Regex="&lt;DotNetNukeDir&gt;.*&lt;/DotNetNukeDir&gt;" ReplacementText="&lt;DotNetNukeDir&gt;&lt;/DotNetNukeDir&gt;"  />
-        <Zip Files="@(SourceZipFiles)" WorkingDirectory="$(MSBuildProjectDirectory)" ZipFileName="$(DeployDir)\$(CompanyName).$(ModuleName).source.v$(Major).$(Minor).$(Build).$(Revision).zip"  />
+        <Zip Files="@(SourceZipFiles)" WorkingDirectory="$(MSBuildProjectDirectory)\.." ZipFileName="$(DeployDir)\$(CompanyName).$(ModuleName).source.v$(Major).$(Minor).$(Build).$(Revision).zip"  />
         <!-- Reset DNN Dir to its original value -->
         <FileUpdate Files="@(deployTargetFile)" Regex="&lt;DotNetNukeDir&gt;.*&lt;/DotNetNukeDir&gt;" ReplacementText="&lt;DotNetNukeDir&gt;$(DotNetNukeDir)&lt;/DotNetNukeDir&gt;" />
 

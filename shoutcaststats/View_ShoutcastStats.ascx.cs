@@ -35,6 +35,7 @@ using DotNetNuke.Services.Localization;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Entities.Modules.Actions;
 using DotNetNuke.UI.WebControls;
+using Aarsys.ShoutcastStats;
 
 namespace Aarsys.ShoutcastStats
 {
@@ -48,8 +49,13 @@ namespace Aarsys.ShoutcastStats
     /// <history> 
     /// </history> 
     /// ----------------------------------------------------------------------------- 
-    partial class View_ShoutcastStats : PortalModuleBase 
+    partial class View_ShoutcastStats : PortalModuleBase //, IActionable 
     {
+
+        //protected void Page_Init(object sender, EventArgs e)
+        //{
+        //    this.MediaPlayerStart.Click += new EventHandler(this.MediaButton_Click);
+        //}
 
         //protected void Timer1_Tick(object sender, EventArgs e)
         //{
@@ -73,6 +79,16 @@ namespace Aarsys.ShoutcastStats
                     using (ShoutcastServer s =
                         new ShoutcastServer("http://" + scs.SC_IP + ":" + scs.SC_Port + "/admin.cgi?mode=viewxml&pass=" + scs.SC_Password))
                     {
+                        // Register the AJAX Postback Controls for the Player Links //
+                        DotNetNuke.Framework.AJAX.RegisterPostBackControl(WinampStart);
+                        DotNetNuke.Framework.AJAX.RegisterPostBackControl(MediaPlayerStart);
+                        DotNetNuke.Framework.AJAX.RegisterPostBackControl(RealPlayerStart);
+                        DotNetNuke.Framework.AJAX.RegisterPostBackControl(ITunesStart);
+
+
+                        // Implements UpdatePanel to update the content //
+
+
                         // Checking the Stream status and displays offline if the stream is off //
                         if (
                            s.StreamStatus != true)
@@ -85,6 +101,7 @@ namespace Aarsys.ShoutcastStats
                             lbl_MaxListeners.Visible = false;
                             lbl_ScsSong.Visible = false;
                             lbl_SongTitle.Visible = false;
+                            lbl_PeakListeners.Visible = false;
                         }
 
                         else
@@ -94,6 +111,12 @@ namespace Aarsys.ShoutcastStats
                             if (s.ServerTitle == "N/A")
                                 lbl_Station.Visible = false;
                             else
+                            {
+                                lbl_Station.Text = s.ServerTitle;
+                            }
+                            // Displaying the Peak of the Listeners //
+
+                            lbl_PeakListeners.Text = Localization.GetString("Peak Listeners", this.LocalResourceFile) + " : " + s.PeakListeners;
                             {
                                 lbl_Station.Text = s.ServerTitle;
                             }
@@ -173,34 +196,80 @@ namespace Aarsys.ShoutcastStats
                                 lkl_Yahoo.ToolTip = Localization.GetString("Chat with your DJ", this.LocalResourceFile);
                                 lkl_Yahoo.ImageUrl = Request.ApplicationPath + "DesktopModules/Aarsys/ShoutcastStats/images/yahoo-logo.jpg";
                             }
-                            // Create File stream for MediaPlayer //
-                            //Response.ContentType = "video/x-ms-asx";
-                            //Response.AddHeader("content-disposition", "attachment; filename=MediaPlayer.asx");
 
-                            //FileStream media = new FileStream(@"Media.asx", FileMode.Create, FileAccess.Write);
-                            //StreamWriter sw = new StreamWriter(media);
-                            //sw.WriteLine("<ASX version=\"3.0\">");
-                            //sw.WriteLine("<ABSTRACT>" + s.ServerTitle + "</ABSTRACT>");
-                            //sw.WriteLine("<TITLE>" + s.ServerTitle + "</TITLE>");
-                            //sw.WriteLine("<ENTRY>");
-                            //sw.WriteLine("<ref href=\"" + scs.SC_IP + ":" + scs.SC_Port + "/>");
-                            //sw.Close();
-                            //media.Close();
+                            // Start  different Players by creating a memory stream for the file and download it by the client as a hyperlink  //
+                            lblStartPlayer.Text = Localization.GetString("StartPlayer", this.LocalResourceFile);
+                            lblStartPlayer.ToolTip = Localization.GetString("StartPlayer", this.LocalResourceFile);
+                            //Adding Hyperlink Image for Winamp Player //
+                            WinampStart.ToolTip = Localization.GetString("StartWinampPlayer", this.LocalResourceFile);
+                            
+                            // Adding Hyperling Image for Media Player //
+                            MediaPlayerStart.ToolTip = Localization.GetString("StartMediaPlayer", this.LocalResourceFile);
+                            RealPlayerStart.ToolTip = Localization.GetString("StartRealPlayer", this.LocalResourceFile);
+                            ITunesStart.ToolTip = Localization.GetString("StartITunes", this.LocalResourceFile);
 
-                            //// Create Stream File reader for MediaPlayer Link //
-                            //StreamReader mediar = new StreamReader(media);
-                            //string mediaplayer = mediar.ReadToEnd();
-                            //mediar.Close();
-                            //media.Close();
-                            //lkl_media.ImageUrl = Request.ApplicationPath + "DesktopModules/Aarsys/ShoutcastStats/images/yahoo-logo.jpg";
-                            //lkl_media.NavigateUrl = Response.TransmitFile(sw);
-
-
-
+                           
                         }
                     }
                 }
             }
+
+
+        //added catch Exception by order of VS
+            catch (Exception exc)
+            {
+                // Module failed to load
+                Exceptions.ProcessModuleLoadException(this, exc);
+            }
+
+        }
+       
+        protected void MediaButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (ShoutCastSettings scs = new ShoutCastSettings())
+                {
+                    // Loading the settings from ShoutcastStatsSettings Control //
+                    scs.LoadSettings(this);
+                    using (ShoutcastServer s =
+                        new ShoutcastServer("http://" + scs.SC_IP + ":" + scs.SC_Port + "/admin.cgi?mode=viewxml&pass=" + scs.SC_Password))
+                    {
+                        //ImageButton MediaPlayerStart = (ImageButton)sender;
+                        MemoryStream MediaPlayer = new MemoryStream();
+                        
+                        StreamWriter tw = new StreamWriter(MediaPlayer);
+                        tw.WriteLine("<ASX version=\"3.0\">");
+                        tw.WriteLine("<ABSTRACT>" + s.ServerUrl + "</ABSTRACT>");
+                        tw.WriteLine("<TITLE>" + s.ServerTitle + "</TITLE>");
+                        tw.WriteLine("<MOREINFO HREF=\"" + s.ServerUrl + "\"/>");
+                        tw.WriteLine("<ref href=\"http://" + scs.SC_IP + ":" + scs.SC_Port + "\"/>");
+                        tw.WriteLine("<ENTRY>");
+                        tw.WriteLine("<ABSTRACT>" + s.ServerTitle + "</ABSTRACT>");
+                        tw.WriteLine("<TITLE>" + s.ServerTitle + "</TITLE>");
+                        tw.WriteLine("<AUTHOR>" + s.ServerUrl + "</AUTHOR>");
+                        tw.WriteLine("<ref href=\"http://" + scs.SC_IP + ":" + scs.SC_Port + "\"/>");
+                        tw.WriteLine("<ref href=\"icyx://" + scs.SC_IP + ":" + scs.SC_Port + "\"/>");
+                        tw.WriteLine("<MOREINFO HREF=\"" + s.ServerUrl +"\"/>");
+                        tw.WriteLine("</ENTRY>");
+                        tw.WriteLine("</ASX>");
+                        tw.Flush();
+                        
+                        Response.ClearHeaders();
+                        Response.ClearContent();
+                        Response.AddHeader("content-disposition", String.Format("attachment;filename=" + scs.SC_Port +".asx"));
+                        Response.ContentType = "video/x-ms-asf";
+                       
+                        MediaPlayer.WriteTo(Response.OutputStream);
+                        Response.Flush();
+                        Response.Close();
+                        Response.End();
+                        MediaPlayer.Dispose();
+
+                    }
+                  }
+                }
+        
 
             catch (Exception exc)
             {
@@ -209,9 +278,120 @@ namespace Aarsys.ShoutcastStats
             }
         }
 
-        
+        protected void WinampButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (ShoutCastSettings scs = new ShoutCastSettings())
+                {
+                    // Loading the settings from ShoutcastStatsSettings Control //
+                    scs.LoadSettings(this);
+                    using (ShoutcastServer s =
+                        new ShoutcastServer("http://" + scs.SC_IP + ":" + scs.SC_Port + "/admin.cgi?mode=viewxml&pass=" + scs.SC_Password))
+                    {
+                        MemoryStream WinampPlayer = new MemoryStream();
+                        StreamWriter wt = new StreamWriter(WinampPlayer);
+                        wt.WriteLine("[playlist]");
+                        wt.WriteLine("NumberOfEntries=1");
+                        wt.WriteLine("File1=http://" + scs.SC_IP + ":" + scs.SC_Port + "/");
+                        wt.Flush();
+                                               
+                        Response.ClearHeaders();
+                        Response.ClearContent();
+                        Response.AddHeader("content-disposition", String.Format("attachment;filename=\"" + scs.SC_Port + ".pls\""));
+                        Response.ContentType="audio/x-scpls";
+                                                                        
+                        WinampPlayer.WriteTo(Response.OutputStream);
+                        Response.Flush();
+                        Response.Close();
+                        Response.End();
+                        WinampPlayer.Dispose();
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+                // Module failed to load
+                Exceptions.ProcessModuleLoadException(this, exc);
+            }
+        }
 
-       
+        protected void RealButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (ShoutCastSettings scs = new ShoutCastSettings())
+                {
+                    // Loading the settings from ShoutcastStatsSettings Control //
+                    scs.LoadSettings(this);
+                    using (ShoutcastServer s =
+                        new ShoutcastServer("http://" + scs.SC_IP + ":" + scs.SC_Port + "/admin.cgi?mode=viewxml&pass=" + scs.SC_Password))
+                    {
+                        MemoryStream RealPlayer= new MemoryStream();
+                        StreamWriter rt = new StreamWriter(RealPlayer);
+                        rt.WriteLine("http://" + scs.SC_IP + ":" + scs.SC_Port + "/");
+                        rt.Flush();
+                        
+                        Response.ClearHeaders();
+                        Response.ClearContent();
+                        Response.AddHeader("content-disposition", String.Format("attachment;filename=" + scs.SC_Port + ".ram"));
+                        Response.ContentType = "audio/x-pn-realaudio";
+                        RealPlayer.WriteTo(Response.OutputStream);
+                        Response.Flush();
+                        Response.Close();
+                        Response.End();
+                        RealPlayer.Dispose();
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+                // Module failed to load
+                Exceptions.ProcessModuleLoadException(this, exc);
+            }
+        }
+
+        protected void ITunesButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (ShoutCastSettings scs = new ShoutCastSettings())
+                {
+                    // Loading the settings from ShoutcastStatsSettings Control //
+                    scs.LoadSettings(this);
+                    using (ShoutcastServer s =
+                        new ShoutcastServer("http://" + scs.SC_IP + ":" + scs.SC_Port + "/admin.cgi?mode=viewxml&pass=" + scs.SC_Password))
+                    {
+                        //ImageButton WinampPlayerStart = (ImageButton)sender;
+                        MemoryStream ITunes = new MemoryStream();
+                        StreamWriter it = new StreamWriter(ITunes);
+                        it.WriteLine("<?xml version=\"1.0\"?>");
+                        it.WriteLine("<?quicktime type=\"application/x-quicktime-media-link\"?>");
+                        it.WriteLine("<embed src=\"icy://" + scs.SC_IP + ":" + scs.SC_Port + "\" autoplay=\"true\" />/");
+                        it.Flush();
+                       
+                        Response.ClearHeaders();
+                        Response.ClearContent();
+                        Response.AddHeader("content-disposition", String.Format("attachment;filename=\"" + scs.SC_Port + ".qtl\""));
+                        Response.ContentType = "application/x-quicktimeplayer";
+
+                        ITunes.WriteTo(Response.OutputStream);
+                        Response.Flush();
+                        Response.Close();
+                        Response.End();
+                        ITunes.Dispose();
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+                // Module failed to load
+                Exceptions.ProcessModuleLoadException(this, exc);
+            }
+        }
+
+    }
+
         
         #endregion
 
@@ -219,4 +399,6 @@ namespace Aarsys.ShoutcastStats
        
     }
 
- }
+ 
+
+

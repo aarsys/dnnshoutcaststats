@@ -4,7 +4,7 @@
         <name>Aarsys.ShoutcastStats</name>
     </assembly>
     <members>
-        <member name="T:ShoutcastStats.Stats_ShoutcastStats">
+        <member name="T:Aarsys.ShoutcastStats.Stats_ShoutcastStats">
             ----------------------------------------------------------------------------- 
             <summary> 
             The StatsDNN_ShoutcastStats class displays the content 
@@ -15,7 +15,7 @@
             </history> 
             ----------------------------------------------------------------------------- 
         </member>
-        <member name="F:ShoutcastStats.Stats_ShoutcastStats.lbl_Status">
+        <member name="F:Aarsys.ShoutcastStats.Stats_ShoutcastStats.lbl_Status">
             <summary>
             lbl_Status-Steuerelement
             </summary>
@@ -24,7 +24,7 @@
             Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
             </remarks>
         </member>
-        <member name="F:ShoutcastStats.Stats_ShoutcastStats.lbl_ViewXml">
+        <member name="F:Aarsys.ShoutcastStats.Stats_ShoutcastStats.lbl_ViewXml">
             <summary>
             lbl_ViewXml-Steuerelement
             </summary>
@@ -33,7 +33,7 @@
             Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
             </remarks>
         </member>
-        <member name="F:ShoutcastStats.Stats_ShoutcastStats.Panel1">
+        <member name="F:Aarsys.ShoutcastStats.Stats_ShoutcastStats.Panel1">
             <summary>
             Panel1-Steuerelement
             </summary>
@@ -42,7 +42,7 @@
             Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
             </remarks>
         </member>
-        <member name="F:ShoutcastStats.Stats_ShoutcastStats.lbl_Listeners">
+        <member name="F:Aarsys.ShoutcastStats.Stats_ShoutcastStats.lbl_Listeners">
             <summary>
             lbl_Listeners-Steuerelement
             </summary>
@@ -51,7 +51,7 @@
             Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
             </remarks>
         </member>
-        <member name="F:ShoutcastStats.Stats_ShoutcastStats.Panel2">
+        <member name="F:Aarsys.ShoutcastStats.Stats_ShoutcastStats.Panel2">
             <summary>
             Panel2-Steuerelement
             </summary>
@@ -60,7 +60,7 @@
             Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
             </remarks>
         </member>
-        <member name="F:ShoutcastStats.Stats_ShoutcastStats.lbl_SongHistory">
+        <member name="F:Aarsys.ShoutcastStats.Stats_ShoutcastStats.lbl_SongHistory">
             <summary>
             lbl_SongHistory-Steuerelement
             </summary>
@@ -69,7 +69,7 @@
             Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
             </remarks>
         </member>
-        <member name="M:ShoutcastStats.Stats_ShoutcastStats.Page_Load(System.Object,System.EventArgs)">
+        <member name="M:Aarsys.ShoutcastStats.Stats_ShoutcastStats.Page_Load(System.Object,System.EventArgs)">
             ----------------------------------------------------------------------------- 
             <summary> 
             Page_Load runs when the control is loaded 
@@ -290,19 +290,19 @@
             Creates an instance of a shoutcast server and gives access to all the properties of the xml file
             </summary>
         </member>
-        <member name="M:Aarsys.ShoutcastStats.Components.ShoutcastServer.#ctor(System.String)">
+        <member name="M:Aarsys.ShoutcastStats.Components.ShoutcastServer.Refresh">
+            <summary>
+            Gets an updated version of the Shoutcast xml file with update statistics
+            More useful at WinForm applications
+            </summary>
+        </member>
+        <member name="P:Aarsys.ShoutcastStats.Components.ShoutcastServer.SharedResourceFile">
             <summary>
             Create an instance of this class
             </summary>
             <param name="ServerUrl">The Streaming Url of the server 
             Example : http://localhost:8000/admin.cgi?mode=viewxml&#x26;pass=adminpass </param>
             Should be gennerated with the Modulesettings as SC_IP, SC_Port, SC_Password
-        </member>
-        <member name="M:Aarsys.ShoutcastStats.Components.ShoutcastServer.Refresh">
-            <summary>
-            Gets an updated version of the Shoutcast xml file with update statistics
-            More useful at WinForm applications
-            </summary>
         </member>
         <member name="P:Aarsys.ShoutcastStats.Components.ShoutcastServer.ShoutcastServerUrl">
             <summary>
@@ -420,6 +420,11 @@
             Represents a node from the PLAYEDAT node collection of the shoucast xml
             </summary>
         </member>
+        <member name="T:Aarsys.ShoutcastStats.Player">
+            <summary>
+            Download Handler for the MediaPlayer file
+            </summary>
+        </member>
         <member name="T:Aarsys.ShoutcastStats.View_ShoutcastStats">
             ----------------------------------------------------------------------------- 
             <summary> 
@@ -452,6 +457,15 @@
         <member name="F:Aarsys.ShoutcastStats.View_ShoutcastStats.lbl_CurrentListeners">
             <summary>
             lbl_CurrentListeners-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.View_ShoutcastStats.lbl_PeakListeners">
+            <summary>
+            lbl_PeakListeners-Steuerelement
             </summary>
             <remarks>
             Automatisch generiertes Feld
@@ -542,6 +556,51 @@
         <member name="F:Aarsys.ShoutcastStats.View_ShoutcastStats.lbl_Bitrate">
             <summary>
             lbl_Bitrate-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.View_ShoutcastStats.lblStartPlayer">
+            <summary>
+            lblStartPlayer-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.View_ShoutcastStats.WinampStart">
+            <summary>
+            WinampStart-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.View_ShoutcastStats.MediaPlayerStart">
+            <summary>
+            MediaPlayerStart-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.View_ShoutcastStats.RealPlayerStart">
+            <summary>
+            RealPlayerStart-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.View_ShoutcastStats.ITunesStart">
+            <summary>
+            ITunesStart-Steuerelement
             </summary>
             <remarks>
             Automatisch generiertes Feld
