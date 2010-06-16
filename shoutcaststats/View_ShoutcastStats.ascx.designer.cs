@@ -13,6 +13,24 @@ namespace Aarsys.ShoutcastStats {
     public partial class View_ShoutcastStats {
         
         /// <summary>
+        /// SCS_Timer-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.Timer SCS_Timer;
+        
+        /// <summary>
+        /// SCS_UpdatePanel-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel SCS_UpdatePanel;
+        
+        /// <summary>
         /// lbl_Status-Steuerelement
         /// </summary>
         /// <remarks>

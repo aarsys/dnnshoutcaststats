@@ -1,18 +1,16 @@
 <%@ Control Language="C#" Inherits="Aarsys.ShoutcastStats.View_ShoutcastStats" AutoEventWireup="true" CodeBehind="View_ShoutcastStats.ascx.cs" %>
 <%@ Register Assembly="DotNetNuke.WebControls" Namespace="DotNetNuke.UI.WebControls" TagPrefix="DNN" %>
 
-<%--<asp:ScriptManager ID="ScriptManager1" runat="server">
-</asp:ScriptManager>
-<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+<%--<asp:ScriptManager ID="SCS_Scriptmanager" runat="server">
+</asp:ScriptManager>--%>
+<asp:Timer ID="SCS_Timer" OnTick="SCS_TimerTick" runat="server">
+</asp:Timer>
+<asp:UpdatePanel ID="SCS_UpdatePanel" runat="server">
     <ContentTemplate>
-        <asp:Timer ID="Timer1" runat="server">
-        </asp:Timer>
-    </ContentTemplate>
-</asp:UpdatePanel>
---%>
+        
+
 <table class="scs_table">
-    
- <tr>
+    <tr>
         <td>
             <asp:Label ID="lbl_Status" CssClass="scs_label" runat="server"></asp:Label>
             <asp:Label ID="lbl_Station" CssClass="scs_label" runat="server"></asp:Label>
@@ -64,14 +62,17 @@
         </tr>
         <tr>
         <td>
-            <asp:ImageButton ID="WinampStart" OnClick="WinampButton_Click" ImageUrl="images/winamp.gif" CssClass="scs_PlayerImg" runat="server" />
-            <asp:ImageButton ID="MediaPlayerStart" OnClick="MediaButton_Click" ImageUrl="images/mplayer.gif" runat="server" />
-            <asp:ImageButton ID="RealPlayerStart" OnClick="RealButton_Click" ImageUrl="images/realplayer.gif" CssClass="scs_PlayerImg" runat="server" />
-            <asp:ImageButton ID="ITunesStart" OnClick="ITunesButton_Click" ImageUrl="images/itunes.gif" CssClass="scs_PlayerImg" runat="server" />
-            
+            <asp:ImageButton ID="WinampStart" runat="server" OnClick="WinampButton_Click" />
+            <asp:ImageButton ID="MediaPlayerStart" OnClick="MediaButton_Click" runat="server" />
+            <asp:ImageButton ID="RealPlayerStart" OnClick="RealButton_Click" runat="server" />
+            <asp:ImageButton ID="ITunesStart" OnClick="ITunesButton_Click" runat="server" />
         </td>
         </tr>
 </table>
+    </ContentTemplate>
+</asp:UpdatePanel>
+
+
  
     
 

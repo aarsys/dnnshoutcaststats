@@ -25,7 +25,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using System.IO;
-using Aarsys.ShoutcastStats.Components;
 
 using DotNetNuke;
 using DotNetNuke.Common.Utilities;
@@ -36,6 +35,7 @@ using DotNetNuke.Entities.Modules;
 using DotNetNuke.Entities.Modules.Actions;
 using DotNetNuke.UI.WebControls;
 using Aarsys.ShoutcastStats;
+using Aarsys.ShoutcastStats.Components;
 
 namespace Aarsys.ShoutcastStats
 {
@@ -51,11 +51,6 @@ namespace Aarsys.ShoutcastStats
     /// ----------------------------------------------------------------------------- 
     partial class View_ShoutcastStats : PortalModuleBase //, IActionable 
     {
-
-        //protected void Page_Init(object sender, EventArgs e)
-        //{
-        //    this.MediaPlayerStart.Click += new EventHandler(this.MediaButton_Click);
-        //}
 
         //protected void Timer1_Tick(object sender, EventArgs e)
         //{
@@ -87,7 +82,12 @@ namespace Aarsys.ShoutcastStats
 
 
                         // Implements UpdatePanel to update the content //
-
+                        if (DotNetNuke.Framework.AJAX.IsInstalled())
+                        {
+                            DotNetNuke.Framework.AJAX.RegisterScriptManager();
+                            //DotNetNuke.Framework.AJAX.WrapUpdatePanelControl(SCS_UpdatePanel, true);
+                            
+                        }
 
                         // Checking the Stream status and displays offline if the stream is off //
                         if (
@@ -102,6 +102,10 @@ namespace Aarsys.ShoutcastStats
                             lbl_ScsSong.Visible = false;
                             lbl_SongTitle.Visible = false;
                             lbl_PeakListeners.Visible = false;
+                            ITunesStart.Visible = false;
+                            WinampStart.Visible = false;
+                            MediaPlayerStart.Visible = false;
+                            RealPlayerStart.Visible = false;
                         }
 
                         else
@@ -116,23 +120,23 @@ namespace Aarsys.ShoutcastStats
                             }
                             // Displaying the Peak of the Listeners //
 
-                            lbl_PeakListeners.Text = Localization.GetString("Peak Listeners", this.LocalResourceFile) + " : " + s.PeakListeners;
+                            lbl_PeakListeners.Text = Localization.GetString("PeakListeners", this.LocalResourceFile) + " : " + s.PeakListeners;
                             {
                                 lbl_Station.Text = s.ServerTitle;
                             }
                             // Displaying the current Listeners //
 
-                            lbl_CurrentListeners.Text = Localization.GetString("Current Listeners", this.LocalResourceFile) + " : " + s.CurrentListeners.ToString();
+                            lbl_CurrentListeners.Text = Localization.GetString("CurrentListeners", this.LocalResourceFile) + " : " + s.CurrentListeners.ToString();
                             // Displays the current Bitrate of the Stream //
                             lbl_Bitrate.Text = Localization.GetString("Bitrate", this.LocalResourceFile) + " : " + s.Bitrate + "Kbps";
                             // Displays the max. listeners of the Stream //
-                            lbl_MaxListeners.Text = Localization.GetString("Max Listeners", this.LocalResourceFile) + " : " + s.MaxListeners.ToString();
+                            lbl_MaxListeners.Text = Localization.GetString("MaxListeners", this.LocalResourceFile) + " : " + s.MaxListeners.ToString();
                             //Displays the current played song in a marquee //
-                            lbl_SongTitle.Text = Localization.GetString("Song Title", this.LocalResourceFile) + " : ";
+                            lbl_SongTitle.Text = Localization.GetString("SongTitle", this.LocalResourceFile) + " : ";
 
                             lbl_ScsSong.Text = "<marquee class=\"scs_marquee\">" + s.SongTitle + "</marquee>";
                             // Shows the DJ name //
-                            lbl_AIM.Text = Localization.GetString("Your DJ", this.LocalResourceFile) + " : " + s.AIM;
+                            lbl_AIM.Text = Localization.GetString("YourDJ", this.LocalResourceFile) + " : " + s.AIM;
                             // Adding Messenger URLs could be enabled/disabled from the ModuleSettings // 
                             if ((string)scs.SC_AIM.ToString() != string.Empty)
                             {
@@ -143,7 +147,7 @@ namespace Aarsys.ShoutcastStats
                                 }
                                 lkl_AIM.Visible = scs.SC_AIM;
                                 lkl_AIM.NavigateUrl = "aim:goim?screenname=" + s.AIM;
-                                lkl_AIM.ToolTip = Localization.GetString("Chat with your DJ", this.LocalResourceFile);
+                                lkl_AIM.ToolTip = Localization.GetString("ChatwithyourDJ", this.LocalResourceFile);
                                 lkl_AIM.ImageUrl = Request.ApplicationPath + "DesktopModules/Aarsys/ShoutcastStats/images/aim.jpg";
                             }
                             if ((string)scs.SC_AOL.ToString() != string.Empty)
@@ -155,7 +159,7 @@ namespace Aarsys.ShoutcastStats
                                 }
                                 lkl_AOL.Visible = showAOL;
                                 lkl_AOL.NavigateUrl = "aol://9293:" + s.AIM;
-                                lkl_AOL.ToolTip = Localization.GetString("Chat with your DJ", this.LocalResourceFile);
+                                lkl_AOL.ToolTip = Localization.GetString("ChatwithyourDJ", this.LocalResourceFile);
                                 lkl_AOL.ImageUrl = Request.ApplicationPath + "DesktopModules/Aarsys/ShoutcastStats/images/aol-logo.jpg";
                             }
                             if ((string)scs.SC_ICQ.ToString() != string.Empty)
@@ -168,7 +172,7 @@ namespace Aarsys.ShoutcastStats
 
                                 lkl_ICQ.Visible = showICQ;
                                 lkl_ICQ.NavigateUrl = "http://wwp.icq.com/scripts/contact.dll?msgto=" + s.ICQ;
-                                lkl_ICQ.ToolTip = Localization.GetString("Chat with your DJ", this.LocalResourceFile);
+                                lkl_ICQ.ToolTip = Localization.GetString("ChatwithyourDJ", this.LocalResourceFile);
                                 lkl_ICQ.ImageUrl = Request.ApplicationPath + "DesktopModules/Aarsys/ShoutcastStats/images/icq-logo.jpg";
 
                             }
@@ -181,7 +185,7 @@ namespace Aarsys.ShoutcastStats
                                 }
                                 lkl_MSN.Visible = showMSN;
                                 lkl_MSN.NavigateUrl = "msnim:chat?contact=" + s.ICQ;
-                                lkl_MSN.ToolTip = Localization.GetString("Chat with your DJ", this.LocalResourceFile);
+                                lkl_MSN.ToolTip = Localization.GetString("ChatwithyourDJ", this.LocalResourceFile);
                                 lkl_MSN.ImageUrl = Request.ApplicationPath + "DesktopModules/Aarsys/ShoutcastStats/images/live-logo.jpg";
                             }
                             if ((string)scs.SC_Yahoo.ToString() != string.Empty)
@@ -193,20 +197,27 @@ namespace Aarsys.ShoutcastStats
                                 }
                                 lkl_Yahoo.Visible = showYahoo;
                                 lkl_Yahoo.NavigateUrl = "ymsgr:sendim?" + s.ICQ;
-                                lkl_Yahoo.ToolTip = Localization.GetString("Chat with your DJ", this.LocalResourceFile);
+                                lkl_Yahoo.ToolTip = Localization.GetString("ChatwithyourDJ", this.LocalResourceFile);
                                 lkl_Yahoo.ImageUrl = Request.ApplicationPath + "DesktopModules/Aarsys/ShoutcastStats/images/yahoo-logo.jpg";
                             }
 
-                            // Start  different Players by creating a memory stream for the file and download it by the client as a hyperlink  //
+                            // Adding Attributes to the Start Player ImageButtons  //
                             lblStartPlayer.Text = Localization.GetString("StartPlayer", this.LocalResourceFile);
                             lblStartPlayer.ToolTip = Localization.GetString("StartPlayer", this.LocalResourceFile);
-                            //Adding Hyperlink Image for Winamp Player //
-                            WinampStart.ToolTip = Localization.GetString("StartWinampPlayer", this.LocalResourceFile);
+                            WinampStart.ImageUrl = Request.ApplicationPath + "DesktopModules/Aarsys/ShoutcastStats/images/winamp.gif";
+                            WinampStart.ToolTip = Localization.GetString("StartWinampPlayer.ToolTip", this.LocalResourceFile);
+                            WinampStart.AlternateText = Localization.GetString("StartWinampPlayer.AlternateText", this.LocalResourceFile);
                             
-                            // Adding Hyperling Image for Media Player //
-                            MediaPlayerStart.ToolTip = Localization.GetString("StartMediaPlayer", this.LocalResourceFile);
-                            RealPlayerStart.ToolTip = Localization.GetString("StartRealPlayer", this.LocalResourceFile);
-                            ITunesStart.ToolTip = Localization.GetString("StartITunes", this.LocalResourceFile);
+                            MediaPlayerStart.ToolTip = Localization.GetString("StartMediaPlayer.ToolTip", this.LocalResourceFile);
+                            MediaPlayerStart.AlternateText = Localization.GetString("StartMediaPlayer.AlternateText", this.LocalResourceFile);
+                            MediaPlayerStart.ImageUrl = Request.ApplicationPath + "DesktopModules/Aarsys/ShoutcastStats/images/mplayer.gif";
+
+                            RealPlayerStart.ToolTip = Localization.GetString("StartRealPlayer.ToolTip", this.LocalResourceFile);
+                            RealPlayerStart.AlternateText = Localization.GetString("StartRealPlayer.AlternateText", this.LocalResourceFile);
+                            RealPlayerStart.ImageUrl = Request.ApplicationPath + "DesktopModules/Aarsys/ShoutcastStats/images/realplayer.gif";
+                            ITunesStart.ToolTip = Localization.GetString("StartITunes.ToolTip", this.LocalResourceFile);
+                            ITunesStart.AlternateText = Localization.GetString("StartITunes.AlternateText", this.LocalResourceFile);
+                            ITunesStart.ImageUrl = Request.ApplicationPath + "DesktopModules/Aarsys/ShoutcastStats/images/itunes.gif";
 
                            
                         }
@@ -223,6 +234,9 @@ namespace Aarsys.ShoutcastStats
             }
 
         }
+
+
+        // Start  different Players by creating a memory stream for the file and download it by the client as a hyperlink  //
        
         protected void MediaButton_Click(object sender, EventArgs e)
         {
@@ -362,18 +376,18 @@ namespace Aarsys.ShoutcastStats
                     using (ShoutcastServer s =
                         new ShoutcastServer("http://" + scs.SC_IP + ":" + scs.SC_Port + "/admin.cgi?mode=viewxml&pass=" + scs.SC_Password))
                     {
-                        //ImageButton WinampPlayerStart = (ImageButton)sender;
+                        
                         MemoryStream ITunes = new MemoryStream();
                         StreamWriter it = new StreamWriter(ITunes);
                         it.WriteLine("<?xml version=\"1.0\"?>");
                         it.WriteLine("<?quicktime type=\"application/x-quicktime-media-link\"?>");
-                        it.WriteLine("<embed src=\"icy://" + scs.SC_IP + ":" + scs.SC_Port + "\" autoplay=\"true\" />/");
+                        it.WriteLine("<embed src=\"icy://" + scs.SC_IP + ":" + scs.SC_Port + "\" autoplay=\"true\" /> ");
                         it.Flush();
                        
                         Response.ClearHeaders();
                         Response.ClearContent();
                         Response.AddHeader("content-disposition", String.Format("attachment;filename=\"" + scs.SC_Port + ".qtl\""));
-                        Response.ContentType = "application/x-quicktimeplayer";
+                        Response.ContentType = "audio/x-mpegurl "; // Quicktime does not support AAC codec on Streams!
 
                         ITunes.WriteTo(Response.OutputStream);
                         Response.Flush();
@@ -389,9 +403,15 @@ namespace Aarsys.ShoutcastStats
                 Exceptions.ProcessModuleLoadException(this, exc);
             }
         }
-
-    }
-
+        protected void SCS_TimerTick(object sender, EventArgs e)
+        {
+           
+                        this.lbl_ScsSong.Text = lbl_ScsSong.Text;
+                    }
+                }
+            
+           
+        
         
         #endregion
 

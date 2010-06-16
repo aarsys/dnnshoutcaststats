@@ -436,6 +436,24 @@
             </history> 
             ----------------------------------------------------------------------------- 
         </member>
+        <member name="F:Aarsys.ShoutcastStats.View_ShoutcastStats.SCS_Timer">
+            <summary>
+            SCS_Timer-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.View_ShoutcastStats.SCS_UpdatePanel">
+            <summary>
+            SCS_UpdatePanel-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
         <member name="F:Aarsys.ShoutcastStats.View_ShoutcastStats.lbl_Status">
             <summary>
             lbl_Status-Steuerelement
