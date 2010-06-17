@@ -118,21 +118,68 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ModuleHelp.Text" xml:space="preserve">
-    <value>&lt;P&gt;A DNN_ShoutcastStats module</value>
+    <value>&lt;P&gt;Ein DNN_ShoutcastStats Modul &lt;/p&gt;&lt;br /&gt;
+Das ShoutcastStats Modul zeigt Ihnen Daten aus dem Shoutcast Srver auf Ihrem DotNetNuke Portal. Über die Moduleinstellungen können Sie einzelne Modulfunktionen ein- bzw. ausschalten und Ihre Shoutcast Server Zugangsdaten einstellen.  Hilfe und support erhalten Sie über unsere Projektseite auf&lt;a href="http://dnnshoutcaststats.codeplex.com&gt;Codeplex&lt;/a&gt; !
+</value>
   </data>
   <data name="Bitrate.Text" xml:space="preserve">
     <value>Bitrate</value>
   </data>
-  <data name="Current Listeners.Text" xml:space="preserve">
+  <data name="ChatwithyourDJ.Text">
+    <value>Chate mit dem DJ</value>
+  </data>
+  <data name="ContentType.Text">
+    <value>Codec Typ</value>
+  </data>
+  <data name="CurrentListeners.Text">
     <value>Aktuelle Hörer</value>
   </data>
-  <data name="Max Listeners.Text" xml:space="preserve">
+  <data name="Genre.Text">
+    <value>Musikrichtung</value>
+  </data>
+  <data name="MaxListeners.Text">
     <value>Max. Hörer</value>
   </data>
-  <data name="Song Title.Text" xml:space="preserve">
-    <value>Aktueller Titel</value>
+  <data name="Notrefreshedyet.Text">
+    <value>Nicht aktualisiert! </value>
   </data>
-  <data name="Your DJ.Text" xml:space="preserve">
-    <value>DJ Name</value>
+  <data name="Offline.Text">
+    <value>Offline</value>
+  </data>
+  <data name="PeakListeners.Text">
+    <value>Höchstwert Hörer</value>
+  </data>
+  <data name="SongTitle.Text">
+    <value>Aktuelles Lied</value>
+  </data>
+  <data name="StartITunes.AlternateText">
+    <value>ITunes</value>
+  </data>
+  <data name="StartITunes.ToolTip">
+    <value>Zum starten Ihres ITune Players hier klicken  - funktioniert nicht mit AAC Streams auf QuickTime wegen Player einschränkungen des Players!</value>
+  </data>
+  <data name="StartMediaPlayer.ToolTip">
+    <value>Hier klicken um Ihren MediaPlayer zu starten!</value>
+  </data>
+  <data name="StartPlayer.Text">
+    <value>Starten Sie Ihren Player</value>
+  </data>
+  <data name="StartPlayer.ToolTip">
+    <value>Starten Sie Ihren Player indem Sie eines der nachfolgenden Player Symbole anklicken ...</value>
+  </data>
+  <data name="StartRealPlayer.AlternateText">
+    <value>RealPlayer</value>
+  </data>
+  <data name="StartRealPlayer.ToolTip">
+    <value>Hier klicken um Ihren RealPlayer zu starten!</value>
+  </data>
+  <data name="StartWinampPlayer.AlternateText">
+    <value>Winamp</value>
+  </data>
+  <data name="StartWinampPlayer.ToolTip">
+    <value>Hier klicken um Ihren Winamp Player zu starten!</value>
+  </data>
+  <data name="YourDJ.Text">
+    <value>Ihr DJ</value>
   </data>
 </root>

@@ -1,6 +1,6 @@
 ﻿<dotnetnuke type="Package" version="5.0">
   <packages>
-      <package name="Aarsys_ShoutcastStats" type="Module" version="05.00.528">
+      <package name="Aarsys_ShoutcastStats" type="Module" version="05.00.529">
           <friendlyName>ShoutcastStats</friendlyName>
           <description>
               A ShoutcastStats module for DotNetNuke. It allows you to view statistc data i.e Song title, DJ name ect. to Dotnetnuke.
@@ -131,7 +131,7 @@
               </component>
           </components>
       </package>
-          <package name="Aarsys_ShoutcastStats_Stats" type="Module" version="05.00.528">
+          <package name="Aarsys_ShoutcastStats_Stats" type="Module" version="05.00.529">
               <friendlyName>ShoutcastStats Stats</friendlyName>
               <description>
                   A ShoutcastStats module for DotNetNuke. It allows you to view statistc data i.e last Songs List, Connected Listerners with IP and connection time, ect. to Dotnetnuke.

@@ -29,6 +29,9 @@
             <tr>
             <td><asp:Label ID="lbl_MaxListeners" CssClass="scs_label" runat="server"></asp:Label></td>
             </tr>
+            <tr>
+            <td><asp:Label ID="lbl_Genre" CssClass="scs_label" runat="server"></asp:Label></td>
+            </tr>
         <tr>
         <td>
         
@@ -53,6 +56,11 @@
         <tr>
         <td>
             <asp:Label ID="lbl_Bitrate" CssClass="scs_label" runat="server"></asp:Label>
+        </td>
+        </tr>
+        <tr>
+        <td>
+            <asp:Label ID="lbl_ContentType" CssClass="scs_label" runat="server"></asp:Label>
         </td>
         </tr>
         <tr>

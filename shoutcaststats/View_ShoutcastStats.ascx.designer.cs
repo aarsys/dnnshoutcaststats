@@ -76,6 +76,15 @@ namespace Aarsys.ShoutcastStats {
         protected global::System.Web.UI.WebControls.Label lbl_MaxListeners;
         
         /// <summary>
+        /// lbl_Genre-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_Genre;
+        
+        /// <summary>
         /// lbl_SongTitle-Steuerelement
         /// </summary>
         /// <remarks>
@@ -155,6 +164,15 @@ namespace Aarsys.ShoutcastStats {
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl_Bitrate;
+        
+        /// <summary>
+        /// lbl_ContentType-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_ContentType;
         
         /// <summary>
         /// lblStartPlayer-Steuerelement

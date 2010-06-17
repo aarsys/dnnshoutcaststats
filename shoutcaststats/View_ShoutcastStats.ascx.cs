@@ -102,6 +102,7 @@ namespace Aarsys.ShoutcastStats
                             lbl_ScsSong.Visible = false;
                             lbl_SongTitle.Visible = false;
                             lbl_PeakListeners.Visible = false;
+                            lbl_Genre.Visible = false;
                             ITunesStart.Visible = false;
                             WinampStart.Visible = false;
                             MediaPlayerStart.Visible = false;
@@ -131,6 +132,9 @@ namespace Aarsys.ShoutcastStats
                             lbl_Bitrate.Text = Localization.GetString("Bitrate", this.LocalResourceFile) + " : " + s.Bitrate + "Kbps";
                             // Displays the max. listeners of the Stream //
                             lbl_MaxListeners.Text = Localization.GetString("MaxListeners", this.LocalResourceFile) + " : " + s.MaxListeners.ToString();
+                            // Displays the genre //
+                            lbl_Genre.Text = Localization.GetString("Genre", this.LocalResourceFile) + " : " + s.ServerGenre;
+                            lbl_ContentType.Text = Localization.GetString("ContentType", this.LocalResourceFile) + " : " + s.Content;
                             //Displays the current played song in a marquee //
                             lbl_SongTitle.Text = Localization.GetString("SongTitle", this.LocalResourceFile) + " : ";
 

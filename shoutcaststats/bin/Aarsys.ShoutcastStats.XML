@@ -499,6 +499,15 @@
             Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
             </remarks>
         </member>
+        <member name="F:Aarsys.ShoutcastStats.View_ShoutcastStats.lbl_Genre">
+            <summary>
+            lbl_Genre-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
         <member name="F:Aarsys.ShoutcastStats.View_ShoutcastStats.lbl_SongTitle">
             <summary>
             lbl_SongTitle-Steuerelement
@@ -574,6 +583,15 @@
         <member name="F:Aarsys.ShoutcastStats.View_ShoutcastStats.lbl_Bitrate">
             <summary>
             lbl_Bitrate-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.View_ShoutcastStats.lbl_ContentType">
+            <summary>
+            lbl_ContentType-Steuerelement
             </summary>
             <remarks>
             Automatisch generiertes Feld
