@@ -181,4 +181,106 @@ Add a ICQ or MSN and/or Yahoo Link with the "ICQ" setting of your Shoutcast Serv
   <data name="lblSC_MSG.Text" xml:space="preserve">
     <value>Add Chat link to chat with the DJ using the AIM or ICQ Shoutcast settings.</value>
   </data>
+  <data name="lbliTunes.Help" xml:space="preserve">
+    <value>Added a start link for iTunes and QuickTime &lt;br/&gt; Note: &lt;br /&gt;QuickTime did not support AAC streams!</value>
+  </data>
+  <data name="lbliTunes.Text" xml:space="preserve">
+    <value>iTunes / QuickTime</value>
+  </data>
+  <data name="lblMediaPlayer.Help" xml:space="preserve">
+    <value>Added a start link for Media Player</value>
+  </data>
+  <data name="lblMediaPlayer.Text" xml:space="preserve">
+    <value>Media Player</value>
+  </data>
+  <data name="lblPlayer.Help" xml:space="preserve">
+    <value>If enabled you provides start links to open the stream on different players</value>
+  </data>
+  <data name="lblPlayer.Text" xml:space="preserve">
+    <value>Select Players you want to provide to your costumers</value>
+  </data>
+  <data name="lblRealPlayer.Help" xml:space="preserve">
+    <value>added a start link for Real Player</value>
+  </data>
+  <data name="lblRealPlayer.Text" xml:space="preserve">
+    <value>Real Player</value>
+  </data>
+  <data name="lblSC_Bitrate.Help" xml:space="preserve">
+    <value>Adds the current Bitrate</value>
+  </data>
+  <data name="lblSC_Bitrate.Text" xml:space="preserve">
+    <value>Bitrate</value>
+  </data>
+  <data name="lblSC_Content.Help" xml:space="preserve">
+    <value>Adds the current Content Type</value>
+  </data>
+  <data name="lblSC_Content.Text" xml:space="preserve">
+    <value>Content Type</value>
+  </data>
+  <data name="lblSC_CurrentListeners.Help" xml:space="preserve">
+    <value>Gets the Current Listeners of teh Shoutcast server</value>
+  </data>
+  <data name="lblSC_CurrentListeners.Text" xml:space="preserve">
+    <value>Current Listeners</value>
+  </data>
+  <data name="lblSC_DJ.Help" xml:space="preserve">
+    <value>Addes the current DJ name</value>
+  </data>
+  <data name="lblSC_DJ.Text" xml:space="preserve">
+    <value>Current DJ name</value>
+  </data>
+  <data name="lblSC_Features.Help" xml:space="preserve">
+    <value>Here you can select the features you want to provied to your customers.</value>
+  </data>
+  <data name="lblSC_Features.Text" xml:space="preserve">
+    <value>Select features you want to view to your vistitors</value>
+  </data>
+  <data name="lblSC_genre.Help" xml:space="preserve">
+    <value>Gets the Genre of the Shoutcast Server</value>
+  </data>
+  <data name="lblSC_genre.Text" xml:space="preserve">
+    <value>Genre</value>
+  </data>
+  <data name="lblSC_MaxListeners.Help" xml:space="preserve">
+    <value>Gets the max. Listeners of the Shoutcast server</value>
+  </data>
+  <data name="lblSC_MaxListeners.Text" xml:space="preserve">
+    <value>Max. Listeners</value>
+  </data>
+  <data name="lblSC_PeakListeners.Help" xml:space="preserve">
+    <value>Gets the Listeners Peak of the Shoutcast server</value>
+  </data>
+  <data name="lblSC_PeakListeners.Text" xml:space="preserve">
+    <value>Listeners Peak</value>
+  </data>
+  <data name="lblSC_Song.Help" xml:space="preserve">
+    <value>Adds the current Title in a marquee</value>
+  </data>
+  <data name="lblSC_Song.Text" xml:space="preserve">
+    <value>Current Song</value>
+  </data>
+  <data name="lblSC_Station.Help" xml:space="preserve">
+    <value>Gets the Station name of the Shoutcast server</value>
+  </data>
+  <data name="lblSC_Station.Text" xml:space="preserve">
+    <value>Station name</value>
+  </data>
+  <data name="lblWinamp.Help" xml:space="preserve">
+    <value>Added a start link for Winamp Player</value>
+  </data>
+  <data name="lblWinamp.Text" xml:space="preserve">
+    <value>Winamp Player</value>
+  </data>
+  <data name="lblSC_PlayerText.Help" xml:space="preserve">
+    <value>If selected, a Start your Player message is viewed over the Player links</value>
+  </data>
+  <data name="lblSC_PlayerText.Text" xml:space="preserve">
+    <value>View Start Player Lable</value>
+  </data>
+  <data name="lblPlayerText.Help" xml:space="preserve">
+    <value>Activates a Note Start Your Player over the Player buttons.</value>
+  </data>
+  <data name="lblPlayerText.Text" xml:space="preserve">
+    <value>Start your Player</value>
+  </data>
 </root>

@@ -1,6 +1,6 @@
 ﻿<dotnetnuke type="Package" version="5.0">
   <packages>
-      <package name="Aarsys_ShoutcastStats" type="Module" version="05.00.529">
+      <package name="Aarsys_ShoutcastStats" type="Module" version="05.00.540">
           <friendlyName>ShoutcastStats</friendlyName>
           <description>
               A ShoutcastStats module for DotNetNuke. It allows you to view statistc data i.e Song title, DJ name ect. to Dotnetnuke.
@@ -14,6 +14,19 @@
           <license src="license.txt" />
           <releaseNotes src="releasenotes.txt" />
           <components>
+              <component type="Script">
+                  <scripts>
+                      <basePath>DesktopModules\Products</basePath>
+                      <!--<script type="Install">
+                          <name>05.00.00.SqlDataProvider</name>
+                          <version>05.00.540</version>
+                      </script>
+                      <script type="UnInstall">
+                          <name>Uninstall.SqlDataProvider</name>
+                          <version>05.00.540</version>
+                      </script>-->
+                  </scripts>
+              </component>
               <component type="Module">
                   <desktopModule>
                       <moduleName>ShoutcastStats</moduleName>
@@ -131,7 +144,7 @@
               </component>
           </components>
       </package>
-          <package name="Aarsys_ShoutcastStats_Stats" type="Module" version="05.00.529">
+          <package name="Aarsys_ShoutcastStats_Stats" type="Module" version="05.00.540">
               <friendlyName>ShoutcastStats Stats</friendlyName>
               <description>
                   A ShoutcastStats module for DotNetNuke. It allows you to view statistc data i.e last Songs List, Connected Listerners with IP and connection time, ect. to Dotnetnuke.
@@ -168,7 +181,7 @@
                                       </moduleControl>
                                       <moduleControl>
                                           <controlKey>Settings</controlKey>
-                                          <controlSrc>DesktopModules/Aarsys/ShoutcastStats/Settings.ascx</controlSrc>
+                                          <controlSrc>DesktopModules/Aarsys/ShoutcastStats/StatsSettings.ascx</controlSrc>
                                           <supportsPartialRendering>False</supportsPartialRendering>
                                           <controlTitle />
                                           <controlType>Edit</controlType>
@@ -205,6 +218,9 @@
                           </file>
                           <file>
                               <name>ShoutcastStats.dnn</name>
+                          </file>
+                          <file>
+                              <name>StatsSettings.dnn</name>
                           </file>
                       </files>
                   </component>

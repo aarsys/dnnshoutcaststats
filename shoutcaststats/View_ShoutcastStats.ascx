@@ -42,9 +42,9 @@
         <tr>
         <td>
         <asp:Label ID="lbl_AIM" CssClass="scs_label" runat="server"></asp:Label><br />
-            <asp:HyperLink ID="lkl_AIM" runat="server"></asp:HyperLink>
+            <asp:HyperLink ID="lkl_AIM" CssClass="scs_Chat" runat="server"></asp:HyperLink>
          
-            <asp:HyperLink ID="lkl_AOL" runat="server"></asp:HyperLink>
+            <asp:HyperLink ID="lkl_AOL" CssClass="scs_Chat" runat="server"></asp:HyperLink>
         
             <asp:HyperLink ID="lkl_ICQ" CssClass="scs_Chat" runat="server"></asp:HyperLink>
         

@@ -118,16 +118,18 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ControlTitle_settings.Text" xml:space="preserve">
-    <value>Aarsys Shoutcast Stats Einstellungen</value>
+    <value>Aarsys ShoutcastStats Einstellungen</value>
   </data>
   <data name="ModuleHelp.Text" xml:space="preserve">
-    <value>Über Aarsys Shoutcast Stats Einstellungen</value>
+    <value>&lt;h1&gt;Über Aarsys ShoutcastStats Einstellungen
+
+Konfigurieren Sie in den ShoutcastStats Einstellungen die Zugangsdaten zu Ihrem Shoutcast Server und wählen Sie die gewünschten Funktionen aus.</value>
   </data>
   <data name="lblSC_IP.Help" xml:space="preserve">
-    <value>Tragen sie die IP oder Domain zu Ihrem Shoutcast Server ein. Beispiel: shoutcast.domain.com</value>
+    <value>Tragen Sie die IP oder Domain zu Ihrem Shoutcast Server ein. Beispiel: shoutcast.domain.com</value>
   </data>
   <data name="lblSC_IP.Text" xml:space="preserve">
-    <value>IP oderr Domain</value>
+    <value>IP oder Domain</value>
   </data>
   <data name="lblSC_Password.Help" xml:space="preserve">
     <value>Tragen Sie das Administrator (admin) Passwort für Ihren Shoutcast Server ein.</value>
@@ -144,13 +146,143 @@
   <data name="lblSC_AOL.Help" xml:space="preserve">
     <value>Bei Aktivierung wird ein AOL Messenger Link von der Shoutcast Encoder Einstellung "AIM" erstellt.</value>
   </data>
-  <data name="SC_ICQCheckBox.Help" xml:space="preserve">
-    <value>Bei Aktivierung wird ein ICQ Messenger Link von der Shoutcast Encoder Einstellung "ICQ" erstellt.</value>
-  </data>
   <data name="lblSC_MSN.Help" xml:space="preserve">
     <value>Bei Aktivierung wird ein MSN/Live Messenger Link von der Shoutcast Encoder Einstellung "ICQ" erstellt.</value>
   </data>
   <data name="lblSC_Yahoo.Help" xml:space="preserve">
     <value>Bei Aktivierung wird ein Yahoo Messenger Link von der Shoutcast Encoder Einstellung "ICQ" erstellt.</value>
+  </data>
+  <data name="lbliTunes.Help">
+    <value>Aktiviert einen Startlink für iTunes und QuickTime &lt;br/&gt; Hinweis: &lt;br /&gt;QuickTime unterstützt bisher keine AAC streams über das yp-protokoll!</value>
+  </data>
+  <data name="lbliTunes.Text">
+    <value>iTunes / QuickTime</value>
+  </data>
+  <data name="lblMediaPlayer.Help">
+    <value>Aktiviert einen Startlink für den Media Player</value>
+  </data>
+  <data name="lblMediaPlayer.Text">
+    <value>Media Player</value>
+  </data>
+  <data name="lblPlayer.Help">
+    <value>Mit nachfolgenden Einstellungen aktivieren Sie die Funktionen zum Start verschiedener Player über Image-Links.</value>
+  </data>
+  <data name="lblPlayer.Text">
+    <value>Wählen Sie die Player aus, die Sie für Ihre Hörer bereitstellen wollen.</value>
+  </data>
+  <data name="lblRealPlayer.Help">
+    <value>Aktiviert einen Startlink für den Real Player.</value>
+  </data>
+  <data name="lblRealPlayer.Text">
+    <value>Real Player</value>
+  </data>
+  <data name="lblSC_AIM.Text">
+    <value>AIM</value>
+  </data>
+  <data name="lblSC_AOL.Text">
+    <value>AOL</value>
+  </data>
+  <data name="lblSC_Bitrate.Help">
+    <value>Zeigt die aktuelle Bitrate an.</value>
+  </data>
+  <data name="lblSC_Bitrate.Text">
+    <value>Bitrate</value>
+  </data>
+  <data name="lblSC_Content.Help">
+    <value>Zeigtd en aktuellen Codec-Typ an.</value>
+  </data>
+  <data name="lblSC_Content.Text">
+    <value>Codec Typ</value>
+  </data>
+  <data name="lblSC_CurrentListeners.Help">
+    <value>Zeigt die aktuelle Hörerzahl des Shoutcast Servers an.</value>
+  </data>
+  <data name="lblSC_CurrentListeners.Text">
+    <value>Aktuelle Hörer</value>
+  </data>
+  <data name="lblSC_DJ.Help">
+    <value>Zeigt den aktuellen DJ Namen an.</value>
+  </data>
+  <data name="lblSC_DJ.Text">
+    <value>Aktueller DJ Name</value>
+  </data>
+  <data name="lblSC_Features.Help">
+    <value>Hier können Sie die Funktionen auswählen, die Sie Ihren Hörern zur Verfügung stellen möchten.</value>
+  </data>
+  <data name="lblSC_Features.Text">
+    <value>Wählen Sie die Funktionen aus, die Sie Ihren Besuchern anzeigen möchten.</value>
+  </data>
+  <data name="lblSC_genre.Help">
+    <value>Zeigt das Genre des Shoutcast Servers an.</value>
+  </data>
+  <data name="lblSC_genre.Text">
+    <value>Genre</value>
+  </data>
+  <data name="lblSC_ICQ.Help">
+    <value>Erstellt einen ICQ Messenger Link aus den Shoutcast Encoder Einstellungen "ICQ".</value>
+  </data>
+  <data name="lblSC_ICQ.Text">
+    <value>ICQ</value>
+  </data>
+  <data name="lblSC_MaxListeners.Help">
+    <value>Zeigt die maximale Hörerzahl an, die von Ihrem Shoutcast Server unterstützt wird.</value>
+  </data>
+  <data name="lblSC_MaxListeners.Text">
+    <value>Max. Hörer</value>
+  </data>
+  <data name="lblSC_MSG.Help">
+    <value>Fügen Sie mit der Shoutcast Server Einstellung "AIM" a DJ Chat Link für AIM und/oder AOL hinzu. &lt;br /&gt;
+Fügen Sie einen ICQ oder MSN und/oder Yahoo Link mit der "ICQ" Einstellung Ihres Shoutcast Servers hinzu.  (Einstellungen sind abhängig von den Einstellungen Ihres DJs im Encoder)</value>
+  </data>
+  <data name="lblSC_MSG.Text">
+    <value>Fügen Sie einen Chat-Link zum direkten Chaten mit Ihrem DJ hinzu, indem Sie die Shoutcast Einstellungen für AIM und/oder ICQ nutzen.</value>
+  </data>
+  <data name="lblSC_MSN.Text">
+    <value>MSN</value>
+  </data>
+  <data name="lblSC_PeakListeners.Help">
+    <value>Zeigt die höchste Höhrerzahl des Shoutcast Servers an.</value>
+  </data>
+  <data name="lblSC_PeakListeners.Text">
+    <value>Höchstzahl Hörer</value>
+  </data>
+  <data name="lblSC_PlayerText.Help">
+    <value>Aktiviert einen "Hier Player starten" Hinweis über den Player-Links.</value>
+  </data>
+  <data name="lblSC_PlayerText.Text">
+    <value>Player Starten Hinweis</value>
+  </data>
+  <data name="lblSC_Port.Text">
+    <value>Port</value>
+  </data>
+  <data name="lblSC_Song.Help">
+    <value>Aktiviert die Anzeige des aktuellen Titels in einem Laufband.</value>
+  </data>
+  <data name="lblSC_Song.Text">
+    <value>Aktueller Titel</value>
+  </data>
+  <data name="lblSC_Station.Help">
+    <value>Zeigt den Stationsnamen des Shoutcast Servers an.</value>
+  </data>
+  <data name="lblSC_Station.Text">
+    <value>Stationsname</value>
+  </data>
+  <data name="lblSC_Yahoo.Text">
+    <value>Yahoo</value>
+  </data>
+  <data name="lblWinamp.Help">
+    <value>Aktiviert den Startlink für den Winamp Player</value>
+  </data>
+  <data name="lblWinamp.Text">
+    <value>Winamp Player</value>
+  </data>
+  <data name="SC_ICQCheckBox.Text">
+    <value>ICQ</value>
+  </data>
+  <data name="lblPlayerText.Help">
+    <value>Aktiviert Hier Player starten" Hinweis über den Player-Links.</value>
+  </data>
+  <data name="lblPlayerText.Text">
+    <value>Hier Player starten</value>
   </data>
 </root>

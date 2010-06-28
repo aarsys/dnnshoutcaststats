@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -9,7 +9,7 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Aarsys</RootNamespace>
+    <RootNamespace>ShoutcastStats</RootNamespace>
     <AssemblyName>Aarsys.ShoutcastStats</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -17,6 +17,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkSubset>Full</TargetFrameworkSubset>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -80,9 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\ShoutcastStatsListeners.cs" />
-    <Compile Include="Components\ShoutcastServer.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
+    <Compile Include="Components\ShoutcastServer.cs" />
     <Compile Include="Components\ShoutcastSongs.cs" />
     <Compile Include="Components\ShoutcastStatsSettings.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -94,13 +93,6 @@
     </Compile>
     <Compile Include="Settings.ascx.designer.cs">
       <DependentUpon>Settings.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="StatsSettings.ascx.cs">
-      <DependentUpon>StatsSettings.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="StatsSettings.ascx.designer.cs">
-      <DependentUpon>StatsSettings.ascx</DependentUpon>
     </Compile>
     <Compile Include="Stats_ShoutcastStats.ascx.cs">
       <DependentUpon>Stats_ShoutcastStats.ascx</DependentUpon>
@@ -124,21 +116,12 @@
     <None Include="App_LocalResources\View_ShoutcastStats.ascx.resx">
       <SubType>Designer</SubType>
     </None>
-    <None Include="DNNModule.targets">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ShoutcastStats.dnn">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="DNNModule.targets" />
+    <None Include="ShoutcastStats.dnn" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="images\itunes.gif" />
-    <Content Include="images\mplayer.gif" />
-    <Content Include="images\realplayer.gif" />
-    <Content Include="images\winamp.gif" />
     <Content Include="module.css" />
     <Content Include="Settings.ascx" />
-    <Content Include="StatsSettings.ascx" />
     <Content Include="View_ShoutcastStats.ascx" />
   </ItemGroup>
   <ItemGroup>
@@ -157,17 +140,8 @@
     <Content Include="Stats_ShoutcastStats.ascx" />
     <Content Include="version.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\StatsSettings.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Components\App_LocalResources\SharedResources.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\StatsSettings.ascx.resx" />
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" Condition="" />
   <Import Project="$(MSBuildProjectDirectory)\DNNModule.Targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -188,9 +162,6 @@
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
           <IISAppRootUrl>http://dev5/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

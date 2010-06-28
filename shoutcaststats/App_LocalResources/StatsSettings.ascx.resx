@@ -117,70 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ModuleHelp.Text" xml:space="preserve">
-    <value>&lt;P&gt;A DNN_ShoutcastStats module</value>
+  <data name="ControlTitle_settings.Text" xml:space="preserve">
+    <value>Aarsys Shoutcast Stats Settings</value>
   </data>
-  <data name="Bitrate.Text" xml:space="preserve">
-    <value>Bitrate</value>
+  <data name="SCS_FeatureSettings.Text" xml:space="preserve">
+    <value>Feature Settings - Select features you want to provide to your costumers</value>
   </data>
-  <data name="CurrentListeners.Text" xml:space="preserve">
-    <value>Current Listeners</value>
+  <data name="lblSCS_IP.Help" xml:space="preserve">
+    <value>Add your IP or domain to your Shoutcast server.</value>
   </data>
-  <data name="MaxListeners.Text" xml:space="preserve">
-    <value>Max. Listeners</value>
+  <data name="lblSCS_IP.Text" xml:space="preserve">
+    <value>IP or Domain</value>
   </data>
-  <data name="SongTitle.Text" xml:space="preserve">
-    <value>Song Title</value>
+  <data name="lblSCS_Password.Help" xml:space="preserve">
+    <value>Add the admin Password for your Shoutcast server.</value>
   </data>
-  <data name="YourDJ.Text" xml:space="preserve">
-    <value>Your DJ</value>
+  <data name="lblSCS_Password.Text" xml:space="preserve">
+    <value>Password</value>
   </data>
-  <data name="Offline.Text" xml:space="preserve">
-    <value>Offline</value>
+  <data name="lblSCS_Port.Help" xml:space="preserve">
+    <value>Add the port your Shoutcast server uses.</value>
   </data>
-  <data name="Notrefreshedyet.Text" xml:space="preserve">
-    <value>Not refreshed yet! </value>
+  <data name="lblSCS_Port.Text" xml:space="preserve">
+    <value>Port</value>
   </data>
-  <data name="ChatwithyourDJ.Text" xml:space="preserve">
-    <value>Chat with your DJ</value>
+  <data name="lblSC_LastPlayed.Help" xml:space="preserve">
+    <value>Checked box enables the last played songs list view</value>
   </data>
-  <data name="StartPlayer.Text" xml:space="preserve">
-    <value>Start your Player</value>
+  <data name="lblSC_LastPlayed.Text" xml:space="preserve">
+    <value>View last played songs</value>
   </data>
-  <data name="StartPlayer.ToolTip" xml:space="preserve">
-    <value>Start your player by clicking on one of the following images ...</value>
+  <data name="lblSC_ListenerList.Text" xml:space="preserve">
+    <value>View Listeners list</value>
   </data>
-  <data name="PeakListeners.Text" xml:space="preserve">
-    <value>Listeners Peak</value>
+  <data name="lblSC_ListenerList.Help" xml:space="preserve">
+    <value>Checked box enables the view of the Listerners list.</value>
   </data>
-  <data name="StartITunes.ToolTip" xml:space="preserve">
-    <value>Click to start your ITune player  - did not Work with AAC streams by player restrictions on QuickTime!</value>
+  <data name="lblSC_XMLFileCount.Help" xml:space="preserve">
+    <value>Checked box enabled the view of the XML File Count value</value>
   </data>
-  <data name="StartMediaPlayer.ToolTip" xml:space="preserve">
-    <value>Click to start your MediaPlayer!</value>
-  </data>
-  <data name="StartRealPlayer.ToolTip" xml:space="preserve">
-    <value>Click to start your RealPlayer!</value>
-  </data>
-  <data name="StartWinampPlayer.ToolTip" xml:space="preserve">
-    <value>Click to start your Winamp player!</value>
-  </data>
-  <data name="ContentType.Text" xml:space="preserve">
-    <value>Content Type</value>
-  </data>
-  <data name="Genre.Text" xml:space="preserve">
-    <value>Genre</value>
-  </data>
-  <data name="StartITunes.AlternateText" xml:space="preserve">
-    <value>ITunes</value>
-  </data>
-  <data name="StartRealPlayer.AlternateText" xml:space="preserve">
-    <value>RealPlayer</value>
-  </data>
-  <data name="StartWinampPlayer.AlternateText" xml:space="preserve">
-    <value>Winamp</value>
-  </data>
-  <data name="StartMediaPlayer.AlternateText" xml:space="preserve">
-    <value>MediaPlayer</value>
+  <data name="lblSC_XMLFileCount.Text" xml:space="preserve">
+    <value>View XML file count</value>
   </data>
 </root>

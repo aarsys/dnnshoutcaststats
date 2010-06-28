@@ -102,15 +102,17 @@
 		</CreateItem>
 
 		<!-- Obtain reference to source files -->
-		<CreateItem Include="$(RootDir)\$(ModuleName)\**\*.*;
-		                    $(RootDir)\lib\**\*.*;
-		                    $(RootDir)\$(ModuleName)\$(ModuleName).sln" Exclude="@(DefaultExclude)">
+		<CreateItem Include="$(MSBuildProjectDirectory)\Components\*.*;
+                            $(MSBuildProjectDirectory)\images\*.*;
+                            $(MSBuildProjectDirectory)\App_LocalResources\*.*;
+		                    $(MSBuildProjectDirectory)\*.*;
+                            $(MSBuildProjectDirectory)\$(ModuleName).sln" Exclude="@(DefaultExclude)">
 			<Output TaskParameter="Include" ItemName="SourceZipFiles"/>
 		</CreateItem>
 
         <!-- Reset DNN Dir for distribution code -->
         <FileUpdate Files="@(deployTargetFile)" Regex="&lt;DotNetNukeDir&gt;.*&lt;/DotNetNukeDir&gt;" ReplacementText="&lt;DotNetNukeDir&gt;&lt;/DotNetNukeDir&gt;"  />
-        <Zip Files="@(SourceZipFiles)" WorkingDirectory="$(MSBuildProjectDirectory)\.." ZipFileName="$(DeployDir)\$(CompanyName).$(ModuleName).source.v$(Major).$(Minor).$(Build).$(Revision).zip"  />
+        <Zip Files="@(SourceZipFiles)" WorkingDirectory="$(MSBuildProjectDirectory)\" ZipFileName="$(DeployDir)\$(CompanyName).$(ModuleName).source.v$(Major).$(Minor).$(Build).$(Revision).zip"  />
         <!-- Reset DNN Dir to its original value -->
         <FileUpdate Files="@(deployTargetFile)" Regex="&lt;DotNetNukeDir&gt;.*&lt;/DotNetNukeDir&gt;" ReplacementText="&lt;DotNetNukeDir&gt;$(DotNetNukeDir)&lt;/DotNetNukeDir&gt;" />
 

@@ -162,7 +162,7 @@ Das ShoutcastStats Modul zeigt Ihnen Daten aus dem Shoutcast Srver auf Ihrem Dot
     <value>Hier klicken um Ihren MediaPlayer zu starten!</value>
   </data>
   <data name="StartPlayer.Text">
-    <value>Starten Sie Ihren Player</value>
+    <value>Hier Player starten</value>
   </data>
   <data name="StartPlayer.ToolTip">
     <value>Starten Sie Ihren Player indem Sie eines der nachfolgenden Player Symbole anklicken ...</value>
@@ -181,5 +181,8 @@ Das ShoutcastStats Modul zeigt Ihnen Daten aus dem Shoutcast Srver auf Ihrem Dot
   </data>
   <data name="YourDJ.Text">
     <value>Ihr DJ</value>
+  </data>
+  <data name="StartMediaPlayer.AlternateText">
+    <value>MediaPlayer</value>
   </data>
 </root>

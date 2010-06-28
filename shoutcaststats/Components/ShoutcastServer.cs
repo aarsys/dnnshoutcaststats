@@ -30,6 +30,7 @@ using System.Web;
 using System.Collections.Generic;
 using DotNetNuke;
 using DotNetNuke.Services.Localization;
+using System.Collections.ObjectModel;
 
 
 namespace Aarsys.ShoutcastStats.Components
@@ -434,11 +435,125 @@ namespace Aarsys.ShoutcastStats.Components
             ShoutcastXml = null;
             _ServerUrl = null;
         }
+
         static DateTime ConvertFromUnixTimestamp(double timestamp)
         {
-            DateTime origin = new DateTime(1970, 1, 1, 0, 0, 0, 0);
-            return origin.AddSeconds(timestamp);
+            DateTime origin = new DateTime(1970, 1, 1, 0, 0, 0, 0); 
+            
+            //Using Offset to handle the DateTime where the user is - Enhancement for later use
+            // best is to use Timezone of the usersetting and a fallback to the site Timezone for unregistered users or get them Thimezone using javascript
+            //DateTime dstDate = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            //DateTimeOffset thisTime;
+
+            //thisTime = new DateTimeOffset(dstDate, new TimeSpan(0, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+            //thisTime = new DateTimeOffset(origin, new TimeSpan(-12, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+            //thisTime = new DateTimeOffset(origin, new TimeSpan(-11, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+            //thisTime = new DateTimeOffset(origin, new TimeSpan(-10, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+            //thisTime = new DateTimeOffset(origin, new TimeSpan(-9, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+            //thisTime = new DateTimeOffset(origin, new TimeSpan(-8, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+            //thisTime = new DateTimeOffset(origin, new TimeSpan(-7, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+            //thisTime = new DateTimeOffset(origin, new TimeSpan(-6, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+            //thisTime = new DateTimeOffset(origin, new TimeSpan(-5, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+            //thisTime = new DateTimeOffset(origin, new TimeSpan(-4, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+            //thisTime = new DateTimeOffset(origin, new TimeSpan(-3, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+            //thisTime = new DateTimeOffset(origin, new TimeSpan(-2, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+            //thisTime = new DateTimeOffset(origin, new TimeSpan(-1, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+            //thisTime = new DateTimeOffset(origin, new TimeSpan(0, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+            //thisTime = new DateTimeOffset(origin, new TimeSpan(+1, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+            //thisTime = new DateTimeOffset(origin, new TimeSpan(+2, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+            //thisTime = new DateTimeOffset(origin, new TimeSpan(+3, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+            //thisTime = new DateTimeOffset(origin, new TimeSpan(+4, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+            //thisTime = new DateTimeOffset(origin, new TimeSpan(+5, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+            //thisTime = new DateTimeOffset(origin, new TimeSpan(+6, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+            //thisTime = new DateTimeOffset(origin, new TimeSpan(+7, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+            //thisTime = new DateTimeOffset(origin, new TimeSpan(+8, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+            //thisTime = new DateTimeOffset(origin, new TimeSpan(+9, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+            //thisTime = new DateTimeOffset(origin, new TimeSpan(+10, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+            //thisTime = new DateTimeOffset(origin, new TimeSpan(+11, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+            //thisTime = new DateTimeOffset(origin, new TimeSpan(+12, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+            //thisTime = new DateTimeOffset(origin, new TimeSpan(+13, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+            //thisTime = new DateTimeOffset(origin, new TimeSpan(+14, 0, 0));
+            //ShowPossibleTimeZones(thisTime);
+
+
+            return origin.AddSeconds(timestamp).ToLocalTime();
         }
+
+        // For letter adding a client site Timezone and DateTime
+        //private static void ShowPossibleTimeZones(DateTimeOffset offsetTime)
+        //{
+        //    TimeSpan offset = offsetTime.Offset;
+        //    ReadOnlyCollection<TimeZoneInfo> timeZones;
+
+        //    //Console.WriteLine("{0} could belong to the following time zones:",
+        //    //                  offsetTime.ToString());
+        //    // Get all time zones defined on local system
+        //    timeZones = TimeZoneInfo.GetSystemTimeZones();
+        //    // Iterate time zones 
+        //    foreach (TimeZoneInfo timeZone in timeZones)
+        //    {
+        //        // Compare offset with offset for that date in that time zone
+        //        if (timeZone.GetUtcOffset(offsetTime.DateTime).Equals(offset))
+        //            //        Console.WriteLine("   {0}", timeZone.DisplayName);
+                    
+        //    }
+        //    //Console.WriteLine();
+        //} 
+
         #endregion
     }
 

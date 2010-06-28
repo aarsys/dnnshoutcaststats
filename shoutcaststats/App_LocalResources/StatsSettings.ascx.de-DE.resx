@@ -117,70 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ModuleHelp.Text" xml:space="preserve">
-    <value>&lt;P&gt;A DNN_ShoutcastStats module</value>
+  <data name="ControlTitle_settings.Text" xml:space="preserve">
+    <value>Aarsys Shoutcast Stats Einstellungen</value>
   </data>
-  <data name="Bitrate.Text" xml:space="preserve">
-    <value>Bitrate</value>
+  <data name="lblSCS_IP.Help" xml:space="preserve">
+    <value>Fügen Sie hier die IP oder Domain Ihres Shoutcast Servers hinzu.</value>
   </data>
-  <data name="CurrentListeners.Text" xml:space="preserve">
-    <value>Current Listeners</value>
+  <data name="lblSCS_IP.Text" xml:space="preserve">
+    <value>IP oder Domain</value>
   </data>
-  <data name="MaxListeners.Text" xml:space="preserve">
-    <value>Max. Listeners</value>
+  <data name="lblSCS_Password.Help" xml:space="preserve">
+    <value>Fügen Sie hier das admin Passwort zu Ihres Shoutcast Servers hinzu.</value>
   </data>
-  <data name="SongTitle.Text" xml:space="preserve">
-    <value>Song Title</value>
+  <data name="lblSCS_Password.Text" xml:space="preserve">
+    <value>Passwort</value>
   </data>
-  <data name="YourDJ.Text" xml:space="preserve">
-    <value>Your DJ</value>
+  <data name="lblSCS_Port.Help" xml:space="preserve">
+    <value>Fügen Sie hier den Port Ihres Shoutcast Servers hinzu.</value>
   </data>
-  <data name="Offline.Text" xml:space="preserve">
-    <value>Offline</value>
+  <data name="lblSCS_Port.Text" xml:space="preserve">
+    <value>Port</value>
   </data>
-  <data name="Notrefreshedyet.Text" xml:space="preserve">
-    <value>Not refreshed yet! </value>
+  <data name="lblSC_LastPlayed.Help">
+    <value>Aktiviert die Liste der zuletzt gespielten Titel.</value>
   </data>
-  <data name="ChatwithyourDJ.Text" xml:space="preserve">
-    <value>Chat with your DJ</value>
+  <data name="lblSC_LastPlayed.Text">
+    <value>Liste zuletzt gespielte Titel</value>
   </data>
-  <data name="StartPlayer.Text" xml:space="preserve">
-    <value>Start your Player</value>
+  <data name="lblSC_ListenerList.Help">
+    <value>aktiviert die Hörerliste mit detailierten Informationen und IP.</value>
   </data>
-  <data name="StartPlayer.ToolTip" xml:space="preserve">
-    <value>Start your player by clicking on one of the following images ...</value>
+  <data name="lblSC_ListenerList.Text">
+    <value>Hörer Liste</value>
   </data>
-  <data name="PeakListeners.Text" xml:space="preserve">
-    <value>Listeners Peak</value>
+  <data name="lblSC_XMLFileCount.Help">
+    <value>Aktiviert die Anzeige wie oft die XML Datei abgerufen wurde.</value>
   </data>
-  <data name="StartITunes.ToolTip" xml:space="preserve">
-    <value>Click to start your ITune player  - did not Work with AAC streams by player restrictions on QuickTime!</value>
+  <data name="lblSC_XMLFileCount.Text">
+    <value>XML Datei Aufrufzählung</value>
   </data>
-  <data name="StartMediaPlayer.ToolTip" xml:space="preserve">
-    <value>Click to start your MediaPlayer!</value>
-  </data>
-  <data name="StartRealPlayer.ToolTip" xml:space="preserve">
-    <value>Click to start your RealPlayer!</value>
-  </data>
-  <data name="StartWinampPlayer.ToolTip" xml:space="preserve">
-    <value>Click to start your Winamp player!</value>
-  </data>
-  <data name="ContentType.Text" xml:space="preserve">
-    <value>Content Type</value>
-  </data>
-  <data name="Genre.Text" xml:space="preserve">
-    <value>Genre</value>
-  </data>
-  <data name="StartITunes.AlternateText" xml:space="preserve">
-    <value>ITunes</value>
-  </data>
-  <data name="StartRealPlayer.AlternateText" xml:space="preserve">
-    <value>RealPlayer</value>
-  </data>
-  <data name="StartWinampPlayer.AlternateText" xml:space="preserve">
-    <value>Winamp</value>
-  </data>
-  <data name="StartMediaPlayer.AlternateText" xml:space="preserve">
-    <value>MediaPlayer</value>
+  <data name="SCS_FeatureSettings.Text">
+    <value>Funtionseinstellungen - Wählen Sie die Funtionen aus, die Sie Ihren Besuchern zur Verfügung stellen möchten.</value>
   </data>
 </root>

@@ -160,10 +160,10 @@ Das ShoutcastStats Modul für DNN zeigt Ihnen Informationen und Links zu Ihrem S
   <data name="times.Text" xml:space="preserve">
     <value>mal angezeigt</value>
   </data>
-  <data name="UnderrunsSoFarAndIsConnectedFor.Text" xml:space="preserve">
-    <value>überschritten und ist verbunden seit</value>
+  <data name="Underruns so far and is connected for.Text">
+    <value>Durchläufe bis lang, und ist verbunden seit</value>
   </data>
-  <data name="XmlConfigFileHasBeenViewed.Text" xml:space="preserve">
-    <value>Die XML Datei wurde  </value>
+  <data name="Xml Config file has been viewed.Text">
+    <value>Xml Config Datei wurde  </value>
   </data>
 </root>

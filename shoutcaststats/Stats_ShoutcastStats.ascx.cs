@@ -64,7 +64,8 @@ namespace Aarsys.ShoutcastStats
             {
                 using (ShoutCastSettings scs = new ShoutCastSettings())
                 {
-                    scs.LoadSettings(this);
+                   // scs.LoadSettings(this);
+                    scs.StatsLoadSettings(this);
                     using (ShoutcastServer s =
                         new ShoutcastServer("http://" + scs.SC_IP + ":" + scs.SC_Port + "/admin.cgi?mode=viewxml&pass=" + scs.SC_Password))
                     {
@@ -72,30 +73,60 @@ namespace Aarsys.ShoutcastStats
                            s.StreamStatus != true)
                             lbl_Status.Text = Localization.GetString("Offline", this.LocalResourceFile);
                         else
-                        {                             
-                        lbl_ViewXml.Text = string.Format(Localization.GetString("Xml Config file has been viewed", this.LocalResourceFile) + " {0} " + Localization.GetString("times", this.LocalResourceFile) + ".", s.Webdata.ViewXml);
-                        lbl_Listeners.Text = Localization.GetString("Diplaying info for", this.LocalResourceFile) + s.Listeners.Count + " " + Localization.GetString("listeners", this.LocalResourceFile) + "<br>";
-                        foreach (Listener listener in s.Listeners)
                         {
-                            int seconds;
-                            int minutes = Math.DivRem(listener.ConnectTime, 60, out seconds);
-                            int hours = Math.DivRem(minutes, 60, out minutes);
-                            Label label = new Label();
-                            label.Text = Localization.GetString("Listener", this.LocalResourceFile) + " " + listener.HostName + " " + Localization.GetString("has", this.LocalResourceFile) + " " + listener.Underruns + " " + Localization.GetString("Underruns so far and is connected for", this.LocalResourceFile) + " " + hours + " " + Localization.GetString("hours", this.LocalResourceFile) +", " 
-                                + minutes + " " + Localization.GetString("minutes and", this.LocalResourceFile) + " " + seconds + " " + Localization.GetString("seconds", this.LocalResourceFile) + "<br>";
-                            label.ID = listener.HostName;
-                            Panel1.Controls.Add(label);
-                            label.Dispose();
-                        }
-                        lbl_SongHistory.Text = Localization.GetString("Displaying the", this.LocalResourceFile) + " " + s.SongHistory.Count + " " + Localization.GetString("last played songs", this.LocalResourceFile) + "<br>";
-                        foreach (Song song in s.SongHistory)
-                        {
-                            Label label = new Label();
-                            label.Text = song.SongTitle + " " + Localization.GetString("Played At", this.LocalResourceFile) + " : " + song.PlayedAt.ToString() + "<br>";
-                            label.ID = song.SongTitle;
-                            Panel2.Controls.Add(label);
-                            label.Dispose();
-                        }
+
+                            if ((string)scs.SC_XMLFileCount.ToString() != string.Empty)
+                            {
+                                bool showXMLFileCount;
+                                if (!bool.TryParse(scs.SC_XMLFileCount.ToString() as string, out showXMLFileCount))
+                                {
+                                    showXMLFileCount = true;
+                                }
+                                lbl_ViewXml.Visible = showXMLFileCount;
+                                lbl_ViewXml.Text = string.Format(Localization.GetString("Xml Config file has been viewed", this.LocalResourceFile) + " {0} " + Localization.GetString("times", this.LocalResourceFile) + ".", s.Webdata.ViewXml);
+                            }
+                            if ((string)scs.SC_ListenerList.ToString() != string.Empty)
+                            {
+                                bool showListenerList;
+                                if (!bool.TryParse(scs.SC_ListenerList.ToString() as string, out showListenerList))
+                                {
+                                    showListenerList = true;
+                                }
+                                lbl_Listeners.Visible = showListenerList;
+                                lbl_Listeners.Text = Localization.GetString("Diplaying info for", this.LocalResourceFile) + s.Listeners.Count + " " + Localization.GetString("listeners", this.LocalResourceFile) + "<br />";
+                                foreach (Listener listener in s.Listeners)
+                                {
+                                    int seconds;
+                                    int minutes = Math.DivRem(listener.ConnectTime, 60, out seconds);
+                                    int hours = Math.DivRem(minutes, 60, out minutes);
+                                    Label label = new Label();
+                                    label.Visible = showListenerList;
+                                    label.Text = Localization.GetString("Listener", this.LocalResourceFile) + " " + listener.HostName + " " + Localization.GetString("has", this.LocalResourceFile) + " " + listener.Underruns + " " + Localization.GetString("Underruns so far and is connected for", this.LocalResourceFile) + " " + hours + " " + Localization.GetString("hours", this.LocalResourceFile) + ", "
+                                        + minutes + " " + Localization.GetString("minutes and", this.LocalResourceFile) + " " + seconds + " " + Localization.GetString("seconds", this.LocalResourceFile) + "<br />";
+                                    label.ID = listener.HostName;
+                                    Panel1.Controls.Add(label);
+                                    label.Dispose();
+                                }
+                            }
+                            if ((string)scs.SC_LastPlayed.ToString() != string.Empty)
+                            {
+                                bool showlastPlayed;
+                                if (!bool.TryParse(scs.SC_LastPlayed.ToString() as string, out showlastPlayed))
+                                {
+                                    showlastPlayed = true;
+                                }
+                                lbl_SongHistory.Visible = showlastPlayed;
+                                lbl_SongHistory.Text = Localization.GetString("Displaying the", this.LocalResourceFile) + " " + s.SongHistory.Count + " " + Localization.GetString("last played songs", this.LocalResourceFile) + "<br>";
+                                foreach (Song song in s.SongHistory)
+                                {
+                                    Label label = new Label();
+                                    label.Visible = showlastPlayed;
+                                    label.Text = song.SongTitle + " " + Localization.GetString("Played At", this.LocalResourceFile) + " : " + song.PlayedAt.ToString() + "<br />";
+                                    label.ID = song.SongTitle;
+                                    Panel2.Controls.Add(label);
+                                    label.Dispose();
+                                }
+                            }
                     }
                 }
 
