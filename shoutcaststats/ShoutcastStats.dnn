@@ -207,6 +207,14 @@
                           <file>
                               <name>Stats_ShoutcastStats.ascx</name>
                           </file>
+                          <file>
+                              <path>app_localresources</path>
+                              <name>StatsSettings.ascx.resx</name>
+                          </file>
+                          <file>
+                              <path>app_localresources</path>
+                              <name>StatsSettings.ascx.de-DE.resx</name>
+                          </file>
                            <file>
                               <name>license.txt</name>
                           </file>
@@ -220,7 +228,7 @@
                               <name>ShoutcastStats.dnn</name>
                           </file>
                           <file>
-                              <name>StatsSettings.dnn</name>
+                              <name>StatsSettings.ascx</name>
                           </file>
                       </files>
                   </component>

@@ -73,6 +73,7 @@
 		<!-- Obtain reference to installation files -->
         <CreateItem Include="$(TargetDir)$(CompanyName).$(ModuleName).dll;
         					$(MSBuildProjectDirectory)\App_LocalResources\*.resx;
+                            $(MSBuildProjectDirectory)\App_LocalResources\*.*.resx;
 							$(MSBuildProjectDirectory)\*.SqlDataProvider;
 							$(MSBuildProjectDirectory)\*.ascx;
 							$(MSBuildProjectDirectory)\*.css;
