@@ -129,7 +129,7 @@ namespace Aarsys.ShoutcastStats
                                     bool showStation;
                                     if (!bool.TryParse(scs.SC_Station.ToString() as string, out showStation))
                                     {
-                                        showStation = true;
+                                        showStation = scs.SC_Station;
                                     }
                                     lbl_Station.Visible = showStation;
                                     lbl_Station.Text = s.ServerTitle;
@@ -141,7 +141,7 @@ namespace Aarsys.ShoutcastStats
                                 bool showPeakListeners;
                                 if (!bool.TryParse(scs.SC_PeakListeners.ToString() as string, out showPeakListeners))
                                 {
-                                    showPeakListeners = true;
+                                    showPeakListeners = scs.SC_PeakListeners;
                                 }
                                 lbl_PeakListeners.Visible = showPeakListeners;
                                 lbl_PeakListeners.Text = Localization.GetString("PeakListeners", this.LocalResourceFile) + " : " + s.PeakListeners;
@@ -153,7 +153,7 @@ namespace Aarsys.ShoutcastStats
                                 bool showCurrentListeners;
                                 if (!bool.TryParse(scs.SC_CurrentListeners.ToString() as string, out showCurrentListeners))
                                 {
-                                    showCurrentListeners = true;
+                                    showCurrentListeners = scs.SC_CurrentListeners;
                                 }
                                 lbl_CurrentListeners.Visible = showCurrentListeners;
                                 lbl_CurrentListeners.Text = Localization.GetString("CurrentListeners", this.LocalResourceFile) + " : " + s.CurrentListeners.ToString();
@@ -164,7 +164,7 @@ namespace Aarsys.ShoutcastStats
                                 bool showBitrate;
                                 if (!bool.TryParse(scs.SC_Bitrate.ToString() as string, out showBitrate))
                                 {
-                                    showBitrate = true;
+                                    showBitrate = scs.SC_Bitrate;
                                 }
                                 lbl_Bitrate.Visible = showBitrate;
                                 lbl_Bitrate.Text = Localization.GetString("Bitrate", this.LocalResourceFile) + " : " + s.Bitrate + "Kbps";
@@ -175,7 +175,7 @@ namespace Aarsys.ShoutcastStats
                                 bool showMaxListeners;
                                 if (!bool.TryParse(scs.SC_MaxListeners.ToString() as string, out showMaxListeners))
                                 {
-                                    showMaxListeners = true;
+                                    showMaxListeners = scs.SC_MaxListeners;
                                 }
                                 lbl_MaxListeners.Visible = showMaxListeners;
                                 lbl_MaxListeners.Text = Localization.GetString("MaxListeners", this.LocalResourceFile) + " : " + s.MaxListeners.ToString();
@@ -186,7 +186,7 @@ namespace Aarsys.ShoutcastStats
                                 bool showgenre;
                                 if (!bool.TryParse(scs.SC_genre.ToString() as string, out showgenre))
                                 {
-                                    showgenre = true;
+                                    showgenre = scs.SC_genre;
                                 }
                                 lbl_Genre.Visible = showgenre;
 
@@ -198,7 +198,7 @@ namespace Aarsys.ShoutcastStats
                                 bool showContenttype;
                                 if (!bool.TryParse(scs.SC_Content.ToString() as string, out showContenttype))
                                 {
-                                    showContenttype = true;
+                                    showContenttype = scs.SC_Content;
                                 }
                                 lbl_ContentType.Visible = showContenttype;
                                 lbl_ContentType.Text = Localization.GetString("ContentType", this.LocalResourceFile) + " : " + s.Content;
@@ -209,7 +209,7 @@ namespace Aarsys.ShoutcastStats
                                 bool showsong;
                                 if (!bool.TryParse(scs.SC_Song.ToString() as string, out showsong))
                                 {
-                                    showsong = true;
+                                    showsong = scs.SC_Song;
                                 }
                                 lbl_SongTitle.Visible = showsong;
                                 lbl_SongTitle.Text = Localization.GetString("SongTitle", this.LocalResourceFile) + " : ";
@@ -221,7 +221,7 @@ namespace Aarsys.ShoutcastStats
                                     bool showdj;
                                     if (!bool.TryParse(scs.SC_DJ.ToString() as string, out showdj))
                                     {
-                                        showdj = true;
+                                        showdj = scs.SC_DJ;
                                     }
                                     lbl_AIM.Visible = showdj;
                                     lbl_AIM.Text = Localization.GetString("YourDJ", this.LocalResourceFile) + " : " + s.AIM;
@@ -535,6 +535,18 @@ namespace Aarsys.ShoutcastStats
                 // Module failed to load
                 Exceptions.ProcessModuleLoadException(this, exc);
             }
+            //catch (ServerDownException ex)
+            //{
+            //   Response.Write(ex.Message);
+            //}
+            //catch (Exception exc)
+            //{
+            //     Module failed to load
+            //    string error = Localization.GetString("ConnectionFailed.error", this.LocalResourceFile);
+            //    Exceptions.ProcessModuleLoadException(error, this, exc, true); ;
+            //}
+
+
         }
         protected void SCS_TimerTick(object sender, EventArgs e)
         {
@@ -548,6 +560,7 @@ namespace Aarsys.ShoutcastStats
                         this.lbl_PeakListeners.Text = lbl_PeakListeners.Text;
                         this.lbl_Genre.Text = lbl_Genre.Text;
                         this.lbl_ContentType.Text = lbl_ContentType.Text;
+                        this.lbl_Status.Text = lbl_Status.Text;
                     }
                 }
             
