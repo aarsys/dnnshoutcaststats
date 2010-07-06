@@ -125,64 +125,68 @@ Das ShoutcastStats Modul zeigt Ihnen Daten aus dem Shoutcast Srver auf Ihrem Dot
   <data name="Bitrate.Text" xml:space="preserve">
     <value>Bitrate</value>
   </data>
-  <data name="ChatwithyourDJ.Text">
+  <data name="ChatwithyourDJ.Text" xml:space="preserve">
     <value>Chate mit dem DJ</value>
   </data>
-  <data name="ContentType.Text">
+  <data name="ContentType.Text" xml:space="preserve">
     <value>Codec Typ</value>
   </data>
-  <data name="CurrentListeners.Text">
+  <data name="CurrentListeners.Text" xml:space="preserve">
     <value>Aktuelle Hörer</value>
   </data>
-  <data name="Genre.Text">
+  <data name="Genre.Text" xml:space="preserve">
     <value>Musikrichtung</value>
   </data>
-  <data name="MaxListeners.Text">
+  <data name="MaxListeners.Text" xml:space="preserve">
     <value>Max. Hörer</value>
   </data>
-  <data name="Notrefreshedyet.Text">
+  <data name="Notrefreshedyet.Text" xml:space="preserve">
     <value>Nicht aktualisiert! </value>
   </data>
-  <data name="Offline.Text">
+  <data name="Offline.Text" xml:space="preserve">
     <value>Offline</value>
   </data>
-  <data name="PeakListeners.Text">
+  <data name="PeakListeners.Text" xml:space="preserve">
     <value>Höchstwert Hörer</value>
   </data>
-  <data name="SongTitle.Text">
+  <data name="SongTitle.Text" xml:space="preserve">
     <value>Aktuelles Lied</value>
   </data>
-  <data name="StartITunes.AlternateText">
+  <data name="StartITunes.AlternateText" xml:space="preserve">
     <value>ITunes</value>
   </data>
-  <data name="StartITunes.ToolTip">
+  <data name="StartITunes.ToolTip" xml:space="preserve">
     <value>Zum starten Ihres ITune Players hier klicken  - funktioniert nicht mit AAC Streams auf QuickTime wegen Player einschränkungen des Players!</value>
   </data>
-  <data name="StartMediaPlayer.ToolTip">
+  <data name="StartMediaPlayer.ToolTip" xml:space="preserve">
     <value>Hier klicken um Ihren MediaPlayer zu starten!</value>
   </data>
-  <data name="StartPlayer.Text">
+  <data name="StartPlayer.Text" xml:space="preserve">
     <value>Hier Player starten</value>
   </data>
-  <data name="StartPlayer.ToolTip">
+  <data name="StartPlayer.ToolTip" xml:space="preserve">
     <value>Starten Sie Ihren Player indem Sie eines der nachfolgenden Player Symbole anklicken ...</value>
   </data>
-  <data name="StartRealPlayer.AlternateText">
+  <data name="StartRealPlayer.AlternateText" xml:space="preserve">
     <value>RealPlayer</value>
   </data>
-  <data name="StartRealPlayer.ToolTip">
+  <data name="StartRealPlayer.ToolTip" xml:space="preserve">
     <value>Hier klicken um Ihren RealPlayer zu starten!</value>
   </data>
-  <data name="StartWinampPlayer.AlternateText">
+  <data name="StartWinampPlayer.AlternateText" xml:space="preserve">
     <value>Winamp</value>
   </data>
-  <data name="StartWinampPlayer.ToolTip">
+  <data name="StartWinampPlayer.ToolTip" xml:space="preserve">
     <value>Hier klicken um Ihren Winamp Player zu starten!</value>
   </data>
-  <data name="YourDJ.Text">
+  <data name="YourDJ.Text" xml:space="preserve">
     <value>Ihr DJ</value>
   </data>
-  <data name="StartMediaPlayer.AlternateText">
+  <data name="StartMediaPlayer.AlternateText" xml:space="preserve">
     <value>MediaPlayer</value>
+  </data>
+  <data name="ConnectionFailed.error" xml:space="preserve">
+    <value>Keine Verbindung zum Shoutcast Server.  Es wurde keine Antwort vom Server empfangen.
+Bitte prüfen Sie ob der Server online ist, die Verbindungseinstellungen in den Moduleinstellungen richtig sind, und/oder die Internetverbindung fehlerhaft ist.</value>
   </data>
 </root>

@@ -138,25 +138,29 @@
   <data name="lblSCS_Port.Text" xml:space="preserve">
     <value>Port</value>
   </data>
-  <data name="lblSC_LastPlayed.Help">
+  <data name="lblSC_LastPlayed.Help" xml:space="preserve">
     <value>Aktiviert die Liste der zuletzt gespielten Titel.</value>
   </data>
-  <data name="lblSC_LastPlayed.Text">
+  <data name="lblSC_LastPlayed.Text" xml:space="preserve">
     <value>Liste zuletzt gespielte Titel</value>
   </data>
-  <data name="lblSC_ListenerList.Help">
+  <data name="lblSC_ListenerList.Help" xml:space="preserve">
     <value>aktiviert die Hörerliste mit detailierten Informationen und IP.</value>
   </data>
-  <data name="lblSC_ListenerList.Text">
+  <data name="lblSC_ListenerList.Text" xml:space="preserve">
     <value>Hörer Liste</value>
   </data>
-  <data name="lblSC_XMLFileCount.Help">
+  <data name="lblSC_XMLFileCount.Help" xml:space="preserve">
     <value>Aktiviert die Anzeige wie oft die XML Datei abgerufen wurde.</value>
   </data>
-  <data name="lblSC_XMLFileCount.Text">
+  <data name="lblSC_XMLFileCount.Text" xml:space="preserve">
     <value>XML Datei Aufrufzählung</value>
   </data>
-  <data name="SCS_FeatureSettings.Text">
+  <data name="SCS_FeatureSettings.Text" xml:space="preserve">
     <value>Funtionseinstellungen - Wählen Sie die Funtionen aus, die Sie Ihren Besuchern zur Verfügung stellen möchten.</value>
+  </data>
+  <data name="ConnectionFailed.error" xml:space="preserve">
+    <value>Keine Verbindung zum Shoutcast Server.  Es wurde keine Antwort vom Server empfangen.
+Bitte prüfen Sie ob der Server online ist, die Verbindungseinstellunegn in den Moduleinstellungen richtig sind, und/oder die Internetverbindung fehlerhaft ist.</value>
   </data>
 </root>

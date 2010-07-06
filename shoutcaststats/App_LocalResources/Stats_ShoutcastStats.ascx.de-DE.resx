@@ -160,10 +160,14 @@ Das ShoutcastStats Modul für DNN zeigt Ihnen Informationen und Links zu Ihrem S
   <data name="times.Text" xml:space="preserve">
     <value>mal angezeigt</value>
   </data>
-  <data name="Underruns so far and is connected for.Text">
+  <data name="Underruns so far and is connected for.Text" xml:space="preserve">
     <value>Durchläufe bis lang, und ist verbunden seit</value>
   </data>
-  <data name="Xml Config file has been viewed.Text">
+  <data name="Xml Config file has been viewed.Text" xml:space="preserve">
     <value>Xml Config Datei wurde  </value>
+  </data>
+  <data name="ConnectionFailed.error" xml:space="preserve">
+    <value>Keine Verbindung zum Shoutcast Server.  Es wurde keine Antwort vom Server empfangen.
+Bitte prüfen Sie ob der Server online ist, die Verbindungseinstellungen in den Moduleinstellungen richtig sind, und/oder die Internetverbindung fehlerhaft ist.</value>
   </data>
 </root>

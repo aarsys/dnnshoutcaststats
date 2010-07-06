@@ -183,4 +183,8 @@
   <data name="StartMediaPlayer.AlternateText" xml:space="preserve">
     <value>MediaPlayer</value>
   </data>
+  <data name="ConnectionFailed.error" xml:space="preserve">
+    <value>Connection with Shoutcast Server failed. No Response received.  
+Please check if server is online, stream url is correct on module settings and/or Internet connection is available.</value>
+  </data>
 </root>

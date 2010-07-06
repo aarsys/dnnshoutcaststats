@@ -240,6 +240,276 @@
             Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
             </remarks>
         </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.lblSC_Features">
+            <summary>
+            lblSC_Features-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.lblSC_Station">
+            <summary>
+            lblSC_Station-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.SC_StationBox">
+            <summary>
+            SC_StationBox-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.lblSC_CurrentListeners">
+            <summary>
+            lblSC_CurrentListeners-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.SC_CurrentListenersBox">
+            <summary>
+            SC_CurrentListenersBox-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.lblSC_PeakListeners">
+            <summary>
+            lblSC_PeakListeners-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.SC_PeakListenersBox">
+            <summary>
+            SC_PeakListenersBox-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.lblSC_MaxListeners">
+            <summary>
+            lblSC_MaxListeners-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.SC_MaxListenersBox">
+            <summary>
+            SC_MaxListenersBox-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.lblSC_genre">
+            <summary>
+            lblSC_genre-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.SC_genreBox">
+            <summary>
+            SC_genreBox-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.lblSC_Song">
+            <summary>
+            lblSC_Song-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.SC_SongBox">
+            <summary>
+            SC_SongBox-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.lblSC_DJ">
+            <summary>
+            lblSC_DJ-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.SC_DJBox">
+            <summary>
+            SC_DJBox-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.lblSC_Bitrate">
+            <summary>
+            lblSC_Bitrate-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.SC_BitrateBox">
+            <summary>
+            SC_BitrateBox-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.lblSC_Content">
+            <summary>
+            lblSC_Content-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.SC_ContentBox">
+            <summary>
+            SC_ContentBox-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.lblPlayer">
+            <summary>
+            lblPlayer-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.lblPlayerText">
+            <summary>
+            lblPlayerText-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.SC_PlayerBox">
+            <summary>
+            SC_PlayerBox-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.lblWinamp">
+            <summary>
+            lblWinamp-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.SC_WinampBox">
+            <summary>
+            SC_WinampBox-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.lblMediaPlayer">
+            <summary>
+            lblMediaPlayer-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.SC_MediaPlayerBox">
+            <summary>
+            SC_MediaPlayerBox-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.lblRealPlayer">
+            <summary>
+            lblRealPlayer-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.SC_RealPlayerBox">
+            <summary>
+            SC_RealPlayerBox-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.lbliTunes">
+            <summary>
+            lbliTunes-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.Settings.SC_iTunesBox">
+            <summary>
+            SC_iTunesBox-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
         <member name="M:Aarsys.ShoutcastStats.Settings.LoadSettings">
             ----------------------------------------------------------------------------- 
             <summary> 
@@ -263,10 +533,32 @@
             </history> 
             ----------------------------------------------------------------------------- 
         </member>
+        <member name="M:Aarsys.ShoutcastStats.ShoutCastSettings.StatsLoadSettings(DotNetNuke.Entities.Modules.PortalModuleBase)">
+            ----------------------------------------------------------------------------- 
+            <summary> 
+            StatsLoadSettings loads the settings from the Database and displays them 
+            </summary> 
+            <remarks> 
+            </remarks> 
+            <history> 
+            </history> 
+            ----------------------------------------------------------------------------- 
+        </member>
         <member name="M:Aarsys.ShoutcastStats.ShoutCastSettings.LoadSettings(DotNetNuke.Entities.Modules.PortalModuleBase)">
             ----------------------------------------------------------------------------- 
             <summary> 
             LoadSettings loads the settings from the Database and displays them 
+            </summary> 
+            <remarks> 
+            </remarks> 
+            <history> 
+            </history> 
+            ----------------------------------------------------------------------------- 
+        </member>
+        <member name="M:Aarsys.ShoutcastStats.ShoutCastSettings.StatsUpdateSettings(DotNetNuke.Entities.Modules.PortalModuleBase)">
+            ----------------------------------------------------------------------------- 
+            <summary> 
+            StatsUpdateSettings saves the modified settings to the Database 
             </summary> 
             <remarks> 
             </remarks> 
@@ -418,11 +710,6 @@
         <member name="T:Aarsys.ShoutcastStats.Components.Song">
             <summary>
             Represents a node from the PLAYEDAT node collection of the shoucast xml
-            </summary>
-        </member>
-        <member name="T:Aarsys.ShoutcastStats.Player">
-            <summary>
-            Download Handler for the MediaPlayer file
             </summary>
         </member>
         <member name="T:Aarsys.ShoutcastStats.View_ShoutcastStats">
@@ -649,6 +936,141 @@
             Page_Load runs when the control is loaded 
             </summary> 
             ----------------------------------------------------------------------------- 
+        </member>
+        <member name="T:Aarsys.ShoutcastStats.StatsSettings">
+            ----------------------------------------------------------------------------- 
+            <summary> 
+            The Settings class manages Module Settings 
+            </summary> 
+            <remarks> 
+            </remarks> 
+            <history> 
+            </history> 
+            ----------------------------------------------------------------------------- 
+        </member>
+        <member name="M:Aarsys.ShoutcastStats.StatsSettings.LoadSettings">
+            ----------------------------------------------------------------------------- 
+            <summary> 
+            StatsLoadSettings loads the settings from the Database and displays them 
+            </summary> 
+            ----------------------------------------------------------------------------- 
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.StatsSettings.lblSCS_IP">
+            <summary>
+            lblSCS_IP-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.StatsSettings.txtSCS_IP">
+            <summary>
+            txtSCS_IP-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.StatsSettings.lblSCS_Port">
+            <summary>
+            lblSCS_Port-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.StatsSettings.txtSCS_Port">
+            <summary>
+            txtSCS_Port-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.StatsSettings.lblSCS_Password">
+            <summary>
+            lblSCS_Password-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.StatsSettings.txtSCS_Password">
+            <summary>
+            txtSCS_Password-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.StatsSettings.SCS_FeatureSettings">
+            <summary>
+            SCS_FeatureSettings-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.StatsSettings.lblSC_XMLFileCount">
+            <summary>
+            lblSC_XMLFileCount-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.StatsSettings.SC_XMLFileCount">
+            <summary>
+            SC_XMLFileCount-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.StatsSettings.lblSC_ListenerList">
+            <summary>
+            lblSC_ListenerList-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.StatsSettings.SC_ListenerList">
+            <summary>
+            SC_ListenerList-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.StatsSettings.lblSC_LastPlayed">
+            <summary>
+            lblSC_LastPlayed-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
+        </member>
+        <member name="F:Aarsys.ShoutcastStats.StatsSettings.SC_LastPlayed">
+            <summary>
+            SC_LastPlayed-Steuerelement
+            </summary>
+            <remarks>
+            Automatisch generiertes Feld
+            Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+            </remarks>
         </member>
     </members>
 </doc>

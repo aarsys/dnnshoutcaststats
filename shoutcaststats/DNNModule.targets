@@ -32,7 +32,7 @@
 
     <Target Name="SetVersionInfo">
 		<!-- Obtain Version information from version.txt -->
-		<Version BuildType="Automatic" RevisionType="None" VersionFile="version.txt" StartDate="4/1/2009">
+		<Version BuildType="Automatic" RevisionType="None" VersionFile="version.txt" StartDate="6/7/2010">
 			<Output TaskParameter="Major" PropertyName="Major" />
 			<Output TaskParameter="Minor" PropertyName="Minor" />
 			<Output TaskParameter="Build" PropertyName="Build" />
@@ -40,8 +40,8 @@
 		</Version>
 
         <!-- Write new version to assemblyinfo.cs -->
-        <FileUpdate Files="@(AssemblyInfoFiles)" Encoding="ASCII" Regex="AssemblyVersion\(&quot;.*&quot;\)" ReplacementText="AssemblyVersion(&quot;$(Major).$(Minor).$(Build).$(Revision)&quot;)" />
-        <FileUpdate Files="@(AssemblyInfoFiles)" Encoding="ASCII" Regex="AssemblyFileVersion\(&quot;.*&quot;\)" ReplacementText="AssemblyFileVersion(&quot;$(Major).$(Minor).$(Build).$(Revision)&quot;)" />
+        <FileUpdate Files="@(AssemblyInfoFiles)" Encoding="ASCII" Regex="AssemblyVersion\(&quot;.*&quot;\)" ReplacementText="AssemblyVersion(&quot;$(Major).$(Minor).$(Build)&quot;)" />
+        <FileUpdate Files="@(AssemblyInfoFiles)" Encoding="ASCII" Regex="AssemblyFileVersion\(&quot;.*&quot;\)" ReplacementText="AssemblyFileVersion(&quot;$(Major).$(Minor).$(Build)&quot;)" />
 
         <!-- DNN requires single digits to be prefixed with a zero -->
 		<CreateProperty Value="0$(Major)" Condition="$(Major) &lt;= 9" >
@@ -58,8 +58,8 @@
 		</CreateProperty>
 
 		<!-- Write new version to dnn file -->
-		<FileUpdate Files="@(dnnFile)" Regex="&lt;version&gt;.*&lt;/version&gt;" ReplacementText="&lt;version&gt;$(Major).$(Minor).$(Build)&lt;/version&gt;" />
-        <FileUpdate Files="@(dnnFile)" Regex="&quot;Module&quot; version=&quot;.*&quot;" ReplacementText="&quot;Module&quot; version=&quot;$(Major).$(Minor).$(Build)&quot;" />
+		<FileUpdate Files="@(dnnFile)" Regex="&lt;version&gt;.*&lt;/version&gt;" ReplacementText="&lt;version&gt;$(Major).$(Minor).$(Build).$(Revision)&lt;/version&gt;" />
+        <FileUpdate Files="@(dnnFile)" Regex="&quot;Module&quot; version=&quot;.*&quot;" ReplacementText="&quot;Module&quot; version=&quot;$(Major).$(Minor).$(Build).$(Revision)&quot;" />
 
     </Target>
 
@@ -87,7 +87,7 @@
             <Output TaskParameter="Include" ItemName="InstallZipFiles" />
         </CreateItem>
         <!-- Zip installation files -->
-        <Zip Files="@(InstallZipFiles)" WorkingDirectory="$(MSBuildProjectDirectory)\" ZipFileName="$(DeployDir)\$(CompanyName).$(ModuleName).install.v$(Major).$(Minor).$(Build).$(Revision).zip" />
+        <Zip Files="@(InstallZipFiles)" WorkingDirectory="$(MSBuildProjectDirectory)\" ZipFileName="$(DeployDir)\$(CompanyName).$(ModuleName).install.v$(Major).$(Minor).$(Build).zip" />
 
         <!-- Create exclude file list -->
 		<CreateItem Include="$(RootDir)\$(ModuleName)\**\.svn\**;
@@ -113,7 +113,7 @@
 
         <!-- Reset DNN Dir for distribution code -->
         <FileUpdate Files="@(deployTargetFile)" Regex="&lt;DotNetNukeDir&gt;.*&lt;/DotNetNukeDir&gt;" ReplacementText="&lt;DotNetNukeDir&gt;&lt;/DotNetNukeDir&gt;"  />
-        <Zip Files="@(SourceZipFiles)" WorkingDirectory="$(MSBuildProjectDirectory)\" ZipFileName="$(DeployDir)\$(CompanyName).$(ModuleName).source.v$(Major).$(Minor).$(Build).$(Revision).zip"  />
+        <Zip Files="@(SourceZipFiles)" WorkingDirectory="$(MSBuildProjectDirectory)\" ZipFileName="$(DeployDir)\$(CompanyName).$(ModuleName).source.v$(Major).$(Minor).$(Build).zip"  />
         <!-- Reset DNN Dir to its original value -->
         <FileUpdate Files="@(deployTargetFile)" Regex="&lt;DotNetNukeDir&gt;.*&lt;/DotNetNukeDir&gt;" ReplacementText="&lt;DotNetNukeDir&gt;$(DotNetNukeDir)&lt;/DotNetNukeDir&gt;" />
 
@@ -122,7 +122,7 @@
     </Target>
     <Target Name="CopyFilesToDotNetNuke">
         <!-- Obtain reference to installation files -->
-        <CreateItem Include="$(DeployDir)\$(CompanyName).$(ModuleName).install.v$(Major).$(Minor).$(Build).$(Revision).zip">
+        <CreateItem Include="$(DeployDir)\$(CompanyName).$(ModuleName).install.v$(Major).$(Minor).$(Build).zip">
             <Output TaskParameter="Include" ItemName="InstallZip" />
         </CreateItem>
         <!-- Copy Files to DotNetNuke Installation -->

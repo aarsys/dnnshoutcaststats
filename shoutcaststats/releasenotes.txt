@@ -1,6 +1,6 @@
 ﻿<h1>Initial Release. Version 05.01.00</h1>
-<p> This reders the statistic informations from a shoutcast broadcasting server.  
+<p> This module renders the statistic informations from a shoutcast broadcasting server.  
 Additinal it could added Links to different messengers with direct opening a messenger window to chat with the current DJ.
 Also you could provide Links to open the Stream on different players of the client. This module inscludes 2 module definations, 
 whish you could set up with different permissions. </p>
-<p>All Features could be easy setup over the Se/p>
+<p>All Features could be easy setup over the Settings./p>

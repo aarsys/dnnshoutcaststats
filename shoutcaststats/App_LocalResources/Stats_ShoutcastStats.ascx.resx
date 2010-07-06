@@ -165,4 +165,8 @@
   <data name="Xml Config file has been viewed.Text" xml:space="preserve">
     <value>Xml Config file has been viewed </value>
   </data>
+  <data name="ConnectionFailed.error" xml:space="preserve">
+    <value>Connection with Shoutcast Server failed. No Response received.  
+Please check if server is online, stream url is correct on module settings and/or Internet connection is available.</value>
+  </data>
 </root>

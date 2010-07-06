@@ -52,10 +52,7 @@ namespace Aarsys.ShoutcastStats
     partial class View_ShoutcastStats : PortalModuleBase //, IActionable 
     {
 
-        //protected void Timer1_Tick(object sender, EventArgs e)
-        //{
-        //    lbl_refresh.Text = Localization.GetString("Not refreshed yet", this.LocalResourceFile);
-        //}
+        
         #region "Event Handlers"
 
         /// ----------------------------------------------------------------------------- 
@@ -358,14 +355,18 @@ namespace Aarsys.ShoutcastStats
                 }
             }
 
+            //catch (Exception exc)
+            //{
+            //    // Module failed to load
+            //    Exceptions.ProcessModuleLoadException(this, exc);
+            //}
 
-        //added catch Exception by order of VS
             catch (Exception exc)
             {
-                // Module failed to load
-                Exceptions.ProcessModuleLoadException(this, exc);
+                //Module failed to load
+                string error = Localization.GetString("ConnectionFailed.error", this.LocalResourceFile);
+                Exceptions.ProcessModuleLoadException(error, this, exc, true); ;
             }
-
         }
 
 
@@ -416,13 +417,14 @@ namespace Aarsys.ShoutcastStats
                     }
                   }
                 }
-        
+
 
             catch (Exception exc)
             {
                 // Module failed to load
                 Exceptions.ProcessModuleLoadException(this, exc);
             }
+            
         }
 
         protected void WinampButton_Click(object sender, EventArgs e)
@@ -535,16 +537,7 @@ namespace Aarsys.ShoutcastStats
                 // Module failed to load
                 Exceptions.ProcessModuleLoadException(this, exc);
             }
-            //catch (ServerDownException ex)
-            //{
-            //   Response.Write(ex.Message);
-            //}
-            //catch (Exception exc)
-            //{
-            //     Module failed to load
-            //    string error = Localization.GetString("ConnectionFailed.error", this.LocalResourceFile);
-            //    Exceptions.ProcessModuleLoadException(error, this, exc, true); ;
-            //}
+           
 
 
         }

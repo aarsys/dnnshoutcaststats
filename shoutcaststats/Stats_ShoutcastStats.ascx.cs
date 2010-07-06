@@ -132,10 +132,16 @@ namespace Aarsys.ShoutcastStats
 
             }
         }
+            //catch (Exception exc)
+            //{
+            //    // Module failed to load
+            //    Exceptions.ProcessModuleLoadException(this, exc);
+            //}
             catch (Exception exc)
             {
-                // Module failed to load
-                Exceptions.ProcessModuleLoadException(this, exc);
+                //Module failed to load
+                string error = Localization.GetString("ConnectionFailed.error", this.LocalResourceFile);
+                Exceptions.ProcessModuleLoadException(error, this, exc, true); ;
             }
 
         }

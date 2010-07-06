@@ -29,12 +29,17 @@ using System.Xml.Linq;
 using System.Web;
 using System.Collections.Generic;
 using DotNetNuke;
+using DotNetNuke.Common.Utilities;
+using DotNetNuke.Entities.Modules;
+using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Services.Localization;
 using System.Collections.ObjectModel;
 
 
 namespace Aarsys.ShoutcastStats.Components
 {
+
+
     /// <summary>
     /// Creates an instance of a shoutcast server and gives access to all the properties of the xml file
     /// </summary>
@@ -50,15 +55,17 @@ namespace Aarsys.ShoutcastStats.Components
         /// Example : http://localhost:8000/admin.cgi?mode=viewxml&#x26;pass=adminpass </param>
         /// Should be gennerated with the Modulesettings as SC_IP, SC_Port, SC_Password
 
-
+        
         protected string SharedResourceFile
         {
             get
             {
-                return base.ControlPath + Localization.LocalResourceDirectory + "/" + Localization.LocalSharedResourceFile;
+                //return this.ControlPath + "/" + Localization.LocalResourceDirectory + "/" + Localization.LocalSharedResourceFile;
+                return DotNetNuke.Services.Localization.Localization.ApplicationResourceDirectory + "/SharedResources.resx";
             }
         }
 
+   
         public ShoutcastServer(string ServerUrl)
         {
             try
@@ -70,7 +77,9 @@ namespace Aarsys.ShoutcastStats.Components
             }
             catch
             {
-                throw new ServerDownException (DotNetNuke.Services.Localization.Localization.GetString("ConnectionFailed", this.SharedResourceFile));
+                throw new ServerDownException("Connection Failed");
+                //throw new ServerDownException((DotNetNuke.Services.Localization.Localization.GetString("ConnectionFailed.Text", this.SharedResourceFile)));
+                
             }
         }
         private TextReader Get_XMLFile()
@@ -112,7 +121,8 @@ namespace Aarsys.ShoutcastStats.Components
             }
             catch (NullReferenceException)
             {
-                return "Undefined";
+                return "Undefiend";
+                //return (DotNetNuke.Services.Localization.Localization.GetString("Undefined.Text", this.SharedResourceFile));
             }
 
         }
