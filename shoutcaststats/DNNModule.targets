@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <!-- PLEASE NOTE THAT CHANGES TO THIS FILE WILL NOT TAKE AFFECT UNTIL YOU UNLOAD AND RELOAD YOUR PROJECT! -->
 	<PropertyGroup>
 		<!-- <CompanyName>Aarsys</CompanyName>
@@ -94,7 +94,7 @@
             <PackageName>$(PackageDirectory)\$(ProductName)_$(ModuleVersionNoRevision)_Install</PackageName>
         </PropertyGroup>
         <!-- Obtain reference to installation files -->
-        <CreateItem Include="bin\*.dll">
+        <CreateItem Include="bin\$(ProductName).dll">
             <Output TaskParameter="Include" ItemName="PackageAssemblies"/>
         </CreateItem>
         <CreateItem Include="*.txt" Exclude="*TestCases.txt">
