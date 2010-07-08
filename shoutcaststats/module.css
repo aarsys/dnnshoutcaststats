@@ -8,6 +8,10 @@
     width: 150px;
     
 }
+.Column
+{
+margin:0;
+}
 /* Format of the Labels */
 .scs_label
 {
@@ -51,3 +55,5 @@ scs_Chat
  color:Maroon;
  text-align:center;
 }
+
+

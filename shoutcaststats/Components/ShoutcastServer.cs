@@ -60,8 +60,8 @@ namespace Aarsys.ShoutcastStats.Components
         {
             get
             {
-                //return this.ControlPath + "/" + Localization.LocalResourceDirectory + "/" + Localization.LocalSharedResourceFile;
-                return DotNetNuke.Services.Localization.Localization.ApplicationResourceDirectory + "/SharedResources.resx";
+                return this.ControlPath + "/" + Localization.LocalResourceDirectory + "/" + Localization.LocalSharedResourceFile;
+                //return DotNetNuke.Services.Localization.Localization.ApplicationResourceDirectory + "/SharedResources.resx";
             }
         }
 
@@ -78,7 +78,7 @@ namespace Aarsys.ShoutcastStats.Components
             catch
             {
                 throw new ServerDownException("Connection Failed");
-                //throw new ServerDownException((DotNetNuke.Services.Localization.Localization.GetString("ConnectionFailed.Text", this.SharedResourceFile)));
+                //throw new ServerDownException(Localization.GetString("ConnectionFailed.error", this.SharedResourceFile));
                 
             }
         }

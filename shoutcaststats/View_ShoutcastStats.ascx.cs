@@ -211,7 +211,7 @@ namespace Aarsys.ShoutcastStats
                                 lbl_SongTitle.Visible = showsong;
                                 lbl_SongTitle.Text = Localization.GetString("SongTitle", this.LocalResourceFile) + " : ";
                                 lbl_ScsSong.Visible = showsong;
-                                lbl_ScsSong.Text = "<marquee class=\"scs_marquee\">" + s.SongTitle + "</marquee>";
+                                lbl_ScsSong.Text = "<marquee class=\"scs_marquee\">" + s.SongTitle + "</marquee>" + "<br />";
                                 // Shows the DJ name //
                                 if ((string)scs.SC_DJ.ToString() != string.Empty)
                                 {
@@ -221,7 +221,7 @@ namespace Aarsys.ShoutcastStats
                                         showdj = scs.SC_DJ;
                                     }
                                     lbl_AIM.Visible = showdj;
-                                    lbl_AIM.Text = Localization.GetString("YourDJ", this.LocalResourceFile) + " : " + s.AIM;
+                                    lbl_AIM.Text = Localization.GetString("YourDJ", this.LocalResourceFile) + " : " + s.AIM + "<br />";
                                 }
                                 // Adding Messenger URLs could be enabled/disabled from the ModuleSettings // 
                                 if ((string)scs.SC_AIM.ToString() != string.Empty)

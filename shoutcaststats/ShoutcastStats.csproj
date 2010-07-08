@@ -38,9 +38,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DotNetNuke">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\bin\dotnetnuke.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\..\bin\DotNetNuke.dll</HintPath>
     </Reference>
     <Reference Include="DotNetNuke.WebControls, Version=2.2.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -128,9 +126,16 @@
     <None Include="DNNModule.targets">
       <SubType>Designer</SubType>
     </None>
-    <None Include="ShoutcastStats.dnn">
+    <None Include="Aarsys.ShoutcastStats.dnn">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="web.config" />
+    <Content Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </Content>
+    <Content Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\itunes.gif" />
@@ -174,7 +179,12 @@
     <Content Include="App_LocalResources\View_ShoutcastStats.ascx.de-DE.resx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_LocalResources\SharedResource.resx" />
+    <Content Include="App_LocalResources\SharedResources.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Aarsys.ShoutcastStats_Install.dnn.resources" />
+    <EmbeddedResource Include="Aarsys.ShoutcastStats_Source.dnn.resources" />
+    <Content Include="App_LocalResources\SharedResources.de-DE.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -195,8 +205,6 @@
           <DevelopmentServerPort>62596</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://dev5/DesktopModules/AarSys/ShoutcastStats</IISUrl>
-          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://dev5/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
