@@ -167,6 +167,45 @@
                         <file>
                             <name>View_ShoutcastStats.ascx.designer.cs</name>
                         </file>
+                        <file>
+                            <name>Aarsys.ShoutcastStats_Install.dnn.resources</name>
+                        </file>
+                        <file>
+                            <name>Aarsys.ShoutcastStats_Source.denn.resources</name>
+                        </file>
+                        <file>
+                            <name>DNNModule.targets</name>
+                        </file>
+                        <file>
+                            <name>ShoutcastStats.csproj</name>
+                        </file>
+                        <file>
+                            <name>ShoutcastStats.sln</name>
+                        </file>
+                        <file>
+                            <path>lib\MSBuild</path>
+                            <name>ICSharpCode.SharpZipLib.DLL</name>
+                        </file>
+                        <file>
+                            <path>lib\MSBuild</path>
+                            <name>MSBuild.Community.Tasks.dll</name>
+                        </file>
+                        <file>
+                            <path>lib\MSBuild</path>
+                            <name>MSBuild.Community.Tasks.Targets</name>
+                        </file>
+                        <file>
+                            <path>lib\MSBuild</path>
+                            <name>MSBuild.Community.Tasks.XML</name>
+                        </file>
+                        <file>
+                            <path>lib\MSBuild</path>
+                            <name>MSBuild.Community.Tasks.xsd</name>
+                        </file>
+                        <file>
+                            <path>lib\MSBuild</path>
+                            <name>MSBuild.CommunityTasks.License.txt</name>
+                        </file>
                     </files>
                 </component>
             </components>
@@ -260,6 +299,7 @@
                         <file>
                             <name>StatsSettings.ascx.designer.cs</name>
                         </file>
+
                     </files>
                 </component>
             </components>
