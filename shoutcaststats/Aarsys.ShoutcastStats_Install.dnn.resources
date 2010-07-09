@@ -19,11 +19,11 @@
                         <basePath>DesktopModules\Products</basePath>
                         <!--<script type="Install">
                           <name>05.00.00.SqlDataProvider</name>
-                          <version>05.01.00.23</version>
+                          <version>05.01.00.25</version>
                       </script>
                       <script type="UnInstall">
                           <name>Uninstall.SqlDataProvider</name>
-                          <version>05.01.00.23</version>
+                          <version>05.01.00.25</version>
                       </script>-->
                     </scripts>
                 </component>
