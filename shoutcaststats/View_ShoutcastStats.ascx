@@ -39,6 +39,10 @@
         <tr>
         <td class="Column">
         <asp:Label id="lbl_AIM" cssclass="scs_label" runat="server"></asp:Label>
+        </td>
+        </tr>
+        <tr>
+        <td>
             <asp:HyperLink id="lkl_AIM" cssclass="scs_Chat" runat="server"></asp:HyperLink>
          
             <asp:HyperLink id="lkl_AOL" cssclass="scs_Chat" runat="server"></asp:HyperLink>

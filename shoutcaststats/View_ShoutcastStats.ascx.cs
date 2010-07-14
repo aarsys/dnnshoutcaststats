@@ -221,7 +221,7 @@ namespace Aarsys.ShoutcastStats
                                         showdj = scs.SC_DJ;
                                     }
                                     lbl_AIM.Visible = showdj;
-                                    lbl_AIM.Text = Localization.GetString("YourDJ", this.LocalResourceFile) + " : " + s.AIM + "<br />";
+                                    lbl_AIM.Text = Localization.GetString("YourDJ", this.LocalResourceFile) + " : " + s.AIM;
                                 }
                                 // Adding Messenger URLs could be enabled/disabled from the ModuleSettings // 
                                 if ((string)scs.SC_AIM.ToString() != string.Empty)
