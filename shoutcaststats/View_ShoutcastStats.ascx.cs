@@ -62,6 +62,7 @@ namespace Aarsys.ShoutcastStats
         /// ----------------------------------------------------------------------------- 
         protected void Page_Load(object sender, System.EventArgs e)
         {
+            var portalSecurity = new PortalSecurity();
             try
             {
                 using (ShoutCastSettings scs = new ShoutCastSettings())
@@ -117,235 +118,161 @@ namespace Aarsys.ShoutcastStats
                         {
                             lbl_Status.Visible = false;
                             // Displays the text of the Station Name //
-                            if (s.ServerTitle == "N/A")
+                            if (portalSecurity.InputFilter(s.ServerTitle, PortalSecurity.FilterFlag.NoMarkup) == "N/A")
                                 lbl_Station.Visible = false;
                             else
                             {
-                                if ((string)scs.SC_Station.ToString() != string.Empty)
+
+                                if (scs.SC_Station)
                                 {
-                                    bool showStation;
-                                    if (!bool.TryParse(scs.SC_Station.ToString() as string, out showStation))
-                                    {
-                                        showStation = scs.SC_Station;
-                                    }
-                                    lbl_Station.Visible = showStation;
-                                    lbl_Station.Text = s.ServerTitle;
+                                    lbl_Station.Visible = true;
+                                    lbl_Station.Text = portalSecurity.InputFilter(s.ServerTitle, PortalSecurity.FilterFlag.NoMarkup);
                                 }
                             }
-                            // Displaying the Peak of the Listeners //
-                            if ((string)scs.SC_PeakListeners.ToString() != string.Empty)
+                            //Displaying the Peak of the Listeners
+                            if (scs.SC_PeakListeners)
                             {
-                                bool showPeakListeners;
-                                if (!bool.TryParse(scs.SC_PeakListeners.ToString() as string, out showPeakListeners))
-                                {
-                                    showPeakListeners = scs.SC_PeakListeners;
-                                }
-                                lbl_PeakListeners.Visible = showPeakListeners;
-                                lbl_PeakListeners.Text = Localization.GetString("PeakListeners", this.LocalResourceFile) + " : " + s.PeakListeners;
+                                lbl_PeakListeners.Visible = true;
+                                lbl_PeakListeners.Text = Localization.GetString("PeakListeners", this.LocalResourceFile) + " : " + portalSecurity.InputFilter((s.PeakListeners.ToString()),PortalSecurity.FilterFlag.NoMarkup);
                             }
 
                             // Displaying the current Listeners //
-                            if ((string)scs.SC_CurrentListeners.ToString() != string.Empty)
+                            // if ((string)scs.SC_CurrentListeners.ToString() != string.Empty)
+                            //{
+                            //bool showCurrentListeners;
+                            //if (!bool.TryParse(scs.SC_CurrentListeners.ToString() as string, out showCurrentListeners))
+                            //{
+                            //    showCurrentListeners = scs.SC_CurrentListeners;
+                            if (scs.SC_CurrentListeners)
                             {
-                                bool showCurrentListeners;
-                                if (!bool.TryParse(scs.SC_CurrentListeners.ToString() as string, out showCurrentListeners))
-                                {
-                                    showCurrentListeners = scs.SC_CurrentListeners;
-                                }
-                                lbl_CurrentListeners.Visible = showCurrentListeners;
-                                lbl_CurrentListeners.Text = Localization.GetString("CurrentListeners", this.LocalResourceFile) + " : " + s.CurrentListeners.ToString();
+                                lbl_CurrentListeners.Visible = true;   //showCurrentListeners;
+                                lbl_CurrentListeners.Text = Localization.GetString("CurrentListeners", this.LocalResourceFile) + " : " + portalSecurity.InputFilter(s.CurrentListeners.ToString(), PortalSecurity.FilterFlag.NoMarkup);
                             }
                             // Displays the current Bitrate of the Stream //
-                            if ((string)scs.SC_Bitrate.ToString() != string.Empty)
+                            if (scs.SC_Bitrate)
                             {
-                                bool showBitrate;
-                                if (!bool.TryParse(scs.SC_Bitrate.ToString() as string, out showBitrate))
-                                {
-                                    showBitrate = scs.SC_Bitrate;
-                                }
-                                lbl_Bitrate.Visible = showBitrate;
-                                lbl_Bitrate.Text = Localization.GetString("Bitrate", this.LocalResourceFile) + " : " + s.Bitrate + "Kbps";
+                                
+                                lbl_Bitrate.Visible = true;  //showBitrate;
+                                lbl_Bitrate.Text = Localization.GetString("Bitrate", this.LocalResourceFile) + " : " + portalSecurity.InputFilter(s.Bitrate.ToString(), PortalSecurity.FilterFlag.NoMarkup) + "Kbps";
                             }
                             // Displays the max. listeners of the Stream //
-                            if ((string)scs.SC_MaxListeners.ToString() != string.Empty)
+                            if (scs.SC_MaxListeners)
                             {
-                                bool showMaxListeners;
-                                if (!bool.TryParse(scs.SC_MaxListeners.ToString() as string, out showMaxListeners))
-                                {
-                                    showMaxListeners = scs.SC_MaxListeners;
-                                }
-                                lbl_MaxListeners.Visible = showMaxListeners;
-                                lbl_MaxListeners.Text = Localization.GetString("MaxListeners", this.LocalResourceFile) + " : " + s.MaxListeners.ToString();
+                                lbl_MaxListeners.Visible = true; // showMaxListeners;
+                                lbl_MaxListeners.Text = Localization.GetString("MaxListeners", this.LocalResourceFile) + " : " + portalSecurity.InputFilter(s.MaxListeners.ToString(), PortalSecurity.FilterFlag.NoMarkup);
                             }
                             // Displays the genre //
-                            if ((string)scs.SC_genre.ToString() != string.Empty)
+                            if (scs.SC_genre)
                             {
-                                bool showgenre;
-                                if (!bool.TryParse(scs.SC_genre.ToString() as string, out showgenre))
-                                {
-                                    showgenre = scs.SC_genre;
-                                }
-                                lbl_Genre.Visible = showgenre;
-
-                                lbl_Genre.Text = Localization.GetString("Genre", this.LocalResourceFile) + " : " + s.ServerGenre;
+                                lbl_Genre.Visible = true; //  showgenre;
+                                lbl_Genre.Text = Localization.GetString("Genre", this.LocalResourceFile) + " : " + portalSecurity.InputFilter(s.ServerGenre, PortalSecurity.FilterFlag.NoMarkup);
                             }
                             //Displays the ContentType //
-                            if ((string)scs.SC_Content.ToString() != string.Empty)
+                            if (scs.SC_Content)
                             {
-                                bool showContenttype;
-                                if (!bool.TryParse(scs.SC_Content.ToString() as string, out showContenttype))
-                                {
-                                    showContenttype = scs.SC_Content;
-                                }
-                                lbl_ContentType.Visible = showContenttype;
-                                lbl_ContentType.Text = Localization.GetString("ContentType", this.LocalResourceFile) + " : " + s.Content;
+                               lbl_ContentType.Visible = true;  // showContenttype;
+                               lbl_ContentType.Text = Localization.GetString("ContentType", this.LocalResourceFile) + " : " + portalSecurity.InputFilter(s.Content, PortalSecurity.FilterFlag.NoMarkup);
                             }
-                            //Displays the current played song in a marquee //
-                            if ((string)scs.SC_Song.ToString() != string.Empty)
+                            if (scs.SC_Song)
                             {
-                                bool showsong;
-                                if (!bool.TryParse(scs.SC_Song.ToString() as string, out showsong))
-                                {
-                                    showsong = scs.SC_Song;
-                                }
-                                lbl_SongTitle.Visible = showsong;
-                                lbl_SongTitle.Text = Localization.GetString("SongTitle", this.LocalResourceFile) + " : ";
-                                lbl_ScsSong.Visible = showsong;
-                                lbl_ScsSong.Text = "<marquee class=\"scs_marquee\">" + s.SongTitle + "</marquee>" + "<br />";
+                               lbl_SongTitle.Visible = true;  //showsong;
+                               lbl_SongTitle.Text = Localization.GetString("SongTitle", this.LocalResourceFile) + " : ";
+                                lbl_ScsSong.Visible = true; // showsong;
+                                lbl_ScsSong.Text = "<marquee class=\"scs_marquee\">" + portalSecurity.InputFilter(s.SongTitle, PortalSecurity.FilterFlag.NoMarkup) + "</marquee>";
                                 // Shows the DJ name //
-                                if ((string)scs.SC_DJ.ToString() != string.Empty)
+                                if (scs.SC_DJ)
                                 {
-                                    bool showdj;
-                                    if (!bool.TryParse(scs.SC_DJ.ToString() as string, out showdj))
-                                    {
-                                        showdj = scs.SC_DJ;
-                                    }
-                                    lbl_AIM.Visible = showdj;
-                                    lbl_AIM.Text = Localization.GetString("YourDJ", this.LocalResourceFile) + " : " + s.AIM;
+                                    lbl_AIM.Visible = true; // showdj;
+                                    lbl_AIM.Text = Localization.GetString("YourDJ", this.LocalResourceFile) + " : " + portalSecurity.InputFilter(s.AIM, PortalSecurity.FilterFlag.NoMarkup);
                                 }
-                                // Adding Messenger URLs could be enabled/disabled from the ModuleSettings // 
-                                if ((string)scs.SC_AIM.ToString() != string.Empty)
+                                // Adding Messenger URLs could be enabled/disabled from the ModuleSettings //
+                                // for AIM
+                                if (scs.SC_AIM)
                                 {
-                                    bool showAIM;
-                                    if (!bool.TryParse(scs.SC_AIM.ToString() as string, out showAIM))
-                                    {
-                                        showAIM = true;
-                                    }
-                                    lkl_AIM.Visible = showAIM;
-                                    lkl_AIM.NavigateUrl = "aim:goim?screenname=" + s.AIM;
+                                    lkl_AIM.Visible = true; // showAIM;
+                                    lkl_AIM.NavigateUrl = Server.HtmlEncode("aim:goim?screenname=" + portalSecurity.InputFilter(s.AIM, PortalSecurity.FilterFlag.NoMarkup));
                                     lkl_AIM.ToolTip = Localization.GetString("ChatwithyourDJ", this.LocalResourceFile);
                                     lkl_AIM.ImageUrl = Request.ApplicationPath + "DesktopModules/Aarsys/ShoutcastStats/images/aim.jpg";
                                 }
-                                if ((string)scs.SC_AOL.ToString() != string.Empty)
+                                //for AOL
+                                if (scs.SC_AOL)
                                 {
-                                    bool showAOL;
-                                    if (!bool.TryParse(scs.SC_AOL.ToString() as string, out showAOL))
-                                    {
-                                        showAOL = true;
-                                    }
-                                    lkl_AOL.Visible = showAOL;
-                                    lkl_AOL.NavigateUrl = "aol://9293:" + s.AIM;
+                                    lkl_AOL.Visible = true;  // showAOL;
+                                    lkl_AOL.NavigateUrl = Server.HtmlEncode("aol://9293:" + portalSecurity.InputFilter(s.AIM, PortalSecurity.FilterFlag.NoMarkup));
                                     lkl_AOL.ToolTip = Localization.GetString("ChatwithyourDJ", this.LocalResourceFile);
                                     lkl_AOL.ImageUrl = Request.ApplicationPath + "DesktopModules/Aarsys/ShoutcastStats/images/aol-logo.jpg";
                                 }
-                                if ((string)scs.SC_ICQ.ToString() != string.Empty)
+                                //for ICQ
+                                if (scs.SC_ICQ)
                                 {
-                                    bool showICQ;
-                                    if (!bool.TryParse(scs.SC_ICQ.ToString() as string, out showICQ))
-                                    {
-                                        showICQ = true;
-                                    }
-
-                                    lkl_ICQ.Visible = scs.SC_ICQ;
-                                    lkl_ICQ.NavigateUrl = "http://wwp.icq.com/scripts/contact.dll?msgto=" + s.ICQ;
+                                    lkl_ICQ.Visible = true;
+                                    lkl_ICQ.NavigateUrl = Server.HtmlEncode("http://wwp.icq.com/scripts/contact.dll?msgto=" + portalSecurity.InputFilter(s.ICQ, PortalSecurity.FilterFlag.NoMarkup));
                                     lkl_ICQ.ToolTip = Localization.GetString("ChatwithyourDJ", this.LocalResourceFile);
                                     lkl_ICQ.ImageUrl = Request.ApplicationPath + "DesktopModules/Aarsys/ShoutcastStats/images/icq-logo.jpg";
 
                                 }
-                                if ((string)scs.SC_MSN.ToString() != string.Empty)
+                                //for Live / MSN using the Shoutcast ICQ value
+                                if (scs.SC_MSN)
                                 {
-                                    bool showMSN;
-                                    if (!bool.TryParse(scs.SC_MSN.ToString() as string, out showMSN))
-                                    {
-                                        showMSN = true;
-                                    }
-                                    lkl_MSN.Visible = showMSN;
-                                    lkl_MSN.NavigateUrl = "msnim:chat?contact=" + s.ICQ;
+                                    lkl_MSN.Visible = true;
+                                    lkl_MSN.NavigateUrl = Server.HtmlEncode("msnim:chat?contact=" + portalSecurity.InputFilter(s.ICQ, PortalSecurity.FilterFlag.NoMarkup));
                                     lkl_MSN.ToolTip = Localization.GetString("ChatwithyourDJ", this.LocalResourceFile);
                                     lkl_MSN.ImageUrl = Request.ApplicationPath + "DesktopModules/Aarsys/ShoutcastStats/images/live-logo.jpg";
                                 }
-                                if ((string)scs.SC_Yahoo.ToString() != string.Empty)
+                                //for Yahoo using the ICQ value
+                                if (scs.SC_Yahoo)
                                 {
-                                    bool showYahoo;
-                                    if (!bool.TryParse(scs.SC_Yahoo.ToString() as string, out showYahoo))
-                                    {
-                                        showYahoo = true;
-                                    }
-                                    lkl_Yahoo.Visible = showYahoo;
-                                    lkl_Yahoo.NavigateUrl = "ymsgr:sendim?" + s.ICQ;
+                                    lkl_Yahoo.Visible = true;
+                                    lkl_Yahoo.NavigateUrl = Server.HtmlEncode("ymsgr:sendim?" + portalSecurity.InputFilter(s.ICQ, PortalSecurity.FilterFlag.NoMarkup));
                                     lkl_Yahoo.ToolTip = Localization.GetString("ChatwithyourDJ", this.LocalResourceFile);
                                     lkl_Yahoo.ImageUrl = Request.ApplicationPath + "DesktopModules/Aarsys/ShoutcastStats/images/yahoo-logo.jpg";
                                 }
 
+
                                 // Adding Attributes to the Start Player ImageButtons  //
-                                if ((string)scs.SC_Player.ToString() != string.Empty)
+                                //Adding text label "Start Player here"
+                                if (scs.SC_Player)
                                 {
-                                    bool showPlayer;
-                                    if (!bool.TryParse(scs.SC_Player.ToString() as string, out showPlayer))
-                                    {
-                                        showPlayer = true;
-                                    }
-                                    lblStartPlayer.Visible = showPlayer;
+                                    lblStartPlayer.Visible = true; // showPlayer;
                                     lblStartPlayer.Text = Localization.GetString("StartPlayer", this.LocalResourceFile);
                                     lblStartPlayer.ToolTip = Localization.GetString("StartPlayer", this.LocalResourceFile);
                                 }
-                                if ((string)scs.SC_Winamp.ToString() != string.Empty)
+                                //Adding ImageButton for Winamp
+                                if (scs.SC_Winamp)
                                 {
-                                    bool showwinamp;
-                                    if (!bool.TryParse(scs.SC_Winamp.ToString() as string, out showwinamp))
-                                    {
-                                        showwinamp = true;
-                                    }
-                                    WinampStart.Visible = showwinamp;
+                                    WinampStart.Visible = true;  // showwinamp;
                                     WinampStart.ImageUrl = Request.ApplicationPath + "DesktopModules/Aarsys/ShoutcastStats/images/winamp.gif";
                                     WinampStart.ToolTip = Localization.GetString("StartWinampPlayer.ToolTip", this.LocalResourceFile);
                                     WinampStart.AlternateText = Localization.GetString("StartWinampPlayer.AlternateText", this.LocalResourceFile);
+                                    WinampStart.Click += new ImageClickEventHandler(WinampButton_Click);
                                 }
-                                if ((string)scs.SC_MediaPlayer.ToString() != string.Empty)
+                                //Adding ImageButton for MediaPlayer 
+                                if (scs.SC_MediaPlayer)
                                 {
-                                    bool showMediaplayer;
-                                    if (!bool.TryParse(scs.SC_MediaPlayer.ToString() as string, out showMediaplayer))
-                                    {
-                                        showMediaplayer = true;
-                                    }
-                                    MediaPlayerStart.Visible = showMediaplayer;
+                                    MediaPlayerStart.Visible = true;  // showMediaplayer;
                                     MediaPlayerStart.ToolTip = Localization.GetString("StartMediaPlayer.ToolTip", this.LocalResourceFile);
                                     MediaPlayerStart.AlternateText = Localization.GetString("StartMediaPlayer.AlternateText", this.LocalResourceFile);
                                     MediaPlayerStart.ImageUrl = Request.ApplicationPath + "DesktopModules/Aarsys/ShoutcastStats/images/mplayer.gif";
+                                    MediaPlayerStart.Click += new ImageClickEventHandler(MediaButton_Click);
+                                    //MediaPlayerStart.OnClientClick += (MediaButton_Click);
                                 }
-                                if ((string)scs.SC_RealPlayer.ToString() != string.Empty)
+                                //Adding ImageButton for RealPlayer
+                                if (scs.SC_RealPlayer)
                                 {
-                                    bool showRealplayer;
-                                    if (!bool.TryParse(scs.SC_RealPlayer.ToString() as string, out showRealplayer))
-                                    {
-                                        showRealplayer = true;
-                                    }
-                                    RealPlayerStart.Visible = showRealplayer;
+                                    RealPlayerStart.Visible = true; // showRealplayer;
                                     RealPlayerStart.ToolTip = Localization.GetString("StartRealPlayer.ToolTip", this.LocalResourceFile);
                                     RealPlayerStart.AlternateText = Localization.GetString("StartRealPlayer.AlternateText", this.LocalResourceFile);
                                     RealPlayerStart.ImageUrl = Request.ApplicationPath + "DesktopModules/Aarsys/ShoutcastStats/images/realplayer.gif";
+                                    RealPlayerStart.Click += new ImageClickEventHandler(RealButton_Click);
                                 }
-                                if ((string)scs.SC_iTunes.ToString() != string.Empty)
+                                //Adding ImageButton for Itunes/Quicktime
+                                if (scs.SC_iTunes)
                                 {
-                                    bool showitunes;
-                                    if (!bool.TryParse(scs.SC_iTunes.ToString() as string, out showitunes))
-                                    {
-                                        showitunes = true;
-                                    }
-                                    ITunesStart.Visible = showitunes;
+                                    ITunesStart.Visible = true;  //showitunes;
                                     ITunesStart.ToolTip = Localization.GetString("StartITunes.ToolTip", this.LocalResourceFile);
                                     ITunesStart.AlternateText = Localization.GetString("StartITunes.AlternateText", this.LocalResourceFile);
                                     ITunesStart.ImageUrl = Request.ApplicationPath + "DesktopModules/Aarsys/ShoutcastStats/images/itunes.gif";
+                                    ITunesStart.Click += new ImageClickEventHandler(ITunesButton_Click);
                                 }
 
 
@@ -354,6 +281,8 @@ namespace Aarsys.ShoutcastStats
                     }
                 }
             }
+        
+
 
             //catch (Exception exc)
             //{
@@ -370,8 +299,8 @@ namespace Aarsys.ShoutcastStats
         }
 
 
-        // Start  different Players by creating a memory stream for the file and download it by the client as a hyperlink  //
-       
+        // Start  different Players by creating a memory stream for the file and download it by the client as a ImageButton  //
+        // Create Memorystream for MediaPlayer file
         protected void MediaButton_Click(object sender, EventArgs e)
         {
             try
@@ -381,31 +310,31 @@ namespace Aarsys.ShoutcastStats
                     // Loading the settings from ShoutcastStatsSettings Control //
                     scs.LoadSettings(this);
                     using (ShoutcastServer s =
-                        new ShoutcastServer("http://" + scs.SC_IP + ":" + scs.SC_Port + "/admin.cgi?mode=viewxml&pass=" + scs.SC_Password))
+                        new ShoutcastServer("http://" + (scs.SC_IP) + ":" + (scs.SC_Port) + "/admin.cgi?mode=viewxml&pass=" + (scs.SC_Password)))
                     {
-                        //ImageButton MediaPlayerStart = (ImageButton)sender;
+                        //Creating MemoryStream
                         MemoryStream MediaPlayer = new MemoryStream();
                         
                         StreamWriter tw = new StreamWriter(MediaPlayer);
                         tw.WriteLine("<ASX version=\"3.0\">");
-                        tw.WriteLine("<ABSTRACT>" + s.ServerUrl + "</ABSTRACT>");
-                        tw.WriteLine("<TITLE>" + s.ServerTitle + "</TITLE>");
-                        tw.WriteLine("<MOREINFO HREF=\"" + s.ServerUrl + "\"/>");
-                        tw.WriteLine("<ref href=\"http://" + scs.SC_IP + ":" + scs.SC_Port + "\"/>");
+                        tw.WriteLine("<ABSTRACT>" + Server.HtmlEncode(s.ServerUrl) + "</ABSTRACT>");
+                        tw.WriteLine("<TITLE>" + Server.HtmlEncode(s.ServerTitle) + "</TITLE>");
+                        tw.WriteLine("<MOREINFO HREF=\"" + Server.HtmlEncode(s.ServerUrl) + "\"/>");
+                        tw.WriteLine("<ref href=\"http://" + Server.HtmlEncode(scs.SC_IP) + ":" + Server.HtmlEncode(scs.SC_Port) + "\"/>");
                         tw.WriteLine("<ENTRY>");
-                        tw.WriteLine("<ABSTRACT>" + s.ServerTitle + "</ABSTRACT>");
-                        tw.WriteLine("<TITLE>" + s.ServerTitle + "</TITLE>");
-                        tw.WriteLine("<AUTHOR>" + s.ServerUrl + "</AUTHOR>");
-                        tw.WriteLine("<ref href=\"http://" + scs.SC_IP + ":" + scs.SC_Port + "\"/>");
-                        tw.WriteLine("<ref href=\"icyx://" + scs.SC_IP + ":" + scs.SC_Port + "\"/>");
-                        tw.WriteLine("<MOREINFO HREF=\"" + s.ServerUrl +"\"/>");
+                        tw.WriteLine("<ABSTRACT>" + Server.HtmlEncode(s.ServerTitle) + "</ABSTRACT>");
+                        tw.WriteLine("<TITLE>" + Server.HtmlEncode(s.ServerTitle) + "</TITLE>");
+                        tw.WriteLine("<AUTHOR>" + Server.HtmlEncode(s.ServerUrl) + "</AUTHOR>");
+                        tw.WriteLine("<ref href=\"http://" + Server.HtmlEncode(scs.SC_IP) + ":" + Server.HtmlEncode(scs.SC_Port) + "\"/>");
+                        tw.WriteLine("<ref href=\"icyx://" + Server.HtmlEncode(scs.SC_IP) + ":" + Server.HtmlEncode(scs.SC_Port) + "\"/>");
+                        tw.WriteLine("<MOREINFO HREF=\"" + Server.HtmlEncode(s.ServerUrl) + "\"/>");
                         tw.WriteLine("</ENTRY>");
                         tw.WriteLine("</ASX>");
                         tw.Flush();
                         
                         Response.ClearHeaders();
                         Response.ClearContent();
-                        Response.AddHeader("content-disposition", String.Format("attachment;filename=" + scs.SC_Port +".asx"));
+                        Response.AddHeader("content-disposition", String.Format("attachment;filename=" + Server.HtmlEncode(scs.SC_Port) + ".asx"));
                         Response.ContentType = "video/x-ms-asf";
                        
                         MediaPlayer.WriteTo(Response.OutputStream);
@@ -426,9 +355,10 @@ namespace Aarsys.ShoutcastStats
             }
             
         }
-
+        // Creating MemoryStream to create the file to start the Winamp player
         protected void WinampButton_Click(object sender, EventArgs e)
         {
+            var portalSecurity = new PortalSecurity();
             try
             {
                 using (ShoutCastSettings scs = new ShoutCastSettings())
@@ -436,18 +366,19 @@ namespace Aarsys.ShoutcastStats
                     // Loading the settings from ShoutcastStatsSettings Control //
                     scs.LoadSettings(this);
                     using (ShoutcastServer s =
-                        new ShoutcastServer("http://" + scs.SC_IP + ":" + scs.SC_Port + "/admin.cgi?mode=viewxml&pass=" + scs.SC_Password))
+                        new ShoutcastServer("http://" + portalSecurity.InputFilter(scs.SC_IP, PortalSecurity.FilterFlag.NoMarkup) + ":" + portalSecurity.InputFilter(scs.SC_Port, PortalSecurity.FilterFlag.NoMarkup) + "/admin.cgi?mode=viewxml&pass=" + portalSecurity.InputFilter(scs.SC_Password, PortalSecurity.FilterFlag.NoMarkup)))
                     {
+                        //Creating the MemoryStream
                         MemoryStream WinampPlayer = new MemoryStream();
                         StreamWriter wt = new StreamWriter(WinampPlayer);
                         wt.WriteLine("[playlist]");
                         wt.WriteLine("NumberOfEntries=1");
-                        wt.WriteLine("File1=http://" + scs.SC_IP + ":" + scs.SC_Port + "/");
+                        wt.WriteLine("File1=http://" + portalSecurity.InputFilter(scs.SC_IP, PortalSecurity.FilterFlag.NoMarkup) + ":" + portalSecurity.InputFilter(scs.SC_Port, PortalSecurity.FilterFlag.NoMarkup) + "/");
                         wt.Flush();
                                                
                         Response.ClearHeaders();
                         Response.ClearContent();
-                        Response.AddHeader("content-disposition", String.Format("attachment;filename=\"" + scs.SC_Port + ".pls\""));
+                        Response.AddHeader("content-disposition", String.Format("attachment;filename=\"" + Server.HtmlEncode(scs.SC_Port) + ".pls\""));
                         Response.ContentType="audio/x-scpls";
                                                                         
                         WinampPlayer.WriteTo(Response.OutputStream);
@@ -464,7 +395,7 @@ namespace Aarsys.ShoutcastStats
                 Exceptions.ProcessModuleLoadException(this, exc);
             }
         }
-
+        // Creating the Memorystream for the ImageButton of the Realplayer to create the downloadable file
         protected void RealButton_Click(object sender, EventArgs e)
         {
             try
@@ -474,16 +405,17 @@ namespace Aarsys.ShoutcastStats
                     // Loading the settings from ShoutcastStatsSettings Control //
                     scs.LoadSettings(this);
                     using (ShoutcastServer s =
-                        new ShoutcastServer("http://" + scs.SC_IP + ":" + scs.SC_Port + "/admin.cgi?mode=viewxml&pass=" + scs.SC_Password))
+                        new ShoutcastServer("http://" + Server.HtmlEncode(scs.SC_IP) + ":" + Server.HtmlEncode(scs.SC_Port) + "/admin.cgi?mode=viewxml&pass=" + Server.HtmlEncode(scs.SC_Password)))
                     {
+                        // Creating the Memory Stream
                         MemoryStream RealPlayer= new MemoryStream();
                         StreamWriter rt = new StreamWriter(RealPlayer);
-                        rt.WriteLine("http://" + scs.SC_IP + ":" + scs.SC_Port + "/");
+                        rt.WriteLine("http://" + Server.HtmlEncode(scs.SC_IP) + ":" + Server.HtmlEncode(scs.SC_Port) + "/");
                         rt.Flush();
                         
                         Response.ClearHeaders();
                         Response.ClearContent();
-                        Response.AddHeader("content-disposition", String.Format("attachment;filename=" + scs.SC_Port + ".ram"));
+                        Response.AddHeader("content-disposition", String.Format("attachment;filename=" + Server.HtmlEncode(scs.SC_Port) + ".ram"));
                         Response.ContentType = "audio/x-pn-realaudio";
                         RealPlayer.WriteTo(Response.OutputStream);
                         Response.Flush();
@@ -499,7 +431,7 @@ namespace Aarsys.ShoutcastStats
                 Exceptions.ProcessModuleLoadException(this, exc);
             }
         }
-
+        // Creating the Memorystream for the ImageButton of The iTunes/QuickTime Player to create the daownloadable file
         protected void ITunesButton_Click(object sender, EventArgs e)
         {
             try
@@ -509,19 +441,19 @@ namespace Aarsys.ShoutcastStats
                     // Loading the settings from ShoutcastStatsSettings Control //
                     scs.LoadSettings(this);
                     using (ShoutcastServer s =
-                        new ShoutcastServer("http://" + scs.SC_IP + ":" + scs.SC_Port + "/admin.cgi?mode=viewxml&pass=" + scs.SC_Password))
+                        new ShoutcastServer("http://" + Server.HtmlEncode(scs.SC_IP) + ":" + Server.HtmlEncode(scs.SC_Port) + "/admin.cgi?mode=viewxml&pass=" + Server.HtmlEncode(scs.SC_Password)))
                     {
-                        
+                        //Creating the MemoryStream
                         MemoryStream ITunes = new MemoryStream();
                         StreamWriter it = new StreamWriter(ITunes);
                         it.WriteLine("<?xml version=\"1.0\"?>");
                         it.WriteLine("<?quicktime type=\"application/x-quicktime-media-link\"?>");
-                        it.WriteLine("<embed src=\"icy://" + scs.SC_IP + ":" + scs.SC_Port + "\" autoplay=\"true\" /> ");
+                        it.WriteLine("<embed src=\"icy://" + Server.HtmlEncode(scs.SC_IP) + ":" + Server.HtmlEncode(scs.SC_Port) + "\" autoplay=\"true\" /> ");
                         it.Flush();
                        
                         Response.ClearHeaders();
                         Response.ClearContent();
-                        Response.AddHeader("content-disposition", String.Format("attachment;filename=\"" + scs.SC_Port + ".qtl\""));
+                        Response.AddHeader("content-disposition", String.Format("attachment;filename=\"" + Server.HtmlEncode(scs.SC_Port) + ".qtl\""));
                         Response.ContentType = "audio/x-mpegurl "; // Quicktime does not support AAC codec on Streams!
 
                         ITunes.WriteTo(Response.OutputStream);
@@ -541,23 +473,24 @@ namespace Aarsys.ShoutcastStats
 
 
         }
+        //Adding the TimerTick (set to 60 sek.) to refresh the content with the UpdatePanel
         protected void SCS_TimerTick(object sender, EventArgs e)
         {
-           
-                        this.lbl_Station.Text = lbl_Station.Text;
-                        this.lbl_CurrentListeners.Text = lbl_CurrentListeners.Text;
-                        this.lbl_Bitrate.Text = lbl_Bitrate.Text;
-                        this.lbl_MaxListeners.Text = lbl_MaxListeners.Text;
-                        this.lbl_ScsSong.Text = lbl_ScsSong.Text;
-                        this.lbl_SongTitle.Text = lbl_SongTitle.Text;
-                        this.lbl_PeakListeners.Text = lbl_PeakListeners.Text;
-                        this.lbl_Genre.Text = lbl_Genre.Text;
-                        this.lbl_ContentType.Text = lbl_ContentType.Text;
-                        this.lbl_Status.Text = lbl_Status.Text;
-                    }
-                }
+            //Added this lines to make sure the values are viewed after each update - without this after a while the values are not viewed
+            this.lbl_Station.Text = lbl_Station.Text;
+            this.lbl_CurrentListeners.Text = lbl_CurrentListeners.Text;
+            this.lbl_Bitrate.Text = lbl_Bitrate.Text;
+            this.lbl_MaxListeners.Text = lbl_MaxListeners.Text;
+            this.lbl_ScsSong.Text = lbl_ScsSong.Text;
+            this.lbl_SongTitle.Text = lbl_SongTitle.Text;
+            this.lbl_PeakListeners.Text = lbl_PeakListeners.Text;
+            this.lbl_Genre.Text = lbl_Genre.Text;
+            this.lbl_ContentType.Text = lbl_ContentType.Text;
+            this.lbl_Status.Text = lbl_Status.Text;
+        }
+      }
             
-           
+
         
         
         #endregion

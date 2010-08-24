@@ -25,6 +25,7 @@ using DotNetNuke;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Services.Localization;
+using DotNetNuke.Security;
 
 namespace Aarsys.ShoutcastStats
 {
@@ -53,58 +54,41 @@ namespace Aarsys.ShoutcastStats
         {
             using (ShoutCastSettings scs = new ShoutCastSettings())
             {
+                var portalSecurity = new PortalSecurity();
                 scs.StatsLoadSettings(this);
                 if (!IsPostBack)
                 {
                     if (scs.SC_IP != "")
-                        txtSCS_IP.Text = scs.SC_IP;
+                        txtSCS_IP.Text = portalSecurity.InputFilter(scs.SC_IP, PortalSecurity.FilterFlag.NoMarkup);
                     if (!IsPostBack)
                         if (scs.SC_Port != "")
-                            txtSCS_Port.Text = scs.SC_Port;
+                            txtSCS_Port.Text = portalSecurity.InputFilter(scs.SC_Port, PortalSecurity.FilterFlag.NoMarkup);
                     if (!IsPostBack)
                         if (scs.SC_Password != "")
-                            txtSCS_Password.Text = scs.SC_Password;
+                            txtSCS_Password.Text = portalSecurity.InputFilter(scs.SC_Password, PortalSecurity.FilterFlag.NoMarkup);
                 }
                 if (!IsPostBack)
-                    if ((string)ModuleSettings[scs.SC_XMLFileCount] != string.Empty)
+                    if (scs.SC_XMLFileCount)
                     {
-                        bool show;
-                        if (!bool.TryParse((string)ModuleSettings[scs.SC_XMLFileCount] as string, out show))
-                        {
-                            show = scs.SC_XMLFileCount; // Default to showing the SC_AIM.
-                        }
-
-                        SC_XMLFileCount.Checked = show;
+                        SC_XMLFileCount.Checked = true;
                     }
                 if (!IsPostBack)
-                    if ((string)ModuleSettings[scs.SC_ListenerList] != string.Empty)
+                    if (scs.SC_ListenerList)
                     {
-                        bool show;
-                        if (!bool.TryParse((string)ModuleSettings[scs.SC_ListenerList] as string, out show))
-                        {
-                            show = scs.SC_ListenerList; // Default to showing the SC_ListenerList.
-                        }
-
-                        SC_ListenerList.Checked = show;
+                        SC_ListenerList.Checked = true;
                     }
                 if (!IsPostBack)
-                    if ((string)ModuleSettings[scs.SC_LastPlayed] != string.Empty)
+                    if (scs.SC_LastPlayed)
                     {
-                        bool show;
-                        if (!bool.TryParse((string)ModuleSettings[scs.SC_LastPlayed] as string, out show))
-                        {
-                            show = scs.SC_LastPlayed; // Default to showing the SC_LastPlayed.
-                        }
-
-                        SC_LastPlayed.Checked = show;
+                        SC_LastPlayed.Checked = true;
                     }
-               // lblSCS_FeatureSettings.Text = (Localization.GetString("FeatureSettings", this.LocalResourceFile));
-            }
+              }
         }
 
          public override void UpdateSettings()
         {
-            using (ShoutCastSettings scs = new ShoutCastSettings { SC_IP = txtSCS_IP.Text, SC_Port = txtSCS_Port.Text, SC_Password = txtSCS_Password.Text, SC_XMLFileCount = SC_XMLFileCount.Checked, SC_ListenerList = SC_ListenerList.Checked, SC_LastPlayed = SC_LastPlayed.Checked })
+            var portalSecurity = new PortalSecurity();
+            using (ShoutCastSettings scs = new ShoutCastSettings { SC_IP = portalSecurity.InputFilter(txtSCS_IP.Text, PortalSecurity.FilterFlag.NoMarkup), SC_Port = portalSecurity.InputFilter(txtSCS_Port.Text, PortalSecurity.FilterFlag.NoMarkup), SC_Password = portalSecurity.InputFilter(txtSCS_Password.Text, PortalSecurity.FilterFlag.NoMarkup), SC_XMLFileCount = SC_XMLFileCount.Checked, SC_ListenerList = SC_ListenerList.Checked, SC_LastPlayed = SC_LastPlayed.Checked })
             {
                 scs.StatsUpdateSettings(this); 
             }

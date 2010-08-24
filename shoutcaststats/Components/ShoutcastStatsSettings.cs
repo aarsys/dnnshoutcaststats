@@ -24,6 +24,7 @@ using System.Web.UI;
 using DotNetNuke;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Services.Exceptions;
+using DotNetNuke.Security;
 
 namespace Aarsys.ShoutcastStats
 {
@@ -113,6 +114,7 @@ namespace Aarsys.ShoutcastStats
         
         public void StatsLoadSettings(PortalModuleBase sd)
         {
+            var portalSecurity = new PortalSecurity();
             try
             {
                 if ((string)sd.Settings[SC_SettingsPrefix + "IP"] != "")
@@ -233,6 +235,7 @@ namespace Aarsys.ShoutcastStats
 
         public void LoadSettings(PortalModuleBase md)
         {
+            var portalSecurity = new PortalSecurity();
             try
             {
                 if ((string)md.Settings[SC_SettingsPrefix + "IP"] != "")
@@ -435,6 +438,7 @@ namespace Aarsys.ShoutcastStats
                 {
                     Boolean sc_peaklistener;
                     if (!Boolean.TryParse((string)md.Settings[SC_SettingsPrefix + "ListenerPeak"], out sc_peaklistener)) sc_peaklistener = false;
+                  
                     SC_PeakListeners = sc_peaklistener;
                 }
                 else

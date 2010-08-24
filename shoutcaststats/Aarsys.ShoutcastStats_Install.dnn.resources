@@ -13,17 +13,18 @@
             </owner>
             <license src="license.txt" />
             <releaseNotes src="releasenotes.txt" />
+            <dependency type="CoreVersion">05.05.00</dependency>
             <components>
                 <component type="Script">
                     <scripts>
                         <basePath>DesktopModules\Products</basePath>
                         <!--<script type="Install">
                           <name>05.00.00.SqlDataProvider</name>
-                          <version>05.01.00.26</version>
+                          <version>05.01.00.63</version>
                       </script>
                       <script type="UnInstall">
                           <name>Uninstall.SqlDataProvider</name>
-                          <version>05.01.00.26</version>
+                          <version>05.01.00.63</version>
                       </script>-->
                     </scripts>
                 </component>

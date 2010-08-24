@@ -88,6 +88,7 @@ namespace Aarsys.ShoutcastStats.Components
             req.UserAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)";
             try
             {
+                //Get Text from HttpWebResponse
                 HttpWebResponse res = (HttpWebResponse)req.GetResponse();
                 TextReader sw = new StreamReader(res.GetResponseStream());
                 res = null;
@@ -113,19 +114,22 @@ namespace Aarsys.ShoutcastStats.Components
         }
         private string GetProperty(XDocument x, ShoutcastProperties Property)
         {
-            try
-            {
-                var q = (from c in x.Descendants("SHOUTCASTSERVER")
-                         select (string)c.Element(Property.ToString())).First();
-                return q;
-            }
-            catch (NullReferenceException)
-            {
-                return "Undefiend";
-                //return (DotNetNuke.Services.Localization.Localization.GetString("Undefined.Text", this.SharedResourceFile));
-            }
-
+            //try
+            
+            //    var q = (from c in x.Descendants("SHOUTCASTSERVER")
+            //             select (string)c.Element(Property.ToString())).First();
+            //    return q;
+            
+            //catch (NullReferenceException)
+            //{
+            //    return "Undefiend";
+            //    //return (DotNetNuke.Services.Localization.Localization.GetString("Undefined.Text", this.SharedResourceFile));
+            //}
+            return (from c in x.Descendants("SHOUTCASTSERVER")
+                    select (string)c.Element(Property.ToString())).FirstOrDefault()
+                   ?? "Undefined";
         }
+        
         protected string GetWebDataProperty(XDocument x, ShoutcastWebDataProperties Property)
         {
             try
@@ -238,7 +242,8 @@ namespace Aarsys.ShoutcastStats.Components
         {
             get { return this.GetProperty(this.ShoutcastXml, ShoutcastProperties.SONGTITLE); }
         }
-        public List<Listener> Listeners
+        //public List<Listener> Listeners
+        public IEnumerable<Listener> Listeners
         {
             get
             {
@@ -538,7 +543,7 @@ namespace Aarsys.ShoutcastStats.Components
 
             //thisTime = new DateTimeOffset(origin, new TimeSpan(+14, 0, 0));
             //ShowPossibleTimeZones(thisTime);
-
+            
 
             return origin.AddSeconds(timestamp).ToLocalTime();
         }

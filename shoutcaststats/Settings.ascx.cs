@@ -24,6 +24,7 @@ using System.Web.UI;
 using DotNetNuke;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Services.Exceptions;
+using DotNetNuke.Security;
 
 namespace Aarsys.ShoutcastStats
 {
@@ -49,221 +50,133 @@ namespace Aarsys.ShoutcastStats
         /// ----------------------------------------------------------------------------- 
         public override void LoadSettings()
         {
+            var portalSecurity = new PortalSecurity();
             using (ShoutCastSettings scs = new ShoutCastSettings())
             {
                 scs.LoadSettings(this);
                 if (!IsPostBack)
                 {
                     if (scs.SC_IP != "")
-                        txtSC_IP.Text = scs.SC_IP;
+                        txtSC_IP.Text = portalSecurity.InputFilter(scs.SC_IP, PortalSecurity.FilterFlag.NoMarkup);
                     if (!IsPostBack)
                         if (scs.SC_Port != "")
-                            txtSC_Port.Text = scs.SC_Port;
+                            txtSC_Port.Text = portalSecurity.InputFilter(scs.SC_Port, PortalSecurity.FilterFlag.NoMarkup);
                     if (!IsPostBack)
                         if (scs.SC_Password != "")
-                            txtSC_Password.Text = scs.SC_Password;
+                            txtSC_Password.Text = portalSecurity.InputFilter(scs.SC_Password, PortalSecurity.FilterFlag.NoMarkup);
                     if (!IsPostBack)
-                        if ((string)ModuleSettings[scs.SC_AIM] != string.Empty)
+                        if (scs.SC_AIM)
                         {
-                            bool show;
-                            if (!bool.TryParse((string)ModuleSettings[scs.SC_AIM] as string, out show))
-                            {
-                                show = scs.SC_AIM; // Default to showing the SC_AIM.
-                            }
+                            //bool show;
+                            //if (!bool.TryParse((string)ModuleSettings[scs.SC_AIM] as string, out show))
+                            //{
+                            //    show = scs.SC_AIM; // Default to showing the SC_AIM.
+                            //}
 
-                            SC_AIMCheckBox.Checked = show;
+                            SC_AIMCheckBox.Checked = true;
                         }
                     
                     if (!IsPostBack)
-                        if ((string)ModuleSettings[scs.SC_AOL] != string.Empty)
+                        if (scs.SC_AOL)
                         {
-                            bool show;
-                            if (!bool.TryParse((string)ModuleSettings[scs.SC_AOL], out show))
-                            {
-                               show = scs.SC_AOL; // Default to showing the SC_AOL.
-                            }
-                            SC_AOLCheckBox.Checked = show;
+                            SC_AOLCheckBox.Checked = true;
                         }
 
                     if (!IsPostBack)
-                        if ((string)ModuleSettings[scs.SC_ICQ] != string.Empty)
+                        if (scs.SC_ICQ)
                         {
-                            bool show;
-                            if (!bool.TryParse((string)ModuleSettings[scs.SC_ICQ], out show))
-                            {
-                              show = scs.SC_ICQ; // Default to showing the SC_ICQ.
-                            }
-                            SC_ICQCheckBox.Checked = show;
+                            SC_ICQCheckBox.Checked = true;
                         }
                     
                     if (!IsPostBack)
-                        if ((string)ModuleSettings[scs.SC_MSN] != string.Empty)
+                        if (scs.SC_MSN)
                         {
-                            bool show;
-                            if (!bool.TryParse((string)ModuleSettings[scs.SC_MSN], out show))
-                            {
-                                show = scs.SC_MSN; // Default to showing the SC_MSN.
-                            }
-                            SC_MSNCheckBox.Checked = show;
+                            SC_MSNCheckBox.Checked = true;
                         }
                     if (!IsPostBack)
-                        if ((string)ModuleSettings[scs.SC_Yahoo] != string.Empty)
+                        if (scs.SC_Yahoo)
                         {
-                            bool show;
-                            if (!bool.TryParse((string)ModuleSettings[scs.SC_Yahoo], out show))
-                            {
-                                show = scs.SC_Yahoo; // Default to showing the SC_Yahoo.
-                            }
-                            SC_YahooCheckBox.Checked = show;
+                            SC_YahooCheckBox.Checked = true;
                         }
                     if (!IsPostBack)
-                        if ((string)ModuleSettings[scs.SC_Station] != string.Empty)
+                        if (scs.SC_Station)
                         {
-                            bool show;
-                            if (!bool.TryParse((string)ModuleSettings[scs.SC_Station], out show))
-                            {
-                                show = scs.SC_Station; // Default to showing the SC_Station name.
-                            }
-                            SC_StationBox.Checked = show;
+                            SC_StationBox.Checked = true;
                         }
                     if (!IsPostBack)
-                        if ((string)ModuleSettings[scs.SC_CurrentListeners] != string.Empty)
+                        if (scs.SC_CurrentListeners)
                         {
-                            bool show;
-                            if (!bool.TryParse((string)ModuleSettings[scs.SC_CurrentListeners], out show))
-                            {
-                                show = scs.SC_CurrentListeners; // Default to showing the SC_CurrentListeners.
-                            }
-                            SC_CurrentListenersBox.Checked = show;
+                            SC_CurrentListenersBox.Checked = true;
                         }
                     if (!IsPostBack)
-                        if ((string)ModuleSettings[scs.SC_PeakListeners] != string.Empty)
+                        if (scs.SC_PeakListeners)
                         {
-                            bool show;
-                            if (!bool.TryParse((string)ModuleSettings[scs.SC_PeakListeners], out show))
-                            {
-                                show = scs.SC_PeakListeners; // Default to showing the SC_PeakListeners.
-                            }
-                            SC_PeakListenersBox.Checked = show;
+                            SC_PeakListenersBox.Checked = true;
                         }
                     if (!IsPostBack)
-                        if ((string)ModuleSettings[scs.SC_MaxListeners] != string.Empty)
+                        if (scs.SC_MaxListeners)
                         {
-                            bool show;
-                            if (!bool.TryParse((string)ModuleSettings[scs.SC_MaxListeners], out show))
-                            {
-                                show = scs.SC_MaxListeners; // Default to showing the SC_MaxListeners.
-                            }
-                            SC_MaxListenersBox.Checked = show;
+                            SC_MaxListenersBox.Checked = true;
                         }
                     if (!IsPostBack)
-                        if ((string)ModuleSettings[scs.SC_genre] != string.Empty)
+                        if (scs.SC_genre)
                         {
-                            bool show;
-                            if (!bool.TryParse((string)ModuleSettings[scs.SC_genre], out show))
-                            {
-                                show = scs.SC_genre; // Default to showing the SC_genre.
-                            }
-                            SC_genreBox.Checked = show;
+                            SC_genreBox.Checked = true;
                         }
                     if (!IsPostBack)
-                        if ((string)ModuleSettings[scs.SC_Song] != string.Empty)
+                        if (scs.SC_Song)
                         {
-                            bool show;
-                            if (!bool.TryParse((string)ModuleSettings[scs.SC_Song], out show))
-                            {
-                                show = scs.SC_Song; // Default to showing the SC_Song.
-                            }
-                            SC_SongBox.Checked = show;
+                            SC_SongBox.Checked = true;
                         }
                     if (!IsPostBack)
-                        if ((string)ModuleSettings[scs.SC_DJ] != string.Empty)
+                        if (scs.SC_DJ)
                         {
-                            bool show;
-                            if (!bool.TryParse((string)ModuleSettings[scs.SC_DJ], out show))
-                            {
-                                show = scs.SC_DJ; // Default to showing the SC_DJ.
-                            }
-                            SC_DJBox.Checked = show;
+                            SC_DJBox.Checked = true;
                         }
                     if (!IsPostBack)
-                        if ((string)ModuleSettings[scs.SC_Bitrate] != string.Empty)
+                        if (scs.SC_Bitrate)
                         {
-                            bool show;
-                            if (!bool.TryParse((string)ModuleSettings[scs.SC_Bitrate], out show))
-                            {
-                                show = scs.SC_Bitrate; // Default to showing the SC_Bitrate.
-                            }
-                            SC_BitrateBox.Checked = show;
+                            SC_BitrateBox.Checked = true;
                         }
                     if (!IsPostBack)
-                        if ((string)ModuleSettings[scs.SC_Content] != string.Empty)
+                        if (scs.SC_Content)
                         {
-                            bool show;
-                            if (!bool.TryParse((string)ModuleSettings[scs.SC_Content], out show))
-                            {
-                                show = scs.SC_Content; // Default to showing the SC_Content.
-                            }
-                            SC_ContentBox.Checked = show;
+                            SC_ContentBox.Checked = true;
                         }
                     if (!IsPostBack)
-                        if ((string)ModuleSettings[scs.SC_Winamp] != string.Empty)
+                        if (scs.SC_Winamp)
                         {
-                            bool show;
-                            if (!bool.TryParse((string)ModuleSettings[scs.SC_Winamp], out show))
-                            {
-                                show = scs.SC_Winamp; // Default to showing the SC_Winamp.
-                            }
-                            SC_WinampBox.Checked = show;
+                            SC_WinampBox.Checked = true;
                         }
                     if (!IsPostBack)
-                        if ((string)ModuleSettings[scs.SC_MediaPlayer] != string.Empty)
+                        if (scs.SC_MediaPlayer)
                         {
-                            bool show;
-                            if (!bool.TryParse((string)ModuleSettings[scs.SC_MediaPlayer], out show))
-                            {
-                                show = scs.SC_MediaPlayer; // Default to showing the SC_MediaPlayer.
-                            }
-                            SC_MediaPlayerBox.Checked = show;
+                            SC_MediaPlayerBox.Checked = true;
                         }
                     if (!IsPostBack)
-                        if ((string)ModuleSettings[scs.SC_RealPlayer] != string.Empty)
+                        if (scs.SC_RealPlayer)
                         {
-                            bool show;
-                            if (!bool.TryParse((string)ModuleSettings[scs.SC_RealPlayer], out show))
-                            {
-                                show = scs.SC_RealPlayer; // Default to showing the SC_RealPlayer.
-                            }
-                            SC_RealPlayerBox.Checked = show;
+                            SC_RealPlayerBox.Checked = true;
                         }
                     if (!IsPostBack)
-                        if ((string)ModuleSettings[scs.SC_iTunes] != string.Empty)
+                        if (scs.SC_iTunes)
                         {
-                            bool show;
-                            if (!bool.TryParse((string)ModuleSettings[scs.SC_iTunes], out show))
-                            {
-                                show = scs.SC_iTunes; // Default to showing the SC_iTunes.
-                            }
-                            SC_iTunesBox.Checked = show;
+                            SC_iTunesBox.Checked = true;
                         }
                     if (!IsPostBack)
-                        if ((string)ModuleSettings[scs.SC_Player] != string.Empty)
+                        if (scs.SC_Player)
                         {
-                            bool show;
-                            if (!bool.TryParse((string)ModuleSettings[scs.SC_Player], out show))
-                            {
-                                show = scs.SC_Player; // Default to showing the SC_Player Label.
-                            }
-                            SC_PlayerBox.Checked = show;
+                            SC_PlayerBox.Checked = true;
                         }
-                    //lblSC_MSG.Text = DotNetNuke.Services.Localization.Localization.GetString("lblSCMSG", LocalResourceFile);
+                   
                 }
             }
         }
         
         public override void UpdateSettings()
         {
-            using (ShoutCastSettings scs = new ShoutCastSettings { SC_IP = txtSC_IP.Text, SC_Port = txtSC_Port.Text, SC_Password = txtSC_Password.Text, SC_AIM = SC_AIMCheckBox.Checked, SC_AOL = SC_AOLCheckBox.Checked, SC_ICQ = SC_ICQCheckBox.Checked, SC_MSN = SC_MSNCheckBox.Checked, SC_Yahoo = SC_YahooCheckBox.Checked, SC_Station = SC_StationBox.Checked, SC_CurrentListeners = SC_CurrentListenersBox.Checked, SC_PeakListeners = SC_PeakListenersBox.Checked, SC_MaxListeners = SC_MaxListenersBox.Checked, SC_genre = SC_genreBox.Checked, SC_Song = SC_SongBox.Checked, SC_DJ = SC_DJBox.Checked, SC_Bitrate = SC_BitrateBox.Checked, SC_Content = SC_ContentBox.Checked, SC_Winamp = SC_WinampBox.Checked, SC_MediaPlayer = SC_MediaPlayerBox.Checked, SC_RealPlayer = SC_RealPlayerBox.Checked, SC_iTunes = SC_iTunesBox.Checked, SC_Player = SC_PlayerBox.Checked })
+            var portalSecurity = new PortalSecurity();
+            using (ShoutCastSettings scs = new ShoutCastSettings { SC_IP = portalSecurity.InputFilter(txtSC_IP.Text, PortalSecurity.FilterFlag.NoMarkup), SC_Port = portalSecurity.InputFilter(txtSC_Port.Text, PortalSecurity.FilterFlag.NoMarkup), SC_Password = portalSecurity.InputFilter(txtSC_Password.Text, PortalSecurity.FilterFlag.NoMarkup), SC_AIM = SC_AIMCheckBox.Checked, SC_AOL = SC_AOLCheckBox.Checked, SC_ICQ = SC_ICQCheckBox.Checked, SC_MSN = SC_MSNCheckBox.Checked, SC_Yahoo = SC_YahooCheckBox.Checked, SC_Station = SC_StationBox.Checked, SC_CurrentListeners = SC_CurrentListenersBox.Checked, SC_PeakListeners = SC_PeakListenersBox.Checked, SC_MaxListeners = SC_MaxListenersBox.Checked, SC_genre = SC_genreBox.Checked, SC_Song = SC_SongBox.Checked, SC_DJ = SC_DJBox.Checked, SC_Bitrate = SC_BitrateBox.Checked, SC_Content = SC_ContentBox.Checked, SC_Winamp = SC_WinampBox.Checked, SC_MediaPlayer = SC_MediaPlayerBox.Checked, SC_RealPlayer = SC_RealPlayerBox.Checked, SC_iTunes = SC_iTunesBox.Checked, SC_Player = SC_PlayerBox.Checked })
             {
                 scs.UpdateSettings(this); 
             }

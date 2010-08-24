@@ -13,6 +13,7 @@
             </owner>
             <license src="license.txt" />
             <releaseNotes src="releasenotes.txt" />
+            <dependency type="CoreVersion">05.05.00</dependency>
             <components>
                 
                 <component type="Module">

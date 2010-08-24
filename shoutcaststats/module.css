@@ -2,16 +2,13 @@
     CSS STYLES FOR Module AARSYS.ShoutcastStats
    ================================
 */
-/* Width of the complete Module View_ShoutcastStats */
+/* Table Format */
 .scs_table
 {
-    width: 150px;
-    
+    width: 150px;   
 }
-.Column
-{
-margin:0;
-}
+
+
 /* Format of the Labels */
 .scs_label
 {
@@ -19,6 +16,7 @@ margin:0;
     font-family:Comic Sans MS, Arial, Tahoma;
     color:Blue;
     width: 150px;
+    padding:0;
 }
 
 /* Format of the Marquee */

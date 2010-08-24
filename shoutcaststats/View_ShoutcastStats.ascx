@@ -2,12 +2,12 @@
 <%@ Register Assembly="DotNetNuke.WebControls" Namespace="DotNetNuke.UI.WebControls" TagPrefix="DNN" %>
 <%@ Register TagPrefix="dnn" TagName="Label" Src="~/controls/LabelControl.ascx" %>
 
-<asp:Timer id="SCS_Timer" OnTick="SCS_TimerTick" runat="server">
-</asp:Timer>
-<asp:UpdatePanel id="SCS_UpdatePanel" runat="server">
-    <ContentTemplate>
+
 <table class="scs_table">
-    <tr>
+
+<asp:UpdatePanel id="UpdatePanel1" runat="server" RenderMode="Block">
+     <ContentTemplate>
+       <tr>
         <td class="Column">
             <asp:Label id="lbl_Status" cssclass="scs_label" runat="server"></asp:Label>
             <asp:Label id="lbl_Station" cssclass="scs_label" runat="server"></asp:Label>
@@ -30,11 +30,12 @@
             <td class="Column"><asp:Label id="lbl_Genre" cssclass="scs_label" runat="server"></asp:Label></td>
             </tr>
         <tr>
-        <td class="Column">
+        <td class="scs_table.td">
         
         <asp:Label id="lbl_SongTitle" cssclass="scs_label" runat="server"></asp:Label>
-            <asp:Label id="lbl_ScsSong" runat="server"></asp:Label></td>
-            </tr>
+            <asp:Label id="lbl_ScsSong" runat="server"></asp:Label>
+         </td>
+         </tr>
         
         <tr>
         <td class="Column">
@@ -71,15 +72,17 @@
         </tr>
         <tr>
         <td class="Column" >
-            <asp:ImageButton id="WinampStart" runat="server" OnClick="WinampButton_Click" />
-            <asp:ImageButton id="MediaPlayerStart" OnClick="MediaButton_Click" runat="server" />
-            <asp:ImageButton id="RealPlayerStart" OnClick="RealButton_Click" runat="server" />
-            <asp:ImageButton id="ITunesStart" OnClick="ITunesButton_Click" runat="server" />
+            <asp:ImageButton id="WinampStart" runat="server" />
+            <asp:ImageButton id="MediaPlayerStart" runat="server" />
+            <asp:ImageButton id="RealPlayerStart" runat="server" />
+            <asp:ImageButton id="ITunesStart" runat="server" />
         </td>
         </tr>
-</table>
+        <asp:Timer id="Timer1" OnTick="SCS_TimerTick" Interval="60000" runat="server" />
     </ContentTemplate>
 </asp:UpdatePanel>
+
+</table>
 
 
  
