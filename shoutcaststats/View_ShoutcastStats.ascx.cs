@@ -117,7 +117,7 @@ namespace Aarsys.ShoutcastStats
                                 {
                                     lbl_Station.Visible = false;
                                 }
-                                
+
                             }
                             //Displaying the Peak of the Listeners
                             if (scs.SC_PeakListeners)
@@ -410,7 +410,7 @@ namespace Aarsys.ShoutcastStats
             }
         }
 
-       
+
         #endregion
 
 
@@ -628,7 +628,7 @@ namespace Aarsys.ShoutcastStats
                                                String.Format("attachment;filename=\"" + Server.HtmlEncode(scs.SC_Port) +
                                                              ".qtl\""));
                             Response.ContentType = "audio/x-mpegurl ";
-                                // Quicktime does not support AAC codec on Streams!
+                            // Quicktime does not support AAC codec on Streams!
 
                             tunes.WriteTo(Response.OutputStream);
                             Response.Flush();
@@ -655,16 +655,28 @@ namespace Aarsys.ShoutcastStats
         protected void ScsTimerTick(object sender, EventArgs e)
         {
             //Added this lines to make sure the values are viewed after each update - without this after a while the values are not viewed
-            lbl_Station.Text = lbl_Station.Text;
-            lbl_CurrentListeners.Text = lbl_CurrentListeners.Text;
-            lbl_Bitrate.Text = lbl_Bitrate.Text;
-            lbl_MaxListeners.Text = lbl_MaxListeners.Text;
-            lbl_ScsSong.Text = lbl_ScsSong.Text;
-            lbl_SongTitle.Text = lbl_SongTitle.Text;
-            lbl_PeakListeners.Text = lbl_PeakListeners.Text;
-            lbl_Genre.Text = lbl_Genre.Text;
-            lbl_ContentType.Text = lbl_ContentType.Text;
-            lbl_Status.Text = lbl_Status.Text;
+
+            using (var scs = new ShoutCastSettings())
+            {
+                // Loading the settings from ShoutcastStatsSettings Control //
+                scs.LoadSettings(this);
+                using (var s =
+                       new ShoutcastServer("http://" + scs.SC_IP + ":" + scs.SC_Port + "/admin.cgi?mode=viewxml&pass=" +
+                                           scs.SC_Password))
+                {
+                    lbl_Station.Text = lbl_Station.Text;
+                    lbl_CurrentListeners.Text = lbl_CurrentListeners.Text;
+                    lbl_Bitrate.Text = lbl_Bitrate.Text;
+                    lbl_MaxListeners.Text = lbl_MaxListeners.Text;
+                    lbl_ScsSong.Text = lbl_ScsSong.Text;
+                    lbl_SongTitle.Text = lbl_SongTitle.Text;
+                    lbl_PeakListeners.Text = lbl_PeakListeners.Text;
+                    lbl_Genre.Text = lbl_Genre.Text;
+                    lbl_ContentType.Text = lbl_ContentType.Text;
+                    lbl_Status.Visible = s.StreamStatus != true;
+                }
+
+            }
         }
     }
 }
