@@ -5,7 +5,7 @@
 
 <table class="scs_table">
 
-<asp:UpdatePanel id="UpdatePanel1" runat="server" RenderMode="Block">
+<asp:UpdatePanel id="UpdatePanel1" runat="server" RenderMode="Block" >
      <ContentTemplate>
        <tr>
         <td class="Column">
@@ -78,7 +78,7 @@
             <asp:ImageButton id="ITunesStart" runat="server" />
         </td>
         </tr>
-        <asp:Timer id="Timer1" OnTick="ScsTimerTick" Interval="60000" runat="server" />
+        <asp:Timer id="Timer1" OnTick="ScsTimerTick" Interval="60000" runat="server"  />
     </ContentTemplate>
 </asp:UpdatePanel>
 

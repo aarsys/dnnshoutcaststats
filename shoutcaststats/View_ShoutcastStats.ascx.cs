@@ -655,7 +655,7 @@ namespace Aarsys.ShoutcastStats
         protected void ScsTimerTick(object sender, EventArgs e)
         {
             //Added this lines to make sure the values are viewed after each update - without this after a while the values are not viewed
-
+            
             using (var scs = new ShoutCastSettings())
             {
                 // Loading the settings from ShoutcastStatsSettings Control //

@@ -1,4 +1,4 @@
-﻿<h1>ShoutcastStats 05.01.01</h1>
+﻿<h1>ShoutcastStats 05.01.02</h1>
 <p> This module renders the statistic informations from a Shoutcast broadcasting server.  
 Additinal it could added Links to different messengers with direct opening a messenger window to chat with the current DJ.
 Also you could provide Links to open the Stream on different players of the client. This module inscludes 2 module definations, 
@@ -7,8 +7,14 @@ whish you could set up with different permissions.
 <p>
 Minimum DotNetNuke version to use 05.05.00
 </p>
-<p>First release fix.</p>
-<h2Minor</h2>
+<p>Fixed on 05.01.02.</p>
+<h2>Minor</h2>
+<ol>
+<li>Fixed issue on update to offline mode</li>
+<li>Disabled partailrendering due to deisable the update image</li>
+</ol>
+<p>Fixed on 05.01.01.</p>
+<h2>Minor</h2>
 <ol>
 <li>Fixed red X on disabled Player links</li>
 <li>Fixed empty lines if control is disabled</li>
