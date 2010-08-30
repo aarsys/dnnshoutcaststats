@@ -18,13 +18,8 @@
 // DEALINGS IN THE SOFTWARE. 
 // 
 
-using System;
-using System.Web.UI;
-
-using DotNetNuke;
+using Aarsys.ShoutcastStats.Components;
 using DotNetNuke.Entities.Modules;
-using DotNetNuke.Services.Exceptions;
-using DotNetNuke.Services.Localization;
 using DotNetNuke.Security;
 
 namespace Aarsys.ShoutcastStats
@@ -52,7 +47,7 @@ namespace Aarsys.ShoutcastStats
        
             public override void LoadSettings()
         {
-            using (ShoutCastSettings scs = new ShoutCastSettings())
+            using (var scs = new ShoutCastSettings())
             {
                 var portalSecurity = new PortalSecurity();
                 scs.StatsLoadSettings(this);
@@ -85,10 +80,12 @@ namespace Aarsys.ShoutcastStats
               }
         }
 
+         ///<summary>
+         ///</summary>
          public override void UpdateSettings()
         {
             var portalSecurity = new PortalSecurity();
-            using (ShoutCastSettings scs = new ShoutCastSettings { SC_IP = portalSecurity.InputFilter(txtSCS_IP.Text, PortalSecurity.FilterFlag.NoMarkup), SC_Port = portalSecurity.InputFilter(txtSCS_Port.Text, PortalSecurity.FilterFlag.NoMarkup), SC_Password = portalSecurity.InputFilter(txtSCS_Password.Text, PortalSecurity.FilterFlag.NoMarkup), SC_XMLFileCount = SC_XMLFileCount.Checked, SC_ListenerList = SC_ListenerList.Checked, SC_LastPlayed = SC_LastPlayed.Checked })
+            using (var scs = new ShoutCastSettings { SC_IP = portalSecurity.InputFilter(txtSCS_IP.Text, PortalSecurity.FilterFlag.NoMarkup), SC_Port = portalSecurity.InputFilter(txtSCS_Port.Text, PortalSecurity.FilterFlag.NoMarkup), SC_Password = portalSecurity.InputFilter(txtSCS_Password.Text, PortalSecurity.FilterFlag.NoMarkup), SC_XMLFileCount = SC_XMLFileCount.Checked, SC_ListenerList = SC_ListenerList.Checked, SC_LastPlayed = SC_LastPlayed.Checked })
             {
                 scs.StatsUpdateSettings(this); 
             }

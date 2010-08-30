@@ -19,14 +19,11 @@
 // 
 
 using System;
-using System.Web.UI;
-
-using DotNetNuke;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Security;
 
-namespace Aarsys.ShoutcastStats
+namespace Aarsys.ShoutcastStats.Components
 {
 
     /// ----------------------------------------------------------------------------- 
@@ -114,7 +111,6 @@ namespace Aarsys.ShoutcastStats
         
         public void StatsLoadSettings(PortalModuleBase sd)
         {
-            var portalSecurity = new PortalSecurity();
             try
             {
                 if ((string)sd.Settings[SC_SettingsPrefix + "IP"] != "")
@@ -235,7 +231,6 @@ namespace Aarsys.ShoutcastStats
 
         public void LoadSettings(PortalModuleBase md)
         {
-            var portalSecurity = new PortalSecurity();
             try
             {
                 if ((string)md.Settings[SC_SettingsPrefix + "IP"] != "")
@@ -672,7 +667,7 @@ namespace Aarsys.ShoutcastStats
         {
             try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
                 objModules.UpdateModuleSetting(sd.ModuleId, SC_SettingsPrefix + "IP", SC_IP);
             }
 
@@ -683,7 +678,7 @@ namespace Aarsys.ShoutcastStats
             }
             try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
                 objModules.UpdateModuleSetting(sd.ModuleId, SC_SettingsPrefix + "Port", SC_Port);
             }
 
@@ -694,7 +689,7 @@ namespace Aarsys.ShoutcastStats
             }
         try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
                 objModules.UpdateModuleSetting(sd.ModuleId, SC_SettingsPrefix + "Password", SC_Password);
             }
 
@@ -705,7 +700,7 @@ namespace Aarsys.ShoutcastStats
             }
             try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
 
                 objModules.UpdateModuleSetting(sd.ModuleId, SC_SettingsPrefix + "XMLFileCount", SC_XMLFileCount.ToString());
             }
@@ -718,7 +713,7 @@ namespace Aarsys.ShoutcastStats
 
             try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
 
                 objModules.UpdateModuleSetting(sd.ModuleId, SC_SettingsPrefix + "ListenerList", SC_ListenerList.ToString());
             }
@@ -731,7 +726,7 @@ namespace Aarsys.ShoutcastStats
 
             try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
 
                 objModules.UpdateModuleSetting(sd.ModuleId, SC_SettingsPrefix + "LastPlayed", SC_LastPlayed.ToString());
             }
@@ -757,7 +752,7 @@ namespace Aarsys.ShoutcastStats
         {
             try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
 
                 objModules.UpdateModuleSetting(md.ModuleId, SC_SettingsPrefix + "IP", SC_IP);
             }
@@ -769,7 +764,7 @@ namespace Aarsys.ShoutcastStats
             }
             try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
 
                 objModules.UpdateModuleSetting(md.ModuleId, SC_SettingsPrefix + "Port", SC_Port);
             }
@@ -781,7 +776,7 @@ namespace Aarsys.ShoutcastStats
             }
             try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
 
                 objModules.UpdateModuleSetting(md.ModuleId, SC_SettingsPrefix + "Password", SC_Password);
             }
@@ -794,7 +789,7 @@ namespace Aarsys.ShoutcastStats
 
             try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
 
                 objModules.UpdateModuleSetting(md.ModuleId, SC_SettingsPrefix + "AIM", SC_AIM.ToString());
             }
@@ -807,7 +802,7 @@ namespace Aarsys.ShoutcastStats
 
             try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
 
                 objModules.UpdateModuleSetting(md.ModuleId, SC_SettingsPrefix + "AOL", SC_AOL.ToString());
             }
@@ -819,7 +814,7 @@ namespace Aarsys.ShoutcastStats
             }
             try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
 
                 objModules.UpdateModuleSetting(md.ModuleId, SC_SettingsPrefix + "ICQ", SC_ICQ.ToString());
             }
@@ -832,7 +827,7 @@ namespace Aarsys.ShoutcastStats
 
             try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
 
                 objModules.UpdateModuleSetting(md.ModuleId, SC_SettingsPrefix + "MSN", SC_MSN.ToString());
             }
@@ -844,7 +839,7 @@ namespace Aarsys.ShoutcastStats
             }
             try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
 
                 objModules.UpdateModuleSetting(md.ModuleId, SC_SettingsPrefix + "Yahoo", SC_Yahoo.ToString());
             }
@@ -856,7 +851,7 @@ namespace Aarsys.ShoutcastStats
             }
             try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
 
                 objModules.UpdateModuleSetting(md.ModuleId, SC_SettingsPrefix + "StationName", SC_Station.ToString());
             }
@@ -868,7 +863,7 @@ namespace Aarsys.ShoutcastStats
             }
             try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
 
                 objModules.UpdateModuleSetting(md.ModuleId, SC_SettingsPrefix + "CurrentListeners", SC_CurrentListeners.ToString());
             }
@@ -880,7 +875,7 @@ namespace Aarsys.ShoutcastStats
             }
             try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
 
                 objModules.UpdateModuleSetting(md.ModuleId, SC_SettingsPrefix + "ListenerPeak", SC_PeakListeners.ToString());
             }
@@ -892,7 +887,7 @@ namespace Aarsys.ShoutcastStats
             }
             try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
 
                 objModules.UpdateModuleSetting(md.ModuleId, SC_SettingsPrefix + "MaxListeners", SC_MaxListeners.ToString());
             }
@@ -904,7 +899,7 @@ namespace Aarsys.ShoutcastStats
             }
             try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
 
                 objModules.UpdateModuleSetting(md.ModuleId, SC_SettingsPrefix + "Genre", SC_genre.ToString());
             }
@@ -916,7 +911,7 @@ namespace Aarsys.ShoutcastStats
             }
             try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
 
                 objModules.UpdateModuleSetting(md.ModuleId, SC_SettingsPrefix + "CurrentTitle", SC_Song.ToString());
             }
@@ -928,7 +923,7 @@ namespace Aarsys.ShoutcastStats
             }
             try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
 
                 objModules.UpdateModuleSetting(md.ModuleId, SC_SettingsPrefix + "DJname", SC_DJ.ToString());
             }
@@ -940,7 +935,7 @@ namespace Aarsys.ShoutcastStats
             }
             try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
 
                 objModules.UpdateModuleSetting(md.ModuleId, SC_SettingsPrefix + "Bitrate", SC_Bitrate.ToString());
             }
@@ -952,7 +947,7 @@ namespace Aarsys.ShoutcastStats
             }
             try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
 
                 objModules.UpdateModuleSetting(md.ModuleId, SC_SettingsPrefix + "ContentType", SC_Content.ToString());
             }
@@ -964,7 +959,7 @@ namespace Aarsys.ShoutcastStats
             }
             try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
 
                 objModules.UpdateModuleSetting(md.ModuleId, SC_SettingsPrefix + "Winamp", SC_Winamp.ToString());
             }
@@ -976,7 +971,7 @@ namespace Aarsys.ShoutcastStats
             }
             try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
 
                 objModules.UpdateModuleSetting(md.ModuleId, SC_SettingsPrefix + "MediaPlayer", SC_MediaPlayer.ToString());
             }
@@ -988,7 +983,7 @@ namespace Aarsys.ShoutcastStats
             }
             try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
 
                 objModules.UpdateModuleSetting(md.ModuleId, SC_SettingsPrefix + "RealPlayer", SC_RealPlayer.ToString());
             }
@@ -1000,7 +995,7 @@ namespace Aarsys.ShoutcastStats
             }
             try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
 
                 objModules.UpdateModuleSetting(md.ModuleId, SC_SettingsPrefix + "iTunes", SC_iTunes.ToString());
             }
@@ -1012,7 +1007,7 @@ namespace Aarsys.ShoutcastStats
             }
             try
             {
-                ModuleController objModules = new ModuleController();
+                var objModules = new ModuleController();
 
                 objModules.UpdateModuleSetting(md.ModuleId, SC_SettingsPrefix + "PlayerLabel", SC_Player.ToString());
             }

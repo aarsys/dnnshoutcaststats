@@ -1,6 +1,6 @@
-<%@ Control Language="C#" Inherits="Aarsys.ShoutcastStats.View_ShoutcastStats" AutoEventWireup="true" CodeBehind="View_ShoutcastStats.ascx.cs" %>
+<%@ Control AutoEventWireup="true" CodeBehind="View_ShoutcastStats.ascx.cs" Inherits="Aarsys.ShoutcastStats.ViewShoutcastStats" Language="C#" %>
 <%@ Register Assembly="DotNetNuke.WebControls" Namespace="DotNetNuke.UI.WebControls" TagPrefix="DNN" %>
-<%@ Register TagPrefix="dnn" TagName="Label" Src="~/controls/LabelControl.ascx" %>
+<%@ Register Src="~/controls/LabelControl.ascx" TagName="Label" TagPrefix="dnn" %>
 
 
 <table class="scs_table">
@@ -78,7 +78,7 @@
             <asp:ImageButton id="ITunesStart" runat="server" />
         </td>
         </tr>
-        <asp:Timer id="Timer1" OnTick="SCS_TimerTick" Interval="60000" runat="server" />
+        <asp:Timer id="Timer1" OnTick="ScsTimerTick" Interval="60000" runat="server" />
     </ContentTemplate>
 </asp:UpdatePanel>
 

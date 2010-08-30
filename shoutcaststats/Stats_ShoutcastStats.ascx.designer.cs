@@ -10,7 +10,7 @@
 namespace Aarsys.ShoutcastStats {
     
     
-    public partial class Stats_ShoutcastStats {
+    public partial class StatsShoutcastStats {
         
         /// <summary>
         /// lbl_Status-Steuerelement

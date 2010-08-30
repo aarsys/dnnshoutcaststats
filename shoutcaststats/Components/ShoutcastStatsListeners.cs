@@ -19,12 +19,6 @@
 // 
 
 using System;
-using System.Configuration;
-using System.Data;
-using System.Xml.Linq;
-using System.Text;
-using System.Web;
-using System.Collections.Generic;
 
 
 namespace Aarsys.ShoutcastStats.Components
@@ -34,51 +28,57 @@ namespace Aarsys.ShoutcastStats.Components
     /// </summary>
     public class Listener : IDisposable
     {
-        public Listener(string HostName, string UserAgent, string Underruns, int ConnectTime, string Pointer, string UID)
+        ///<summary>
+        ///</summary>
+        ///<param name="hostName"></param>
+        ///<param name="userAgent"></param>
+        ///<param name="underruns"></param>
+        ///<param name="connectTime"></param>
+        ///<param name="pointer"></param>
+        ///<param name="uid"></param>
+        public Listener(string hostName, string userAgent, string underruns, int connectTime, string pointer, string uid)
         {
-            this._HostName = HostName;
-            this._UserAgent = UserAgent;
-            this._Underruns = Underruns;
-            this._ConnectTime = ConnectTime;
-            this._Pointer = Pointer;
-            this._UID = UID;
+            HostName = hostName;
+            UserAgent = userAgent;
+            Underruns = underruns;
+            ConnectTime = connectTime;
+            Pointer = pointer;
+            UID = uid;
         }
-        string _HostName, _UserAgent, _Underruns, _Pointer, _UID;
-        int _ConnectTime;
-        public string HostName
-        {
-            get { return _HostName; }
-        }
-        public string UserAgent
-        {
-            get { return _UserAgent; }
-        }
-        public string Underruns
-        {
-            get { return _Underruns; }
-        }
-        public int ConnectTime
-        {
-            get { return _ConnectTime; }
-        }
-        public string Pointer
-        {
-            get { return _Pointer; }
-        }
-        public string UID
-        {
-            get { return _UID; }
-        }
+
+        ///<summary>
+        ///</summary>
+        public string HostName { get; private set; }
+
+        ///<summary>
+        ///</summary>
+        public string UserAgent { get; private set; }
+
+        ///<summary>
+        ///</summary>
+        public string Underruns { get; private set; }
+
+        ///<summary>
+        ///</summary>
+        public int ConnectTime { get; private set; }
+
+        ///<summary>
+        ///</summary>
+        public string Pointer { get; private set; }
+
+        ///<summary>
+        ///</summary>
+        public string UID { get; private set; }
 
         #region IDisposable Members
 
-        public void Dispose()
+        void IDisposable.Dispose()
         {
-            this._HostName = null;
-            this._Pointer = null;
-            this._UID = null;
-            this._Underruns = null;
-            this._UserAgent = null;
+            HostName = null;
+            Pointer = null;
+            UID = null;
+            Underruns = null;
+            UserAgent = null;
         }
 
         #endregion

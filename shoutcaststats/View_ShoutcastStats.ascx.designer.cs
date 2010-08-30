@@ -10,7 +10,7 @@
 namespace Aarsys.ShoutcastStats {
     
     
-    public partial class View_ShoutcastStats {
+    public partial class ViewShoutcastStats {
         
         /// <summary>
         /// UpdatePanel1-Steuerelement

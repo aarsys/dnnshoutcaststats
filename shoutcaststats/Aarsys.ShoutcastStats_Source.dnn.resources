@@ -1,6 +1,6 @@
 ﻿<dotnetnuke type="Package" version="5.0">
     <packages>
-        <package name="Aarsys_ShoutcastStats" type="Module" version="05.01.00.00">
+        <package name="Aarsys_ShoutcastStats" type="Module" version="05.01.01.00">
             <friendlyName>ShoutcastStats</friendlyName>
             <description>
                 A ShoutcastStats module for DotNetNuke. It allows you to view statistc data i.e Song title, DJ name ect. to Dotnetnuke.

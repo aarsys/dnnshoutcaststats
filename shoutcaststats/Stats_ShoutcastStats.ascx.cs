@@ -18,22 +18,13 @@
 // DEALINGS IN THE SOFTWARE. 
 // 
 using System;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
 using System.Linq;
 using Aarsys.ShoutcastStats.Components;
-
-using DotNetNuke;
-using DotNetNuke.Common.Utilities;
 using DotNetNuke.Security;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Services.Localization;
 using DotNetNuke.Entities.Modules;
-using DotNetNuke.Entities.Modules.Actions;
-using Aarsys.ShoutcastStats;
 
 
 namespace Aarsys.ShoutcastStats
@@ -49,7 +40,7 @@ namespace Aarsys.ShoutcastStats
     /// ----------------------------------------------------------------------------- 
 
 
-    partial class Stats_ShoutcastStats : PortalModuleBase
+    partial class StatsShoutcastStats : PortalModuleBase
     {
 
         #region "Event Handlers"
@@ -59,45 +50,73 @@ namespace Aarsys.ShoutcastStats
         /// Page_Load runs when the control is loaded 
         /// </summary> 
         /// ----------------------------------------------------------------------------- 
-        protected void Page_Load(object sender, System.EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
             var portalSecurity = new PortalSecurity();
             try
             {
-                using (ShoutCastSettings scs = new ShoutCastSettings())
+                using (var scs = new ShoutCastSettings())
                 {
                    // Used http strings instead of secure strings about Shoutcast server do not support SSL! //
                     scs.StatsLoadSettings(this);
-                    using (ShoutcastServer s =
+                    using (var s =
                         new ShoutcastServer("http://" + scs.SC_IP + ":" + scs.SC_Port + "/admin.cgi?mode=viewxml&pass=" + scs.SC_Password))
                     {
                         if (s.StreamStatus != true)
-                            lbl_Status.Text = Localization.GetString("Offline", this.LocalResourceFile);
+                            lbl_Status.Text = Localization.GetString("Offline", LocalResourceFile);
                         else
                         {
 
                             if (scs.SC_XMLFileCount)
                                 {
                                 lbl_ViewXml.Visible = true;
-                                lbl_ViewXml.Text = string.Format(Localization.GetString("Xml Config file has been viewed", this.LocalResourceFile) + portalSecurity.InputFilter((" {0} "),PortalSecurity.FilterFlag.NoMarkup) + Localization.GetString("times", this.LocalResourceFile) + ".", s.Webdata.ViewXml);
+                                lbl_ViewXml.Text = string.Format(Localization.GetString("Xml Config file has been viewed", LocalResourceFile) + portalSecurity.InputFilter((" {0} "),PortalSecurity.FilterFlag.NoMarkup) + Localization.GetString("times", LocalResourceFile) + ".", s.Webdata.ViewXml);
+                            }
+                            else
+                            {
+                                lbl_ViewXml.Visible = false;
                             }
                             if (scs.SC_ListenerList)
-                                {
-                                    lbl_Listeners.Visible = true;
-                                    lbl_Listeners.Text = Localization.GetString("Diplaying info for", this.LocalResourceFile) + (s.Listeners.Count()) + " " + Localization.GetString("listeners", this.LocalResourceFile) + "<br />";
-                                foreach (Listener listener in s.Listeners)
+                            {
+                                lbl_Listeners.Visible = true;
+                                lbl_Listeners.Text = Localization.GetString("Diplaying info for", LocalResourceFile) +
+                                                     (s.Listeners.Count()) + @" " +
+                                                     Localization.GetString("listeners", LocalResourceFile) + @"<br />";
+                                foreach (var listener in s.Listeners)
                                 {
                                     int seconds;
                                     int minutes = Math.DivRem(listener.ConnectTime, 60, out seconds);
                                     int hours = Math.DivRem(minutes, 60, out minutes);
-                                    Label label = new Label();
-                                    label.Visible = true;
-                                    label.Text = Localization.GetString("Listener", this.LocalResourceFile) + " " + portalSecurity.InputFilter(listener.HostName, PortalSecurity.FilterFlag.NoMarkup) + " " + Localization.GetString("has", this.LocalResourceFile) + " " + portalSecurity.InputFilter(listener.Underruns, PortalSecurity.FilterFlag.NoMarkup) + " " + Localization.GetString("Underruns so far and is connected for", this.LocalResourceFile) + " " + hours + " " + Localization.GetString("hours", this.LocalResourceFile) + ", "
-                                        + minutes + " " + Localization.GetString("minutes and", this.LocalResourceFile) + " " + seconds + " " + Localization.GetString("seconds", this.LocalResourceFile) + "<br />";
-                                    label.ID = Server.HtmlEncode(listener.HostName);
+                                    var label = new Label
+                                                    {
+                                                        Visible = true,
+                                                        Text =
+                                                            Localization.GetString("Listener", LocalResourceFile) + @" " +
+                                                            portalSecurity.InputFilter(listener.HostName,
+                                                                                       PortalSecurity.FilterFlag.
+                                                                                           NoMarkup) + @" " +
+                                                            Localization.GetString("has", LocalResourceFile) + @" " +
+                                                            portalSecurity.InputFilter(listener.Underruns,
+                                                                                       PortalSecurity.FilterFlag.
+                                                                                           NoMarkup) + @" " +
+                                                            Localization.GetString(
+                                                                "Underruns so far and is connected for",
+                                                                LocalResourceFile) + @" " + hours + @" " +
+                                                            Localization.GetString("hours", LocalResourceFile) + @", "
+                                                            + minutes + @" " +
+                                                            Localization.GetString("minutes and", LocalResourceFile) +
+                                                            @" " + seconds + @" " +
+                                                            Localization.GetString("seconds", LocalResourceFile) +
+                                                            @"<br />",
+                                                        ID = Server.HtmlEncode(listener.HostName)
+                                                    };
                                     Panel1.Controls.Add(label);
                                     //label.Dispose();
                                 }
+                            }
+                            else
+                            {
+                                lbl_Listeners.Visible = false;
                             }
                             //if ((string)scs.SC_LastPlayed.ToString() != string.Empty)
                            // {
@@ -109,18 +128,19 @@ namespace Aarsys.ShoutcastStats
                                 if (scs.SC_LastPlayed)
                                 {
                                 lbl_SongHistory.Visible = true;
-                                lbl_SongHistory.Text = Localization.GetString("Displaying the", this.LocalResourceFile) + " " + (s.SongHistory.Count) + " " + Localization.GetString("last played songs", this.LocalResourceFile) + "<br>";
-                                foreach (Song song in s.SongHistory)
-                                    {
-                                    Label label = new Label();
-                                    label.Visible = true;
-                                    label.Text = portalSecurity.InputFilter(song.SongTitle, PortalSecurity.FilterFlag.NoMarkup) + " " + Localization.GetString("Played At", this.LocalResourceFile) + " : " + portalSecurity.InputFilter((song.PlayedAt.ToString()), PortalSecurity.FilterFlag.NoMarkup) + "<br />";
-                                    label.ID = portalSecurity.InputFilter(song.SongTitle, PortalSecurity.FilterFlag.NoMarkup);
+                                lbl_SongHistory.Text = Localization.GetString("Displaying the", LocalResourceFile) + @" " + (s.SongHistory.Count) + @" " + Localization.GetString("last played songs", LocalResourceFile) + @"<br>";
+                                foreach (var label in s.SongHistory.Select(song => new Label
+                                                                                       {
+                                                                                           Visible = true, Text = portalSecurity.InputFilter(song.SongTitle, PortalSecurity.FilterFlag.NoMarkup) + @" " + Localization.GetString("Played At", LocalResourceFile) + @" : " + portalSecurity.InputFilter((song.PlayedAt.ToString()), PortalSecurity.FilterFlag.NoMarkup) + @"<br />", ID = portalSecurity.InputFilter(song.SongTitle, PortalSecurity.FilterFlag.NoMarkup)
+                                                                                       }))
+                                {
                                     Panel2.Controls.Add(label);
-                                    //label.Dispose();
-                                    //}
                                 }
                             }
+                                else
+                                {
+                                    lbl_SongHistory.Visible = false;
+                                }
                     }
                 }
 
@@ -131,8 +151,8 @@ namespace Aarsys.ShoutcastStats
             catch (Exception exc)
             {
                 //Module failed to load
-                string error = Localization.GetString("ConnectionFailed.error", this.LocalResourceFile);
-                Exceptions.ProcessModuleLoadException(error, this, exc, true); ;
+                var error = Localization.GetString("ConnectionFailed.error", LocalResourceFile);
+                Exceptions.ProcessModuleLoadException(error, this, exc, true); 
             }
 
         }

@@ -22,18 +22,9 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Configuration;
-using System.Data;
 using System.Xml.Linq;
-using System.Web;
 using System.Collections.Generic;
-using DotNetNuke;
-using DotNetNuke.Common.Utilities;
-using DotNetNuke.Entities.Modules;
-using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Services.Localization;
-using System.Collections.ObjectModel;
 
 
 namespace Aarsys.ShoutcastStats.Components
@@ -45,14 +36,13 @@ namespace Aarsys.ShoutcastStats.Components
     /// </summary>
     public class ShoutcastServer : DotNetNuke.Entities.Modules.PortalModuleBase, IDisposable
     {
-        XDocument ShoutcastXml;
-        WebData webdata;
-        string _ServerUrl;
+        XDocument _shoutcastXml;
+        readonly WebData _webdata;
+        string _serverUrl;
         /// <summary>
         /// Create an instance of this class
-        /// </summary>
-        /// <param name="ServerUrl">The Streaming Url of the server 
-        /// Example : http://localhost:8000/admin.cgi?mode=viewxml&#x26;pass=adminpass </param>
+        /// /// </summary>
+        /// Example : http://localhost:8000/admin.cgi?mode=viewxml&#x26;pass=adminpass
         /// Should be gennerated with the Modulesettings as SC_IP, SC_Port, SC_Password
 
         
@@ -60,20 +50,24 @@ namespace Aarsys.ShoutcastStats.Components
         {
             get
             {
-                return this.ControlPath + "/" + Localization.LocalResourceDirectory + "/" + Localization.LocalSharedResourceFile;
+                return ControlPath + "/" + Localization.LocalResourceDirectory + "/" + Localization.LocalSharedResourceFile;
                 //return DotNetNuke.Services.Localization.Localization.ApplicationResourceDirectory + "/SharedResources.resx";
             }
         }
 
    
-        public ShoutcastServer(string ServerUrl)
+        ///<summary>
+        ///</summary>
+        ///<param name="serverUrl"></param>
+        ///<exception cref="ServerDownException"></exception>
+        public ShoutcastServer(string serverUrl)
         {
             try
             {
 
-                this.ShoutcastServerUrl = ServerUrl;
-                ShoutcastXml = XDocument.Load(Get_XMLFile());
-                webdata = new WebData(this);
+                ShoutcastServerUrl = serverUrl;
+                _shoutcastXml = XDocument.Load(GetXmlFile());
+                _webdata = new WebData(this);
             }
             catch
             {
@@ -82,15 +76,15 @@ namespace Aarsys.ShoutcastStats.Components
                 
             }
         }
-        private TextReader Get_XMLFile()
+        private TextReader GetXmlFile()
         {
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(this.ShoutcastServerUrl);
+            var req = (HttpWebRequest)WebRequest.Create(ShoutcastServerUrl);
             req.UserAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)";
             try
             {
                 //Get Text from HttpWebResponse
-                HttpWebResponse res = (HttpWebResponse)req.GetResponse();
-                TextReader sw = new StreamReader(res.GetResponseStream());
+                var res = (HttpWebResponse)req.GetResponse();
+                var sw = new StreamReader(res.GetResponseStream());
                 res = null;
                 return sw;
             }
@@ -109,10 +103,10 @@ namespace Aarsys.ShoutcastStats.Components
         ///</summary>
         public string ShoutcastServerUrl
         {
-            get { return _ServerUrl; }
-            set { _ServerUrl = value; }
+            get { return _serverUrl; }
+            set { _serverUrl = value; }
         }
-        private string GetProperty(XDocument x, ShoutcastProperties Property)
+        private static string GetProperty(XContainer x, ShoutcastProperties property)
         {
             //try
             
@@ -126,16 +120,21 @@ namespace Aarsys.ShoutcastStats.Components
             //    //return (DotNetNuke.Services.Localization.Localization.GetString("Undefined.Text", this.SharedResourceFile));
             //}
             return (from c in x.Descendants("SHOUTCASTSERVER")
-                    select (string)c.Element(Property.ToString())).FirstOrDefault()
+                    select (string)c.Element(property.ToString())).FirstOrDefault()
                    ?? "Undefined";
         }
-        
-        protected string GetWebDataProperty(XDocument x, ShoutcastWebDataProperties Property)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="property"></param>
+        /// <returns></returns>
+        protected string GetWebDataProperty(XDocument x, ShoutcastWebDataProperties property)
         {
             try
             {
                 var q = (from c in x.Descendants("WEBDATA")
-                         select (string)c.Element(Property.ToString())).First();
+                         select (string)c.Element(property.ToString())).First();
                 return q;
             }
             catch (NullReferenceException)
@@ -150,7 +149,7 @@ namespace Aarsys.ShoutcastStats.Components
         /// </summary>
         public void Refresh()
         {
-            ShoutcastXml = XDocument.Load(Get_XMLFile());
+            _shoutcastXml = XDocument.Load(GetXmlFile());
         }
         enum ShoutcastProperties
         {
@@ -159,6 +158,10 @@ namespace Aarsys.ShoutcastStats.Components
             CURRENTLISTENERS, PEAKLISTENERS, MAXLISTENERS, REPORTEDLISTENERS,
             AVERAGETIME, SERVERGENRE, SERVERURL, SERVERTITLE, SONGTITLE
         }
+
+        /// <summary>
+        ///
+        /// </summary>
         protected enum ShoutcastWebDataProperties
         {
             INDEX, LISTEN, PALM7, LOGIN, LOGINFAIL, PLAYED, COOKIE, ADMIN, UPDINFO, KICKSRC,
@@ -166,115 +169,157 @@ namespace Aarsys.ShoutcastStats.Components
         }
 
         #region Properties
+        ///<summary>
+        ///</summary>
         public string SongUrl
         {
-            get { return GetProperty(ShoutcastXml, ShoutcastProperties.SONGURL); }
+            get { return GetProperty(_shoutcastXml, ShoutcastProperties.SONGURL); }
         }
+        ///<summary>
+        ///</summary>
         public string IRC
         {
-            get { return GetProperty(ShoutcastXml, ShoutcastProperties.IRC); }
+            get { return GetProperty(_shoutcastXml, ShoutcastProperties.IRC); }
         }
+        ///<summary>
+        ///</summary>
         public string ICQ
         {
-            get { return GetProperty(ShoutcastXml, ShoutcastProperties.ICQ); }
+            get { return GetProperty(_shoutcastXml, ShoutcastProperties.ICQ); }
         }
+        ///<summary>
+        ///</summary>
         public string AIM
         {
-            get { return GetProperty(ShoutcastXml, ShoutcastProperties.AIM); }
+            get { return GetProperty(_shoutcastXml, ShoutcastProperties.AIM); }
         }
+        ///<summary>
+        ///</summary>
         public int WebHits
         {
-            get { return Convert.ToInt32(GetProperty(ShoutcastXml, ShoutcastProperties.WEBHITS)); }
+            get { return Convert.ToInt32(GetProperty(_shoutcastXml, ShoutcastProperties.WEBHITS)); }
         }
+        ///<summary>
+        ///</summary>
         public int StreamHits
         {
-            get { return Convert.ToInt32(GetProperty(ShoutcastXml, ShoutcastProperties.STREAMHITS)); }
+            get { return Convert.ToInt32(GetProperty(_shoutcastXml, ShoutcastProperties.STREAMHITS)); }
         }
+        ///<summary>
+        ///</summary>
         public bool StreamStatus
         {
-            get { return Convert.ToBoolean(Convert.ToInt32(GetProperty(ShoutcastXml, ShoutcastProperties.STREAMSTATUS))); }
+            get { return Convert.ToBoolean(Convert.ToInt32(GetProperty(_shoutcastXml, ShoutcastProperties.STREAMSTATUS))); }
         }
+        ///<summary>
+        ///</summary>
         public int Bitrate
         {
-            get { return Convert.ToInt32(GetProperty(ShoutcastXml, ShoutcastProperties.BITRATE)); }
+            get { return Convert.ToInt32(GetProperty(_shoutcastXml, ShoutcastProperties.BITRATE)); }
         }
+        ///<summary>
+        ///</summary>
         public string Content
         {
-            get { return GetProperty(ShoutcastXml, ShoutcastProperties.CONTENT); }
+            get { return GetProperty(_shoutcastXml, ShoutcastProperties.CONTENT); }
         }
+        ///<summary>
+        ///</summary>
         public string Version
         {
-            get { return GetProperty(ShoutcastXml, ShoutcastProperties.VERSION); }
+            get { return GetProperty(_shoutcastXml, ShoutcastProperties.VERSION); }
         }
+        ///<summary>
+        ///</summary>
         public int CurrentListeners
         {
-            get { return Convert.ToInt32(GetProperty(ShoutcastXml, ShoutcastProperties.CURRENTLISTENERS)); }
+            get { return Convert.ToInt32(GetProperty(_shoutcastXml, ShoutcastProperties.CURRENTLISTENERS)); }
         }
+        ///<summary>
+        ///</summary>
         public int PeakListeners
         {
-            get { return Convert.ToInt32(GetProperty(ShoutcastXml, ShoutcastProperties.PEAKLISTENERS)); }
+            get { return Convert.ToInt32(GetProperty(_shoutcastXml, ShoutcastProperties.PEAKLISTENERS)); }
         }
+        ///<summary>
+        ///</summary>
         public int MaxListeners
         {
-            get { return Convert.ToInt32(GetProperty(ShoutcastXml, ShoutcastProperties.MAXLISTENERS)); }
+            get { return Convert.ToInt32(GetProperty(_shoutcastXml, ShoutcastProperties.MAXLISTENERS)); }
         }
+        ///<summary>
+        ///</summary>
         public int ReportedListeners
         {
-            get { return Convert.ToInt32(GetProperty(ShoutcastXml, ShoutcastProperties.REPORTEDLISTENERS)); }
+            get { return Convert.ToInt32(GetProperty(_shoutcastXml, ShoutcastProperties.REPORTEDLISTENERS)); }
         }
+        ///<summary>
+        ///</summary>
         public string ServerGenre
         {
-            get { return GetProperty(ShoutcastXml, ShoutcastProperties.SERVERGENRE); }
-        }
+            get { return GetProperty(_shoutcastXml, ShoutcastProperties.SERVERGENRE); }
+        }      
+        ///<summary>
+        ///</summary>
         public string ServerTitle
         {
-            get { return GetProperty(ShoutcastXml, ShoutcastProperties.SERVERTITLE); }
+            get { return GetProperty(_shoutcastXml, ShoutcastProperties.SERVERTITLE); }
         }
+        ///<summary>
+        ///</summary>
         public string ServerUrl
         {
-            get { return GetProperty(ShoutcastXml, ShoutcastProperties.SERVERURL); }
+            get { return GetProperty(_shoutcastXml, ShoutcastProperties.SERVERURL); }
         }
+        ///<summary>
+        ///</summary>
         public int AverageTime
         {
-            get { return Convert.ToInt32(GetProperty(ShoutcastXml, ShoutcastProperties.AVERAGETIME)); }
+            get { return Convert.ToInt32(GetProperty(_shoutcastXml, ShoutcastProperties.AVERAGETIME)); }
         }
+        ///<summary>
+        ///</summary>
         public string SongTitle
         {
-            get { return this.GetProperty(this.ShoutcastXml, ShoutcastProperties.SONGTITLE); }
+            get { return GetProperty(_shoutcastXml, ShoutcastProperties.SONGTITLE); }
         }
         //public List<Listener> Listeners
+        ///<summary>
+        ///</summary>
         public IEnumerable<Listener> Listeners
         {
             get
             {
-                List<Listener> Listeners = new List<Listener>();
-                var q = (from c in this.ShoutcastXml.Descendants("LISTENERS")
+                var listeners = new List<Listener>();
+                var q = (from c in _shoutcastXml.Descendants("LISTENERS")
                          select c.Elements("LISTENER")).ToList();
 
                 foreach (var item in q)
                 {
                     item.ToList().ForEach(p =>
-                         Listeners.Add(new Listener(p.Element("HOSTNAME").Value, p.Element("USERAGENT").Value
+                         listeners.Add(new Listener(p.Element("HOSTNAME").Value, p.Element("USERAGENT").Value
                          , p.Element("UNDERRUNS").Value, Convert.ToInt32(p.Element("CONNECTTIME").Value)
                          , p.Element("POINTER").Value, p.Element("UID").Value
                          )));
                 }
-                return Listeners;
+                return listeners;
             }
         }
+        ///<summary>
+        ///</summary>
         public List<Song> SongHistory
         {
             get
             {
-                List<Song> SongHistory = new List<Song>();
-                var q = (from c in this.ShoutcastXml.Descendants("SONGHISTORY")
+                var songHistory = new List<Song>();
+                var q = (from c in _shoutcastXml.Descendants("SONGHISTORY")
                          select c.Elements("SONG")).ToList();
                 foreach (var item in q)
                 {
                     item.ToList().ForEach(p =>
-                         SongHistory.Add(new Song(p.Element("TITLE").Value, ShoutcastServer.ConvertFromUnixTimestamp(Convert.ToDouble(p.Element("PLAYEDAT").Value)))));
+                         songHistory.Add(new Song(p.Element("TITLE").Value, ConvertFromUnixTimestamp(Convert.ToDouble(p.Element("PLAYEDAT").Value)))));
                 }
-                return SongHistory;
+                return songHistory;
             }
         }
         /// <summary>
@@ -282,15 +327,17 @@ namespace Aarsys.ShoutcastStats.Components
         /// </summary>
         public WebData Webdata
         {
-            get { return this.webdata; }
+            get { return _webdata; }
         }
         #endregion
+        ///<summary>
+        ///</summary>
         public class WebData : IDisposable
         {
-            ShoutcastServer s;
+            ShoutcastServer _s;
             internal WebData(ShoutcastServer s)
             {
-                this.s = s;
+                _s = s;
             }
             #region WebData Properties
             /// <summary>
@@ -298,162 +345,167 @@ namespace Aarsys.ShoutcastStats.Components
             /// </summary>
             public int Index
             {
-                get { return Convert.ToInt32(s.GetWebDataProperty(s.ShoutcastXml, ShoutcastWebDataProperties.INDEX)); }
+                get { return Convert.ToInt32(_s.GetWebDataProperty(_s._shoutcastXml, ShoutcastWebDataProperties.INDEX)); }
             }
             /// <summary>
             /// Gets the LISTEN value from WEBDATA
             /// </summary>
             public int Listen
             {
-                get { return Convert.ToInt32(s.GetWebDataProperty(s.ShoutcastXml, ShoutcastWebDataProperties.LISTEN)); }
+                get { return Convert.ToInt32(_s.GetWebDataProperty(_s._shoutcastXml, ShoutcastWebDataProperties.LISTEN)); }
             }
             /// <summary>
             /// Gets the PALM7 value from WEBDATA
             /// </summary>
             public int Palm7
             {
-                get { return Convert.ToInt32(s.GetWebDataProperty(s.ShoutcastXml, ShoutcastWebDataProperties.PALM7)); }
+                get { return Convert.ToInt32(_s.GetWebDataProperty(_s._shoutcastXml, ShoutcastWebDataProperties.PALM7)); }
             }
             /// <summary>
             /// Gets the LOGIN value from WEBDATA
             /// </summary>
             public int Login
             {
-                get { return Convert.ToInt32(s.GetWebDataProperty(s.ShoutcastXml, ShoutcastWebDataProperties.LOGIN)); }
+                get { return Convert.ToInt32(_s.GetWebDataProperty(_s._shoutcastXml, ShoutcastWebDataProperties.LOGIN)); }
             }
             /// <summary>
             /// Gets the LOGINFAIL value from WEBDATA
             /// </summary>
             public int LoginFail
             {
-                get { return Convert.ToInt32(s.GetWebDataProperty(s.ShoutcastXml, ShoutcastWebDataProperties.LOGINFAIL)); }
+                get { return Convert.ToInt32(_s.GetWebDataProperty(_s._shoutcastXml, ShoutcastWebDataProperties.LOGINFAIL)); }
             }
             /// <summary>
             /// Gets the PLAYED value from WEBDATA
             /// </summary>
             public int Played
             {
-                get { return Convert.ToInt32(s.GetWebDataProperty(s.ShoutcastXml, ShoutcastWebDataProperties.PLAYED)); }
+                get { return Convert.ToInt32(_s.GetWebDataProperty(_s._shoutcastXml, ShoutcastWebDataProperties.PLAYED)); }
             }
             /// <summary>
             /// Gets the COOKIE value from WEBDATA
             /// </summary>
             public int Cookie
             {
-                get { return Convert.ToInt32(s.GetWebDataProperty(s.ShoutcastXml, ShoutcastWebDataProperties.COOKIE)); }
+                get { return Convert.ToInt32(_s.GetWebDataProperty(_s._shoutcastXml, ShoutcastWebDataProperties.COOKIE)); }
             }
             /// <summary>
             /// Gets the ADMIN value from WEBDATA
             /// </summary>
             public int Admin
             {
-                get { return Convert.ToInt32(s.GetWebDataProperty(s.ShoutcastXml, ShoutcastWebDataProperties.ADMIN)); }
+                get { return Convert.ToInt32(_s.GetWebDataProperty(_s._shoutcastXml, ShoutcastWebDataProperties.ADMIN)); }
             }
             /// <summary>
             /// Gets the UPDINFO value from WEBDATA
             /// </summary>
             public int UpdInfo
             {
-                get { return Convert.ToInt32(s.GetWebDataProperty(s.ShoutcastXml, ShoutcastWebDataProperties.UPDINFO)); }
+                get { return Convert.ToInt32(_s.GetWebDataProperty(_s._shoutcastXml, ShoutcastWebDataProperties.UPDINFO)); }
             }
             /// <summary>
             /// Gets the KICKSRC value from WEBDATA
             /// </summary>
             public int KickSrc
             {
-                get { return Convert.ToInt32(s.GetWebDataProperty(s.ShoutcastXml, ShoutcastWebDataProperties.KICKSRC)); }
+                get { return Convert.ToInt32(_s.GetWebDataProperty(_s._shoutcastXml, ShoutcastWebDataProperties.KICKSRC)); }
             }
             /// <summary>
             /// Gets the KICKDST value from WEBDATA
             /// </summary>
             public int KickDst
             {
-                get { return Convert.ToInt32(s.GetWebDataProperty(s.ShoutcastXml, ShoutcastWebDataProperties.KICKDST)); }
+                get { return Convert.ToInt32(_s.GetWebDataProperty(_s._shoutcastXml, ShoutcastWebDataProperties.KICKDST)); }
             }
             /// <summary>
             /// Gets the UNBANDST value from WEBDATA
             /// </summary>
             public int UnBanDst
             {
-                get { return Convert.ToInt32(s.GetWebDataProperty(s.ShoutcastXml, ShoutcastWebDataProperties.UNBANDST)); }
+                get { return Convert.ToInt32(_s.GetWebDataProperty(_s._shoutcastXml, ShoutcastWebDataProperties.UNBANDST)); }
             }
             /// <summary>
             /// Gets the BANDST value from WEBDATA
             /// </summary>
             public int BanDst
             {
-                get { return Convert.ToInt32(s.GetWebDataProperty(s.ShoutcastXml, ShoutcastWebDataProperties.BANDST)); }
+                get { return Convert.ToInt32(_s.GetWebDataProperty(_s._shoutcastXml, ShoutcastWebDataProperties.BANDST)); }
             }
             /// <summary>
             /// Gets the VIEWBAN value from WEBDATA
             /// </summary>
             public int ViewBan
             {
-                get { return Convert.ToInt32(s.GetWebDataProperty(s.ShoutcastXml, ShoutcastWebDataProperties.VIEWBAN)); }
+                get { return Convert.ToInt32(_s.GetWebDataProperty(_s._shoutcastXml, ShoutcastWebDataProperties.VIEWBAN)); }
             }
             /// <summary>
             /// Gets the UNRIPDST value from WEBDATA
             /// </summary>
             public int UnRipDst
             {
-                get { return Convert.ToInt32(s.GetWebDataProperty(s.ShoutcastXml, ShoutcastWebDataProperties.UNRIPDST)); }
+                get { return Convert.ToInt32(_s.GetWebDataProperty(_s._shoutcastXml, ShoutcastWebDataProperties.UNRIPDST)); }
             }
             /// <summary>
             /// Gets the RIPDST value from WEBDATA
             /// </summary>
             public int RipDst
             {
-                get { return Convert.ToInt32(s.GetWebDataProperty(s.ShoutcastXml, ShoutcastWebDataProperties.RIPDST)); }
+                get { return Convert.ToInt32(_s.GetWebDataProperty(_s._shoutcastXml, ShoutcastWebDataProperties.RIPDST)); }
             }
             /// <summary>
             /// Gets the VIEWRIP value from WEBDATA
             /// </summary>
             public int ViewRip
             {
-                get { return Convert.ToInt32(s.GetWebDataProperty(s.ShoutcastXml, ShoutcastWebDataProperties.VIEWRIP)); }
+                get { return Convert.ToInt32(_s.GetWebDataProperty(_s._shoutcastXml, ShoutcastWebDataProperties.VIEWRIP)); }
             }
             /// <summary>
             /// Gets the VIEWXML value from WEBDATA
             /// </summary>
             public int ViewXml
             {
-                get { return Convert.ToInt32(s.GetWebDataProperty(s.ShoutcastXml, ShoutcastWebDataProperties.VIEWXML)); }
+                get { return Convert.ToInt32(_s.GetWebDataProperty(_s._shoutcastXml, ShoutcastWebDataProperties.VIEWXML)); }
             }
             /// <summary>
             /// Gets the VIEWLOG value from WEBDATA
             /// </summary>
             public int ViewLog
             {
-                get { return Convert.ToInt32(s.GetWebDataProperty(s.ShoutcastXml, ShoutcastWebDataProperties.VIEWLOG)); }
+                get { return Convert.ToInt32(_s.GetWebDataProperty(_s._shoutcastXml, ShoutcastWebDataProperties.VIEWLOG)); }
             }
             /// <summary>
             /// Gets the INVALID value from WEBDATA
             /// </summary>
             public int Invalid
             {
-                get { return Convert.ToInt32(s.GetWebDataProperty(s.ShoutcastXml, ShoutcastWebDataProperties.INVALID)); }
+                get { return Convert.ToInt32(_s.GetWebDataProperty(_s._shoutcastXml, ShoutcastWebDataProperties.INVALID)); }
             }
 
             #endregion
             #region IDisposable Members
+            /// <summary>
+            /// 
+            /// </summary>
             public void Dispose()
             {
-                s = null;
+                _s = null;
             }
             #endregion
         }
         #region IDisposable Members
-
-        public void Dispose()
+        /// <summary>
+        /// 
+        /// </summary>
+        public override void Dispose()
         {
-            webdata.Dispose();
-            ShoutcastXml = null;
-            _ServerUrl = null;
+            _webdata.Dispose();
+            _shoutcastXml = null;
+            _serverUrl = null;
         }
 
         static DateTime ConvertFromUnixTimestamp(double timestamp)
         {
-            DateTime origin = new DateTime(1970, 1, 1, 0, 0, 0, 0); 
+            var origin = new DateTime(1970, 1, 1, 0, 0, 0, 0); 
             
             //Using Offset to handle the DateTime where the user is - Enhancement for later use
             // best is to use Timezone of the usersetting and a fallback to the site Timezone for unregistered users or get them Thimezone using javascript
@@ -572,12 +624,28 @@ namespace Aarsys.ShoutcastStats.Components
         #endregion
     }
 
-    [global::System.Serializable]
+    ///<summary>
+    ///</summary>
+    [Serializable]
     public class ServerDownException : Exception
     {
+        ///<summary>
+        ///</summary>
         public ServerDownException() { }
+        ///<summary>
+        ///</summary>
+        ///<param name="message"></param>
         public ServerDownException(string message) : base(message) { }
+        ///<summary>
+        ///</summary>
+        ///<param name="message"></param>
+        ///<param name="inner"></param>
         public ServerDownException(string message, Exception inner) : base(message, inner) { }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="info"></param>
+        /// <param name="context"></param>
         protected ServerDownException(
           System.Runtime.Serialization.SerializationInfo info,
           System.Runtime.Serialization.StreamingContext context)

@@ -9,7 +9,7 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Aarsys</RootNamespace>
+    <RootNamespace>Aarsys.ShoutcastStats</RootNamespace>
     <AssemblyName>Aarsys.ShoutcastStats</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -176,7 +176,9 @@
     <Content Include="App_LocalResources\StatsSettings.ascx.de-DE.resx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_LocalResources\View_ShoutcastStats.ascx.de-DE.resx" />
+    <Content Include="App_LocalResources\View_ShoutcastStats.ascx.de-DE.resx">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_LocalResources\SharedResources.resx" />
@@ -205,6 +207,8 @@
           <DevelopmentServerPort>62596</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://dev5/DesktopModules/AarSys/ShoutcastStats</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://dev5/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

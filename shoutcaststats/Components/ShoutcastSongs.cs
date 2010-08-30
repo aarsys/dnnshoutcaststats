@@ -19,10 +19,6 @@
 // 
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Text;
 
 
 namespace Aarsys.ShoutcastStats.Components
@@ -32,32 +28,31 @@ namespace Aarsys.ShoutcastStats.Components
     /// </summary>
     public class Song : IDisposable
     {
-        string _SongTitle;
-        DateTime _PlayedAt;
-        public string SongTitle
+        ///<summary>
+        ///</summary>
+        public string SongTitle { get; private set; }
+
+        ///<summary>
+        ///</summary>
+        public DateTime PlayedAt { get; private set; }
+
+        ///<summary>
+        ///</summary>
+        ///<param name="songTitle"></param>
+        ///<param name="playedAt"></param>
+        public Song(string songTitle, DateTime playedAt)
         {
-            get
-            {
-                return this._SongTitle;
-            }
-        }
-        public DateTime PlayedAt
-        {
-            get
-            {
-                return this._PlayedAt;
-            }
-        }
-        public Song(string SongTitle, DateTime PlayedAt)
-        {
-            this._SongTitle = SongTitle;
-            this._PlayedAt = PlayedAt;
+            SongTitle = songTitle;
+            PlayedAt = playedAt;
         }
 
         #region IDisposable Members
+        /// <summary>
+        /// 
+        /// </summary>
         public void Dispose()
         {
-            this._SongTitle = null;
+            SongTitle = null;
         }
         #endregion
     }

@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Stats_ShoutcastStats.ascx.cs" Inherits="Aarsys.ShoutcastStats.Stats_ShoutcastStats" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Stats_ShoutcastStats.ascx.cs" Inherits="Aarsys.ShoutcastStats.StatsShoutcastStats" %>
 <%@ Register TagPrefix="dnn" Namespace="DotNetNuke.UI.WebControls" Assembly="DotNetNuke" %>
 <%@ Register TagPrefix="dnn" TagName="Label" Src="~/controls/LabelControl.ascx" %>
 
