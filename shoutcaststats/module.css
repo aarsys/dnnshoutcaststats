@@ -5,7 +5,14 @@
 /* Table Format */
 .scs_table
 {
-    width: 150px;   
+    width: 150px;
+    padding: 0px; 
+      
+}
+
+.Column
+{
+padding: 0px;
 }
 
 
@@ -16,7 +23,7 @@
     font-family:Comic Sans MS, Arial, Tahoma;
     color:Blue;
     width: 150px;
-    padding:0;
+    padding:0px;
 }
 
 /* Format of the Marquee */

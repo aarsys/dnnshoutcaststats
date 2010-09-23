@@ -655,7 +655,7 @@ namespace Aarsys.ShoutcastStats
         protected void ScsTimerTick(object sender, EventArgs e)
         {
             //Added this lines to make sure the values are viewed after each update - without this after a while the values are not viewed
-            
+
             using (var scs = new ShoutCastSettings())
             {
                 // Loading the settings from ShoutcastStatsSettings Control //
@@ -663,6 +663,7 @@ namespace Aarsys.ShoutcastStats
                 using (var s =
                        new ShoutcastServer("http://" + scs.SC_IP + ":" + scs.SC_Port + "/admin.cgi?mode=viewxml&pass=" +
                                            scs.SC_Password))
+                if (!IsPostBack)
                 {
                     lbl_Station.Text = lbl_Station.Text;
                     lbl_CurrentListeners.Text = lbl_CurrentListeners.Text;

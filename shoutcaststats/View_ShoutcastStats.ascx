@@ -5,8 +5,9 @@
 
 <table class="scs_table">
 
-<asp:UpdatePanel id="UpdatePanel1" runat="server" RenderMode="Block" >
+<asp:UpdatePanel id="UpdatePanel1" RenderMode="Inline" runat="server" >
      <ContentTemplate>
+     <table class="scs_table">
        <tr>
         <td class="Column">
             <asp:Label id="lbl_Status" cssclass="scs_label" runat="server"></asp:Label>
@@ -79,6 +80,7 @@
         </td>
         </tr>
         <asp:Timer id="Timer1" OnTick="ScsTimerTick" Interval="60000" runat="server"  />
+        </table>
     </ContentTemplate>
 </asp:UpdatePanel>
 
