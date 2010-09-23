@@ -3,7 +3,7 @@
 <%@ Register Src="~/controls/LabelControl.ascx" TagName="Label" TagPrefix="dnn" %>
 
 
-<table class="scs_table">
+<div>
 
 <asp:UpdatePanel id="UpdatePanel1" RenderMode="Inline" runat="server" >
      <ContentTemplate>
@@ -84,7 +84,7 @@
     </ContentTemplate>
 </asp:UpdatePanel>
 
-</table>
+</div>
 
 
  

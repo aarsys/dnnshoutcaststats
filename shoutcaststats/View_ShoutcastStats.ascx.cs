@@ -206,7 +206,7 @@ namespace Aarsys.ShoutcastStats
                                 lbl_SongTitle.Visible = true; //showsong;
                                 lbl_SongTitle.Text = Localization.GetString("SongTitle", LocalResourceFile) + @" : ";
                                 lbl_ScsSong.Visible = true; // showsong;
-                                lbl_ScsSong.Text = @"<marquee class=""scs_marquee"">" +
+                                lbl_ScsSong.Text = @"<marquee class=""scs_marquee"" scrollamount=""4"">" +
                                                    portalSecurity.InputFilter(s.SongTitle,
                                                                               PortalSecurity.FilterFlag.NoMarkup) +
                                                    @"</marquee>";

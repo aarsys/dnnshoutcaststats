@@ -33,7 +33,9 @@ padding: 0px;
     background-color:Blue;
     color:Aqua;
     font-family:Comic Sans MS, Arial, Tahoma;
-    font-style:normal;    
+    font-style:normal; 
+    marquee-speed: slow;   
+    scrollamount: 1000;
 }
 
 /* Format of the Lists of Stats_ShoutcastStats and List_ShoutcastStats */
