@@ -7,14 +7,19 @@ whish you could set up with different permissions.
 <p>
 Minimum DotNetNuke version to use 05.05.00
 </p>
-<p>Fixed on 05.01.02.</p>
+<p>Fixes on 05.01.03</p>
+<h2>Minor</h2>
+<ol>
+<li>Fixed issue offline Mode not viewed on DJ disconnection</li>
+</ol>
+<p>Fixed on 05.01.02</p>
 <h2>Minor</h2>
 <ol>
 <li>Fixed issue on update to offline mode</li>
 <li>Disabled partailrendering due to deisable the update image</li>
 <li>Fixed issue that still complete Page was Updated, by changed UpdatePanel from Block to Inline mode.</li>
 </ol>
-<p>Fixed on 05.01.01.</p>
+<p>Fixed on 05.01.01</p>
 <h2>Minor</h2>
 <ol>
 <li>Fixed red X on disabled Player links</li>

@@ -663,7 +663,6 @@ namespace Aarsys.ShoutcastStats
                 using (var s =
                        new ShoutcastServer("http://" + scs.SC_IP + ":" + scs.SC_Port + "/admin.cgi?mode=viewxml&pass=" +
                                            scs.SC_Password))
-                if (!IsPostBack)
                 {
                     lbl_Station.Text = lbl_Station.Text;
                     lbl_CurrentListeners.Text = lbl_CurrentListeners.Text;
